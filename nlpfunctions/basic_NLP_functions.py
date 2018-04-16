@@ -6,324 +6,255 @@ Created on Fri Apr  6 22:45:21 2018
 """
 
 
-# Function to sentence-tokenise answers 
+############################ Function to sentence-tokenise answers ############################
 
 from nltk.tokenize import sent_tokenize
 import pandas as pd
 
-def sent_tokenise_answer(answer_col) :
+def sent_tokenise_df(INPUT) :
     
     """ 
-    Function to sentence-tokenise answers. 
+    Function to sentence-tokenise text. 
     Return a list of lists with each sublist containing an answer's sentences as strings.
     
     Parameters
     ----------
-    answer_col : name of the dataframe column containing the list of sentences to be word-tokenised
+    INPUT : name of the dataframe column containing the list of sentences to be word-tokenised
     """
     
     # if no answer was provided -> return empty string list, else sent-tokenize answer
-    sents_collector = [sent_tokenize(answer) if answer else list("") for answer in answer_col]
+    OUTPUT = sent_tokenize(INPUT) if INPUT else list()
             
-    return pd.Series(sents_collector)
+    return pd.Series(dict(sent_tok_text = OUTPUT))
 
 
-# In[2]:
+################################################################################################
 
 
-# Function to word-tokenise sentences 
+
+
+############################# Function to word-tokenise sentences #############################
 
 from nltk.tokenize import word_tokenize
 
-def word_tokenise_answer(answer_col) :
+def word_tokenise_df(INPUT) :
     
     """ 
-    Function to word-tokenise answers' sentences. 
+    Function to word-tokenise sentences within a text. 
     Return a list of lists of lower-case words as strings. 
-    Required input, a list of lists containing sentences as strings.
+    Required input, a list of lists, with each sublist containing sentences as strings.
     
     Parameters
     ----------
-    answer_col : a list of lists containing the sentences to be word-tokenised
+    INPUT : name of the dataframe column, a list of lists containing the sentences to be word-tokenised
     """
     
-    sents_collector = []
-    
-    for answer in answer_col :  
-        
-        # no answer was provided -> return empty string list
-        if not answer:
-            sents_collector.append(list(""))
-            
-        # an answer was provided    
-        else :
-            
-            # 1. word-tokenise the answer 2. convert to lower case
-            sents_collector.append([[w.lower() for w in word_tokenize(sent)] for sent in answer])
-            
-    return pd.Series(sents_collector)
+    # If an answer was provided: 1. word-tokenise the answer 2. convert to lower case
+    OUTPUT = [[w.lower() for w in word_tokenize(sent)] for sent in INPUT]
+          
+    return pd.Series(dict(word_tok_sents = OUTPUT))
 
 
-# In[3]:
+################################################################################################
 
 
-# Define function to calculate polarity score for the answers in our dataset
 
+
+############################# Define function to calculate polarity score #############################
+
+import numpy
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 analyser = SentimentIntensityAnalyzer()
 
 
-def get_sentiment_score(answer_col, score_type = 'compound') :
+def get_sentiment_score_df(INPUT, score_type = 'compound') :
     """ 
     Calculate sentiment analysis score (score_type: 'compound' default, 'pos', 'neg')
-    for each sentence in each cell (answer) of the specified dataframe column.
+    for each sentence in each cell (text/answer) in the specified dataframe column.
     
     Return a list of scores, one score for each sentence in the column cell.
-    If no answer was provided, return NA
+    If text is empty, return NaN.
+    
+    Parameters
+    ----------
+    INPUT : name of the dataframe column containing the text for which to 
+    compute sentiment score (at senence level).
+    
+    score_type : 'compound' (default), 'pos' or 'neg'
+    
     """
     
-    sentiment_bag = [[analyser.polarity_scores(s)[score_type] for s in answer] for 
-                      answer in answer_col]
+    OUTPUT = np.nan if len(INPUT) == 0 else [analyser.polarity_scores(s)[score_type] for s in INPUT]
         
-    return pd.Series(sentiment_bag)
+    return pd.Series(dict(SA_scores_sents = OUTPUT))
 
     
+################################################################################################
 
 
-# In[4]:
 
 
-# Define function to ....
 
-import string
+############################# Define function to break compound-words #############################
 
-def break_words(answer_col, compound_symbol = '-') :
+
+def break_words_df(INPUT, compound_symbol = '-') :
     """
     Break words of the compound form word1<symbol>word2 into the constituting words, 
     then remove empty strings. 
     
     Parameters
     ----------
-    answer_col : a list of lists containing word-tokenised setences
-    compound-simbol : compound symbol word1<symbol>word2 to be brokwn as string, default is '-'
+    INPUT : dataframe column as a list of sublists with each sublist containing a word-tokenised setence
+    
+    compound-simbol : compound symbol word1<symbol>word2 to be broken, default is '-'
     
     """
     
-    # empty list collector
-    tokens_bag = []
-    
-    for answer in answer_col :   
-        
-        # no answer was provided, return empty string
-        if not answer : 
-            tokens_bag.append("")
+    OUTPUT = []
             
-        # an answer was provided       
-        else :
-            
-            # empty collector to keep each sentence within an answer as separate list
-            words_in_s = []
-            
-            for sent in answer :
+    for sent in INPUT :
                 
-                # empty collector for words within one sentence
-                words = []
+        # empty collector for words within each sentence
+        words = []
                 
-                # 1. break words of the form word1<symbol>word2 into constituting words
+        for w in sent :
             
-                for w in sent :
-                
-                    if compound_symbol in w :
+            # 1. break words of the form word1<symbol>word2 into constituting words
+            if compound_symbol in w :
                     
-                        words.extend(w.split(compound_symbol))
+                words.extend(w.split(compound_symbol))
                     
-                    else :
+            else :
                     
-                        words.append(w)
+                words.append(w)
                     
-                    # 2. Remove empty strings
-                    words = list(filter(None, words))
+            # 2. Remove empty strings
+            words = list(filter(None, words))
                     
-                words_in_s.append(words)
+        OUTPUT.append(words)
 
-            tokens_bag.append(words_in_s)
-    
-    return pd.Series(tokens_bag)
+            
+    return pd.Series(dict(word_tok_text = OUTPUT))
 
-
-# In[5]:
+################################################################################################
 
 
-# Define functions to replace contracted negative forms of auxiliary verbs with negation, remove specified stop-words, 
-
-import string
-from nltk.corpus import stopwords
 
 
-def fix_neg_aux(answer_col) :
+
+
+############################# Define functions to replace contracted negative forms of auxiliary verbs with negation, remove specified stop-words ##########################
+
+
+def fix_neg_aux_df(INPUT) :
     """
-    Replace contracted negative forms of auxiliary verbs with negation (if True).
+    Replace contracted negative forms of auxiliary verbs with negation.
     
-    Parameters:
-    - answer_col = dataframe column whose cells contain answer texts
+    Parameters
+    ----------
+    INPUT : dataframe column whose cells contain text
     """
     
-    # empty list collector for all answers
-    tokens_bag = []
-             
-    for answer in answer_col :   
-        
-        
-        if not answer :             # no answer was provided, return empty string
-            tokens_bag.append("")
+    OUTPUT = []
             
-              
-        else :                      # an answer was provided 
-            
-            sep_sents = []
-            
-            for sent in answer :
+    for sent in INPUT :
                 
-                new_sent = []
+        new_sent = []   #collector to keep each sentence as a separate list
                 
-                for w in sent :
+        for w in sent :
                         
-                    if w in ["don't", "didn", "didn't", "doesn", "doesn't", 'hadn', "n't",
+            if w in ["don't", "didn", "didn't", "doesn", "doesn't", 'hadn', "n't",
                              "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', 
                              "isn't", 'mightn', "mightn't", 'mustn', "mustn't", 
                              'needn', "needn't", "shan't", 'shouldn', "shouldn't", 
                              'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 
-                             'wouldn', "wouldn't", 'aren', "aren't", 'couldn', "couldn't"] :
-                            
-                        w = 'not'
+                             'wouldn', "wouldn't", 'aren', "aren't", 'couldn', "couldn't"] :          
+                w = 'not'
                         
-                    else :
+            else :
                         
-                        w = w
+                w = w
                         
-                    new_sent.append(w)
-                        
-                # collect each sentence as a (separate) list of words
-                sep_sents.append(new_sent)
-                
-            tokens_bag.append(sep_sents)
-            
-    return pd.Series(tokens_bag)
-           
+            new_sent.append(w)
+                         
+        OUTPUT.append(new_sent)
+                 
+    return pd.Series(dict(word_tok_text = OUTPUT))
+        
+
+################################################################################################
 
 
-# In[6]:
 
 
-# Define functions to replace contracted negative forms of auxiliary verbs with negation, remove specified stop-words, 
+
+
+############################# Define functions to remove specified stop-words ####################
 
 import string
 from nltk.corpus import stopwords
 
-
-def remove_stopwords(answer_col, stopwords_list=stopwords.words('english'), keep_neg = True) :
+def remove_stopwords_df(INPUT, stopwords_list=stopwords.words('english'), keep_neg = True) :
     """
     Remove specified stop-words.
     
     Parameters
     ----------
-    - answer_col : dataframe column whose cells contain answer texts
+    - INPUT : dataframe column whose cells contain text
     - keep_neg : whether to remove negation from list of stopwords, (default) True
     - stopwords_list : (default) English stopwords from. nltk.corpus
     """
     
-    # empty list collector for all answers
-    tokens_bag = []
-    
-    
-    if keep_neg :       # keep negations in
+    if keep_neg :       # keep negations in the text
         
         stopwords_list = [w for w in stopwords_list if not w in ['no', 'nor', 'not', 'only', 
                                                                  'up', 'down', 'further', 
                                                                  'too', 'against']]
-             
+                 
+    OUTPUT = [[w for w in sent if not w in stopwords_list] for sent in INPUT]
             
-    for answer in answer_col :   
-        
-        
-        if not answer :             # no answer was provided, return empty string
-            tokens_bag.append("")
             
-              
-        else :                      # an answer was provided 
-            
-            sep_sents = []
-            
-            for sent in answer :
-                
-                # filter out stop words from each answer
-                new_sent = [w for w in sent if not w in stopwords_list]
-                
-                # collect each sentence as a (separate) list of words
-                sep_sents.append(new_sent)
-                
-            tokens_bag.append(sep_sents)
-            
-    return pd.Series(tokens_bag)
-           
+    return pd.Series(dict(word_tok_nostopw_text = OUTPUT))
+
+################################################################################################
 
 
-# In[7]:
 
 
-# Function to part-of-speech tagging sentences
+
+
+############################# Function to part-of-speech tagging sentences #############################
 
 from nltk import pos_tag
 
-
-def POS_tagging(answer_col) :
+def POS_tagging_df(INPUT) :
     
     """
     Return a list with POS-tags/words tuples for the specified data column.
     
     Parameters:
-    - answer_col = dataframe columns containing answer texts, as lists (answers) 
-        of lists (sentences) of tokenised words
+    -----------    
+    INPUT : dataframe columns containing answer texts, as lists (answers) 
+    of lists (sentences) of tokenised words
     
     """
     
-    # empty list collector
-    tokens_bag = []
-    
-    for answer in answer_col :   
-        
-        # no answer was provided, return empty string
-        if not answer : 
-            tokens_bag.append("")
-            
-        # an answer was provided       
-        else :
-            
-            # empty collector for individual sentences within an asnwer
-            sep_sents = []
-            
-            for sent in answer :
-                
-                # calculate Part-Of-Speech
-                pos_answer = pos_tag(sent)
-                
-                sep_sents.append(pos_answer)
-                
-            
-            tokens_bag.append(sep_sents)
-            
-    return pd.Series(tokens_bag)
-                
-            
+    OUTPUT = [pos_tag(sent) if INPUT else "" for sent in INPUT]
+
+    return pd.Series(dict(pos_tags = OUTPUT))
+       
 
 
-# In[8]:
+################################################################################################
 
 
-# TBC : should impement something like this...
-# https://stackoverflow.com/questions/15586721/wordnet-lemmatization-and-pos-tagging-in-python
 
-# The following function would map the Peen Treebank tags to WordNet part of speech names:
+
+
+
+############################# Function to map the Peen Treebank tags to WordNet POS names ######
+
 from nltk.corpus import wordnet
 
 def get_wordnet_pos(treebank_tag):
@@ -346,10 +277,14 @@ def get_wordnet_pos(treebank_tag):
         return ''
 
 
-# In[9]:
+################################################################################################
 
 
-# Function 
+
+
+
+
+############################# Define function to lemmatise words ################################
 
 from nltk.stem import WordNetLemmatizer
 wordnet_lemmatiser = WordNetLemmatizer()
@@ -357,111 +292,88 @@ wordnet_lemmatiser = WordNetLemmatizer()
 
 # import get_wordnet_pos ?
 
-def lemmatise(POStag_col) :
+def lemmatise_df(INPUT) :
     
     """
     Return lemmas from word-POS tag tuples, using Wordnet POS tags.
     When no wornet POS tag is avalable, return the original word.
     
-    Parameters:
-    - POStag_col = dataframe column containig (word, POS) tuples
+    Parameters
+    -----------
+    POStag_col : dataframe column containig lists of (word, POS) tuples
     """
     
-    # collector for all 
-    lemma_big_bag = []
-    
-    
-    for cell in POStag_col :
-        
-        #print('No. of sentences (length of cell) = ' + str(len(cell)))
-        
-        # an answer was not provided
-        if len(cell) == 0 :
+    # use the wordnet POS equivalent if it exists
+    # the treebank POS does not have a wordnet POS equivalent -> keep original token    
             
-            lemma_big_bag.append("")
-            
-        # an answer was provided
-        else :
-            
-            sent_bag = []
-            
-            for sent in cell :
-                
-                print('No. of tuples (length of sent) = ' + str(len(sent)))
-        
-                lemma_bag = []
-                
-                for wordPOS_tuple in sent :
-                
-                    # the treebank POS does not have a wordnet POS equivalent 
-                        # -> keep original token
-                    if get_wordnet_pos(wordPOS_tuple[1]) == '' :
-                    
-                        lemma = wordPOS_tuple[0]
-                    
-                    # the treebank POS does have a wordnet POS equivalent
-                    else :
-                    
-                        lemma = wordnet_lemmatiser.lemmatize(wordPOS_tuple[0], pos=get_wordnet_pos(wordPOS_tuple[1]))
-                        
-                    lemma_bag.append(lemma)
-                    
-                sent_bag.append(lemma_bag)
-                    
-            lemma_big_bag.append(sent_bag)
-                    
-            
-    return pd.Series(lemma_big_bag)
+    OUTPUT = [[wordnet_lemmatiser.lemmatize(wordPOS_tuple[0], pos=get_wordnet_pos(wordPOS_tuple[1])) if 
+               get_wordnet_pos(wordPOS_tuple[1]) else wordPOS_tuple[0] for wordPOS_tuple in sent] for sent in INPUT]
+
+    return pd.Series(dict(lemmas_sent = OUTPUT))
+
+
+################################################################################################
 
 
 
-# In[10]:
 
 
-# Function
 
-def detokenise_sent(word_tokenised_col) :
+########################## Function to detokenise sentences ####################################
+
+def word_detokenise_sent_df(INPUT) :
     
     """
     Return a list containing a single string of text for each word-tokenised sentence.
     
-    Parameters:
-    - word_tokenised_col = dataframe column with word-tokenised sentences
+    Parameters
+    ----------
+    INPUT : dataframe column with word-tokenised sentences as list of sublist
     """
     
-           
-    detok_sents = [[" ".join(sent) for sent in cell] for cell in word_tokenised_col]
+    OUTPUT = [" ".join(sent) for sent in INPUT]
     
-    
-    return(detok_sents)
+    return pd.Series(dict(detok_sents = OUTPUT))
 
 
-# In[11]:
+
+################################################################################################
 
 
-def list2string(list_of_lists) :
+
+
+ 
+
+########################## Function to transform a list of lists of strings into a list of strings ########
+
+def list2string_df(INPUT) :
     """
     Return a string from a list of strings.
     """
-    string_sents = [" ".join(mylist) for mylist in list_of_lists]
+    OUTPUT = [" ".join(INPUT)]
 
-    return pd.Series(string_sents)
-
-
-# In[12]:
+    return pd.Series(dict(list_of_strings = OUTPUT))
 
 
-# Function
+######################################################################################################
+
+
+
+
+ 
+
+########################## Function to remove punctuation ############################################
+
 import string 
 
-def remove_punctuation(text_col, item_to_keep = '') :
+def remove_punctuation_df(INPUT, item_to_keep = '') :
     
     """
     Remove punctuation from a list of strings.
     
     Parameters
     ----------
-    - text_col : dataframe column with text (each column cell must be a list of sentences as strings)
+    - INPUT : dataframe column with text (each column cell must be a list of sentences as strings)
     - item_to_keep : a string of punctuation signs you want to keep in text (e.g., '!?.,:;')
     """
     
@@ -477,7 +389,7 @@ def remove_punctuation(text_col, item_to_keep = '') :
     # Remove punctuation from each word
     transtable = str.maketrans('', '', punctuation_list)
     
-    depunct_sent = [[sent.translate(transtable) for sent in cell] for cell in text_col]
+    OUTPUT = [sent.translate(transtable) for sent in INPUT] 
 
-    return pd.Series(depunct_sent)
+    return pd.Series(dict(no_punkt_sents = OUTPUT))
 
