@@ -228,54 +228,33 @@ def remove_stopwords_df(INPUT, stopwords_list=stopwords.words('english'), keep_n
 
 from nltk import pos_tag
 
-def POS_tagging(answer_col) :
+def POS_tagging_df(INPUT) :
     
     """
     Return a list with POS-tags/words tuples for the specified data column.
     
     Parameters:
-    - answer_col = dataframe columns containing answer texts, as lists (answers) 
-        of lists (sentences) of tokenised words
+    -----------    
+    INPUT : dataframe columns containing answer texts, as lists (answers) 
+    of lists (sentences) of tokenised words
     
     """
     
-    # empty list collector
-    tokens_bag = []
-    
-    for answer in answer_col :   
-        
-        # no answer was provided, return empty string
-        if not answer : 
-            tokens_bag.append("")
-            
-        # an answer was provided       
-        else :
-            
-            # empty collector for individual sentences within an asnwer
-            sep_sents = []
-            
-            for sent in answer :
-                
-                # calculate Part-Of-Speech
-                pos_answer = pos_tag(sent)
-                
-                sep_sents.append(pos_answer)
-                
-            
-            tokens_bag.append(sep_sents)
-            
-    return pd.Series(tokens_bag)
-                
-            
+    OUTPUT = [pos_tag(sent) if INPUT else "" for sent in INPUT]
+
+    return pd.Series(dict(pos_tags = OUTPUT))
+       
 
 
-# In[8]:
+################################################################################################
 
 
-# TBC : should impement something like this...
-# https://stackoverflow.com/questions/15586721/wordnet-lemmatization-and-pos-tagging-in-python
 
-# The following function would map the Peen Treebank tags to WordNet part of speech names:
+
+
+
+############################# Function to map the Peen Treebank tags to WordNet POS names ######
+
 from nltk.corpus import wordnet
 
 def get_wordnet_pos(treebank_tag):
@@ -298,10 +277,14 @@ def get_wordnet_pos(treebank_tag):
         return ''
 
 
-# In[9]:
+################################################################################################
 
 
-# Function 
+
+
+
+
+############################# Define function to lemmatise words ################################
 
 from nltk.stem import WordNetLemmatizer
 wordnet_lemmatiser = WordNetLemmatizer()
@@ -309,111 +292,88 @@ wordnet_lemmatiser = WordNetLemmatizer()
 
 # import get_wordnet_pos ?
 
-def lemmatise(POStag_col) :
+def lemmatise_df(INPUT) :
     
     """
     Return lemmas from word-POS tag tuples, using Wordnet POS tags.
     When no wornet POS tag is avalable, return the original word.
     
-    Parameters:
-    - POStag_col = dataframe column containig (word, POS) tuples
+    Parameters
+    -----------
+    POStag_col : dataframe column containig lists of (word, POS) tuples
     """
     
-    # collector for all 
-    lemma_big_bag = []
-    
-    
-    for cell in POStag_col :
-        
-        #print('No. of sentences (length of cell) = ' + str(len(cell)))
-        
-        # an answer was not provided
-        if len(cell) == 0 :
+    # use the wordnet POS equivalent if it exists
+    # the treebank POS does not have a wordnet POS equivalent -> keep original token    
             
-            lemma_big_bag.append("")
-            
-        # an answer was provided
-        else :
-            
-            sent_bag = []
-            
-            for sent in cell :
-                
-                print('No. of tuples (length of sent) = ' + str(len(sent)))
-        
-                lemma_bag = []
-                
-                for wordPOS_tuple in sent :
-                
-                    # the treebank POS does not have a wordnet POS equivalent 
-                        # -> keep original token
-                    if get_wordnet_pos(wordPOS_tuple[1]) == '' :
-                    
-                        lemma = wordPOS_tuple[0]
-                    
-                    # the treebank POS does have a wordnet POS equivalent
-                    else :
-                    
-                        lemma = wordnet_lemmatiser.lemmatize(wordPOS_tuple[0], pos=get_wordnet_pos(wordPOS_tuple[1]))
-                        
-                    lemma_bag.append(lemma)
-                    
-                sent_bag.append(lemma_bag)
-                    
-            lemma_big_bag.append(sent_bag)
-                    
-            
-    return pd.Series(lemma_big_bag)
+    OUTPUT = [[wordnet_lemmatiser.lemmatize(wordPOS_tuple[0], pos=get_wordnet_pos(wordPOS_tuple[1])) if 
+               get_wordnet_pos(wordPOS_tuple[1]) else wordPOS_tuple[0] for wordPOS_tuple in sent] for sent in INPUT]
+
+    return pd.Series(dict(lemmas_sent = OUTPUT))
+
+
+################################################################################################
 
 
 
-# In[10]:
 
 
-# Function
 
-def detokenise_sent(word_tokenised_col) :
+########################## Function to detokenise sentences ####################################
+
+def word_detokenise_sent_df(INPUT) :
     
     """
     Return a list containing a single string of text for each word-tokenised sentence.
     
-    Parameters:
-    - word_tokenised_col = dataframe column with word-tokenised sentences
+    Parameters
+    ----------
+    INPUT : dataframe column with word-tokenised sentences as list of sublist
     """
     
-           
-    detok_sents = [[" ".join(sent) for sent in cell] for cell in word_tokenised_col]
+    OUTPUT = [" ".join(sent) for sent in INPUT]
     
-    
-    return(detok_sents)
+    return pd.Series(dict(detok_sents = OUTPUT))
 
 
-# In[11]:
+
+################################################################################################
 
 
-def list2string(list_of_lists) :
+
+
+ 
+
+########################## Function to transform a list of lists of strings into a list of strings ########
+
+def list2string_df(INPUT) :
     """
     Return a string from a list of strings.
     """
-    string_sents = [" ".join(mylist) for mylist in list_of_lists]
+    OUTPUT = [" ".join(INPUT)]
 
-    return pd.Series(string_sents)
-
-
-# In[12]:
+    return pd.Series(dict(list_of_strings = OUTPUT))
 
 
-# Function
+######################################################################################################
+
+
+
+
+ 
+
+########################## Function to remove punctuation ############################################
+
 import string 
 
-def remove_punctuation(text_col, item_to_keep = '') :
+def remove_punctuation_df(INPUT, item_to_keep = '') :
     
     """
     Remove punctuation from a list of strings.
     
     Parameters
     ----------
-    - text_col : dataframe column with text (each column cell must be a list of sentences as strings)
+    - INPUT : dataframe column with text (each column cell must be a list of sentences as strings)
     - item_to_keep : a string of punctuation signs you want to keep in text (e.g., '!?.,:;')
     """
     
@@ -429,7 +389,7 @@ def remove_punctuation(text_col, item_to_keep = '') :
     # Remove punctuation from each word
     transtable = str.maketrans('', '', punctuation_list)
     
-    depunct_sent = [[sent.translate(transtable) for sent in cell] for cell in text_col]
+    OUTPUT = [sent.translate(transtable) for sent in INPUT] 
 
-    return pd.Series(depunct_sent)
+    return pd.Series(dict(no_punkt_sents = OUTPUT))
 
