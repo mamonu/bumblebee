@@ -6,68 +6,60 @@ Created on Fri Apr  6 22:45:21 2018
 """
 
 
-# Function to sentence-tokenise answers 
+############################ Function to sentence-tokenise answers ############################
 
 from nltk.tokenize import sent_tokenize
 import pandas as pd
 
-def sent_tokenise_answer(answer_col) :
+def sent_tokenise_answer_df(INPUT) :
     
     """ 
-    Function to sentence-tokenise answers. 
+    Function to sentence-tokenise text. 
     Return a list of lists with each sublist containing an answer's sentences as strings.
     
     Parameters
     ----------
-    answer_col : name of the dataframe column containing the list of sentences to be word-tokenised
+    INPUT : name of the dataframe column containing the list of sentences to be word-tokenised
     """
     
     # if no answer was provided -> return empty string list, else sent-tokenize answer
-    sents_collector = [sent_tokenize(answer) if answer else list("") for answer in answer_col]
+    OUTPUT = sent_tokenize(INPUT) if INPUT else list("")
             
-    return pd.Series(sents_collector)
+    return pd.Series(dict(sent_tok_text = OUTPUT))
 
 
-# In[2]:
+################################################################################################
 
 
-# Function to word-tokenise sentences 
+
+############################# Function to word-tokenise sentences #############################
 
 from nltk.tokenize import word_tokenize
 
-def word_tokenise_answer(answer_col) :
+def word_tokenise_answer_df(INPUT) :
     
     """ 
-    Function to word-tokenise answers' sentences. 
+    Function to word-tokenise sentences within a text. 
     Return a list of lists of lower-case words as strings. 
-    Required input, a list of lists containing sentences as strings.
+    Required input, a list of lists, with each sublist containing sentences as strings.
     
     Parameters
     ----------
-    answer_col : a list of lists containing the sentences to be word-tokenised
+    INPUT : name of the dataframe column, a list of lists containing the sentences to be word-tokenised
     """
     
-    sents_collector = []
-    
-    for answer in answer_col :  
-        
-        # no answer was provided -> return empty string list
-        if not answer:
-            sents_collector.append(list(""))
-            
-        # an answer was provided    
-        else :
-            
-            # 1. word-tokenise the answer 2. convert to lower case
-            sents_collector.append([[w.lower() for w in word_tokenize(sent)] for sent in answer])
-            
-    return pd.Series(sents_collector)
+    # If an answer was provided: 1. word-tokenise the answer 2. convert to lower case
+    OUTPUT = [[w.lower() for w in word_tokenize(sent)] for sent in INPUT]
+          
+    return pd.Series(dict(word_tok_sents = OUTPUT))
 
 
-# In[3]:
+
+################################################################################################
 
 
-# Define function to calculate polarity score for the answers in our dataset
+
+############################# Define function to calculate polarity score #############################
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 analyser = SentimentIntensityAnalyzer()
