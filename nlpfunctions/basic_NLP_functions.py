@@ -393,3 +393,25 @@ def remove_punctuation_df(INPUT, item_to_keep = '') :
 
     return pd.Series(dict(no_punkt_sents = OUTPUT))
 
+
+
+
+
+
+#################### Function to calculate subjectivity score ###########################################
+from textblob import TextBlob
+
+def get_subjectivity_df(INPUT):
+    
+    """
+    Return a subjectivity score for each sentence in the input text.
+    
+    Parameter
+    ---------
+    INPUT : name of the dataframe column containing the text for which to 
+    compute subjectivity score (at senence level).
+    """
+    
+    OUTPUT = np.nan if len(INPUT) == 0 else [TextBlob(s).sentiment.subjectivity for s in INPUT]
+        
+    return pd.Series(dict(Subj_scores_sents = OUTPUT))
