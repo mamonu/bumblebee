@@ -4,8 +4,8 @@ import itertools
 def flattenIregullarListOfListsGenerator(listOfLists):
 
     """ 
-    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[2]]],1,[1,2]]
-    Returns a flattened list 
+    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[3]]],4,[5,6]]
+    Returns a flattened list generator 
     
     Parameters
     ----------
@@ -26,8 +26,8 @@ def flattenIregullarListOfListsGenerator(listOfLists):
 def flattenListOfListsGenerator(listOfLists):
     
     """ 
-    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[2]]],1,[1,2]]
-    Returns a flattened list 
+    Function to flatten a list of lists that is not nested /irregular  eg  [[1,2,3],[5,6],[7,8]]
+    Returns a flattened list generator
     
     Parameters
     ----------
@@ -43,7 +43,8 @@ def flattenListOfListsGenerator(listOfLists):
 def flattenListOfLists_df(INPUT) :
     
     """ 
-    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[2]]],1,[1,2]]
+    Function to flatten a list of lists  (not nested /irregular)  eg  [[1,2,3],[5,6],[7,8]]
+    that can be applied on a pandas dataframe column
     Returns a flattened list 
     
     Parameters
@@ -65,7 +66,8 @@ def flattenListOfLists_df(INPUT) :
 def flattenIrregularListOfLists_df(INPUT) :
     
     """ 
-    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[2]]],1,[1,2]]
+    Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[3]]],4,[5,6]]
+    that can be applied on a pandas dataframe column
     Returns a flattened list 
     
     Parameters
