@@ -5,11 +5,36 @@ Created on Fri Apr  6 22:45:21 2018
 @author: alessia
 """
 
+import pandas as pd
+import numpy as np
+import string
+
+from nltk.tokenize import sent_tokenize
+
+from nltk.tokenize import word_tokenize
+
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+analyser = SentimentIntensityAnalyzer()
+
+from nltk.stem import WordNetLemmatizer
+wordnet_lemmatiser = WordNetLemmatizer()
+
+from nltk.corpus import stopwords
+
+from nltk import pos_tag
+
+from nltk.corpus import wordnet
+
+from textblob import TextBlob
+
+
+
+
+
+
 
 ############################ Function to sentence-tokenise answers ############################
 
-from nltk.tokenize import sent_tokenize
-import pandas as pd
 
 def sent_tokenise_df(INPUT) :
     
@@ -28,14 +53,9 @@ def sent_tokenise_df(INPUT) :
     return pd.Series(dict(sent_tok_text = OUTPUT))
 
 
-################################################################################################
-
-
 
 
 ############################# Function to word-tokenise sentences #############################
-
-from nltk.tokenize import word_tokenize
 
 def word_tokenise_df(INPUT) :
     
@@ -55,16 +75,10 @@ def word_tokenise_df(INPUT) :
     return pd.Series(dict(word_tok_sents = OUTPUT))
 
 
-################################################################################################
-
 
 
 
 ############################# Define function to calculate polarity score #############################
-
-import numpy
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-analyser = SentimentIntensityAnalyzer()
 
 
 def get_sentiment_score_df(INPUT, score_type = 'compound') :
@@ -89,9 +103,6 @@ def get_sentiment_score_df(INPUT, score_type = 'compound') :
     return pd.Series(dict(SA_scores_sents = OUTPUT))
 
     
-################################################################################################
-
-
 
 
 
@@ -137,14 +148,11 @@ def break_words_df(INPUT, compound_symbol = '-') :
             
     return pd.Series(dict(word_tok_text = OUTPUT))
 
-################################################################################################
 
 
 
 
-
-
-############################# Define functions to replace contracted negative forms of auxiliary verbs with negation, remove specified stop-words ##########################
+##### Function to replace contracted negative forms of auxiliary verbs with negation, remove specified stop-words #########
 
 
 def fix_neg_aux_df(INPUT) :
@@ -183,17 +191,11 @@ def fix_neg_aux_df(INPUT) :
     return pd.Series(dict(word_tok_text = OUTPUT))
         
 
-################################################################################################
-
-
-
 
 
 
 ############################# Define functions to remove specified stop-words ####################
 
-import string
-from nltk.corpus import stopwords
 
 def remove_stopwords_df(INPUT, stopwords_list=stopwords.words('english'), keep_neg = True) :
     """
@@ -217,16 +219,12 @@ def remove_stopwords_df(INPUT, stopwords_list=stopwords.words('english'), keep_n
             
     return pd.Series(dict(word_tok_nostopw_text = OUTPUT))
 
-################################################################################################
-
-
 
 
 
 
 ############################# Function to part-of-speech tagging sentences #############################
 
-from nltk import pos_tag
 
 def POS_tagging_df(INPUT) :
     
@@ -246,16 +244,11 @@ def POS_tagging_df(INPUT) :
        
 
 
-################################################################################################
-
-
-
 
 
 
 ############################# Function to map the Peen Treebank tags to WordNet POS names ######
 
-from nltk.corpus import wordnet
 
 def get_wordnet_pos(treebank_tag):
 
@@ -277,17 +270,11 @@ def get_wordnet_pos(treebank_tag):
         return ''
 
 
-################################################################################################
-
-
 
 
 
 
 ############################# Define function to lemmatise words ################################
-
-from nltk.stem import WordNetLemmatizer
-wordnet_lemmatiser = WordNetLemmatizer()
 
 
 # import get_wordnet_pos ?
@@ -312,11 +299,6 @@ def lemmatise_df(INPUT) :
     return pd.Series(dict(lemmas_sent = OUTPUT))
 
 
-################################################################################################
-
-
-
-
 
 
 ########################## Function to detokenise sentences ####################################
@@ -328,17 +310,12 @@ def word_detokenise_sent_df(INPUT) :
     
     Parameters
     ----------
-    INPUT : dataframe column with word-tokenised sentences as list of sublist
+    INPUT : a dataframe column consisting of a list of lists in each row, where each sublist is a word-tokenised sentence
     """
     
     OUTPUT = [" ".join(sent) for sent in INPUT]
     
     return pd.Series(dict(detok_sents = OUTPUT))
-
-
-
-################################################################################################
-
 
 
 
@@ -355,16 +332,10 @@ def list2string_df(INPUT) :
     return pd.Series(dict(list_of_strings = OUTPUT))
 
 
-######################################################################################################
-
-
-
 
  
 
 ########################## Function to remove punctuation ############################################
-
-import string 
 
 def remove_punctuation_df(INPUT, item_to_keep = '') :
     
@@ -373,7 +344,7 @@ def remove_punctuation_df(INPUT, item_to_keep = '') :
     
     Parameters
     ----------
-    - INPUT : dataframe column with text (each column cell must be a list of sentences as strings)
+    - INPUT : a dataframe column consisting of a list of sentences (as strings)
     - item_to_keep : a string of punctuation signs you want to keep in text (e.g., '!?.,:;')
     """
     
@@ -398,8 +369,7 @@ def remove_punctuation_df(INPUT, item_to_keep = '') :
 
 
 
-#################### Function to calculate subjectivity score ###########################################
-from textblob import TextBlob
+#################### Function to calculate subjectivity score using TextBlob ###########################################
 
 def get_subjectivity_df(INPUT):
     
@@ -408,10 +378,69 @@ def get_subjectivity_df(INPUT):
     
     Parameter
     ---------
-    INPUT : name of the dataframe column containing the text for which to 
-    compute subjectivity score (at senence level).
+    INPUT : a dataframe column consisting of a list of sentences (as strings) for which to 
+            compute subjectivity score.
+    OUTPUT : a list of subjectivity scores for each row (one score per each sentence in the cell)
     """
     
-    OUTPUT = np.nan if len(INPUT) == 0 else [TextBlob(s).sentiment.subjectivity for s in INPUT]
+    OUTPUT = [np.nan] if len(INPUT) == 0 else [TextBlob(s).sentiment.subjectivity for s in INPUT]
         
     return pd.Series(dict(Subj_scores_sents = OUTPUT))
+
+
+
+
+#################### Function to classify sentences based on subjectivity score ######################################
+
+def classify_subjectivity_df(INPUT, threshold = 0.5):
+    
+    """
+    Return a binary score (1 = subjective, 0 = objective) for each sentence in the input text 
+    based on the sentence's subjectivity score. Scores > threshold are classified as subjecive.
+    
+    Parameter
+    ---------
+    INPUT : a dataframe column consisting of a list of subjectivity scores in each row
+    threshold : the cut off value above which a sentence is classified as subjective between [0.0, 1.0]
+                default is 0.5
+    OUTPUT : a dataframe column consisting of a list of 1's/0's on each row
+    """
+    
+    OUTPUT = [np.nan] if all(np.isnan(INPUT)) else [1 if s > threshold else 0 for s in INPUT]
+        
+    return pd.Series(dict(subjective_sents = OUTPUT))
+
+
+
+
+####### Function to only keep subjective senentences in a text #############
+
+def remove_objective_sents_df(listOfSents, threshold = 0.5):
+    
+    """
+    Return a list of lists containing only sentences with a subjective score, where 
+    subjectivity is defined as > threshold.
+    
+    Parameter
+    ---------
+    INPUT : a dataframe column consisting of a list of strings in each row, where each string is a sentence in the text.
+    threshold : the cut off value above which a sentence is classified as subjective between [0.0, 1.0]
+                default is 0.5
+    OUTPUT : a dataframe column consisting of a list of setences as strings for each row
+    """
+    
+    newListOfSents = []
+    
+    for s in listOfSents:
+        
+        if len(s) == 0 :
+            newListOfSents.append(list())
+            
+        else :
+            
+            newListOfSents = [s for s in listOfSents if TextBlob(s).sentiment.subjectivity > threshold] 
+        
+         
+    return pd.Series(dict(only_subject_sents = newListOfSents))
+
+
