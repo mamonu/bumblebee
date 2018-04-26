@@ -48,7 +48,7 @@ def sent_tokenise_df(INPUT) :
     """
     
     # if no answer was provided -> return empty string list, else sent-tokenize answer
-    OUTPUT = sent_tokenize(INPUT) if INPUT else list()
+    OUTPUT = sent_tokenize(INPUT) if (INPUT and isinstance(INPUT, str)) else list()
             
     return pd.Series(dict(sent_tok_text = OUTPUT))
 
