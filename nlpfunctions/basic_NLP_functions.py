@@ -444,3 +444,50 @@ def remove_objective_sents_df(listOfSents, threshold = 0.5):
     return pd.Series(dict(only_subject_sents = newListOfSents))
 
 
+
+
+####### Function to normalised scores in the 0-1 range #############
+
+def rescale_to_01_df(value, min_v, max_v):
+    
+    """
+    Returns the corresponding value in the range 0-1.
+    If the original data only contains -1's and 1's, then these are return as 0's and 1's respectively.
+    
+    Parameters
+    ----------
+    value : name of the dataframe column containing the values to be scaled (one score per row)
+    min_v : minimum value in the data
+    max_v : maximum value in the data
+    """
+    
+    rescaled = (value - min_v)/(max_v - min_v)
+    
+    return pd.Series(dict(rescaled_value = rescaled))
+
+
+
+
+
+def get_textblob_sentiment_score_df(INPUT) :
+    """ 
+    Calculate sentiment analysis score 
+    for each sentence in each cell (text/answer) in the specified dataframe column.
+    
+    Return a list of scores, one score for each sentence in the column cell.
+    If text is empty, return NaN.
+    
+    Parameters
+    ----------
+    INPUT : name of the dataframe column containing the text for which to 
+    compute sentiment score (at sentence level).
+    
+    OUTPUT : the sentiment polarity score from -1 (negative) to 1 (positive)
+    
+    """
+    
+    OUTPUT = np.nan if len(INPUT) == 0 else [TextBlob(s).sentiment.polarity for s in INPUT]
+        
+    return pd.Series(dict(SA_scores_sents = OUTPUT))
+
+
