@@ -467,7 +467,7 @@ def rescale_to_01_df(value, min_v, max_v):
 
 
 
-
+#########
 
 def get_textblob_sentiment_score_df(INPUT) :
     """ 
@@ -489,5 +489,32 @@ def get_textblob_sentiment_score_df(INPUT) :
     OUTPUT = np.nan if len(INPUT) == 0 else [TextBlob(s).sentiment.polarity for s in INPUT]
         
     return pd.Series(dict(SA_scores_sents = OUTPUT))
+
+
+
+######## Function to retain only sentiment polarity scores that meet stricter threshold ######
+    
+def get_sentiment_stricter_threshold_df(INPUT, polarity_threshold = 0.2):
+    
+    """
+    Return a list of lists containing only sentiment polarity scores that meet the 
+    polarity threshold:
+
+    scores > 1 * threshold*1 (for positive scores)
+    scores < -1 * threshold (for negative scores)
+    -1 * threshold <= score <= 1 * threshold are returned as NaN
+    
+    Parameter
+    ---------
+    INPUT : a dataframe column consisting of a list of sentiment polarity scores in the range [-1, 1] in each row
+    polarity_threshold : the cut off value to consider a score as positive or negative
+    OUTPUT : a dataframe column consisting of a list of sentiment polarity scores tha meet the
+            stricter threshold
+    """
+    
+    OUTPUT = [np.nan] if all(np.isnan(INPUT)) else [s if ((s > 0 & s > 1*polarity_threshold) | (s < 0 & s < -1*polarity_threshold)) else np.nan for s in INPUT]
+        
+    return pd.Series(dict(stricter_sent_scores = OUTPUT))
+
 
 
