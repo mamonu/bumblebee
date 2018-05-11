@@ -512,7 +512,7 @@ def get_sentiment_stricter_threshold_df(INPUT, polarity_threshold = 0.2):
             stricter threshold
     """
     
-    OUTPUT = [np.nan] if all(np.isnan(INPUT)) else [s if ((s > 0 & s > 1*polarity_threshold) | (s < 0 & s < -1*polarity_threshold)) else np.nan for s in INPUT]
+    OUTPUT = [np.nan] if all(np.isnan(INPUT)) else [s if ((s > 1*polarity_threshold) | (s < -1*polarity_threshold)) else np.nan for s in INPUT]
         
     return pd.Series(dict(stricter_sent_scores = OUTPUT))
 
