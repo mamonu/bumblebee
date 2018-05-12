@@ -548,7 +548,7 @@ def keep_only_strict_polarity_sents_df(listOfSents, polarity_threshold = 0.3):
             
         else :
             
-            newListOfSents = [s for s in listOfSents if (analyser.polarity_scores(s)['compound'] > 1*threshold) | (analyser.polarity_scores(s)['compound'] < -1*threshold)] 
+            newListOfSents = [s for s in listOfSents if (analyser.polarity_scores(s)['compound'] > 1*polarity_threshold) | (analyser.polarity_scores(s)['compound'] < -1*polarity_threshold)] 
         
          
     return pd.Series(dict(strict_polarity_sents = newListOfSents))
