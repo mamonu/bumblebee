@@ -518,3 +518,41 @@ def get_sentiment_stricter_threshold_df(INPUT, polarity_threshold = 0.2):
 
 
 
+
+####### Function to only keep senentences in a text whose sentiment polarity score meets stricter threshold #############
+
+def keep_only_strict_polarity_sents_df(listOfSents, polarity_threshold = 0.3):
+    
+    """
+    Return a list of lists containing only sentences with a polarity score that meets the thresholds:
+        if positive, score(sentence) > 1*polarity_threshold
+        if negative, score(sentence) < -1*polarity_threshold
+        
+    Sentences' compound polarity score is calculated using nltk Vader.
+    
+    Parameter
+    ---------
+    INPUT : a dataframe column consisting of a list of strings in each row, where each string is a sentence in the text.
+    
+    polarity_threshold : the stricter threshold that decides whether a sentence has a positive or negative polarity, default is 0.3
+    
+    OUTPUT : a dataframe column consisting of a list of sentences as strings for each row
+    """
+    
+    newListOfSents = []
+    
+    for s in listOfSents:
+        
+        if len(s) == 0 :
+            newListOfSents.append(list())
+            
+        else :
+            
+            newListOfSents = [s for s in listOfSents if (analyser.polarity_scores(s)['compound'] > 1*polarity_threshold) | (analyser.polarity_scores(s)['compound'] < -1*polarity_threshold)] 
+        
+         
+    return pd.Series(dict(strict_polarity_sents = newListOfSents))
+
+
+
+
