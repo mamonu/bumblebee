@@ -27,7 +27,7 @@ from nltk.corpus import wordnet
 
 from textblob import TextBlob
 
-
+from nltk.sentiment.util import mark_negation
 
 
 
@@ -258,7 +258,7 @@ def get_wordnet_pos(treebank_tag):
     
     if treebank_tag.startswith('J'):
         return wordnet.ADJ
-    elif treebank_tag.startswith('V'):
+    elif treebank_tag.startswith('V'):    #add 'M' to verbs too?
         return wordnet.VERB
     elif treebank_tag.startswith('N'):
         return wordnet.NOUN
@@ -554,5 +554,144 @@ def keep_only_strict_polarity_sents_df(listOfSents, polarity_threshold = 0.3):
     return pd.Series(dict(strict_polarity_sents = newListOfSents))
 
 
+
+
+
+######## Function to count occurrences of POS as count or proportion (default) #######
+
+import itertools
+from string import punctuation
+
+def count_pos_df(INPUT, pos_to_cnt="", normalise = True) :
+    """
+    Return count or porportion of specified part-of-speech in each text
+    
+    Parameters
+    ----------
+    - INPUT : dataframe column whose cells contain lists of NLTK-produced POS, 
+                where each list is one sentence in the cell text
+    - pos : part-of-speech to count, specified by their initial: 'J' for adjs, 'R' for adverbs, 'N' for nouns, 'V' for verbs
+    - normalise : whether to return normalised counts (i.e., proportion), default is True
+    - OUTPUT : pandas Series of integer, each being the count/proportion of pos in each text cell
+    """
+    
+    # flatten list of lists in each cell, so that we have one list of tuples for each text/cell
+    text_list = list(itertools.chain.from_iterable(INPUT))
+    
+    # separate words from tags
+    words, tags = zip(*text_list)
+    
+    # count of POS
+    pos_cnt = len([mypos for mypos in list(tags) if mypos.startswith(pos_to_cnt)])
+
+
+    if normalise :
+        
+        # count number of words (incl. punkt)
+        n_words = len(words)
+    
+        # count punctuations
+        n_punkt = len([mypos for mypos in list(tags) if mypos in punctuation])
+
+        # count of "real words"
+        n_real_words = n_words - n_punkt
+
+        # prop of POS
+        pos_prop = round(pos_cnt/n_real_words, 2)
+        
+        OUTPUT = pos_prop
+        
+    else : OUTPUT = pos_cnt
+            
+    return pd.Series(dict(pos_count = OUTPUT))
+
+
+
+
+####### Function to count occurrences of specified "meaningful" punctuation symbols #####
+
+def count_punkt_df(INPUT, punkt_list=[]) :
+    """
+    Return count of "meaningful" punctuation symbols in each text 
+    
+    Parameters
+    ----------
+    - INPUT : dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)
+    - punkt_list : list of punctuation symbols to count (e.g., ["!", "?", "..."])
+    - OUTPUT : pandas Series of integer, each being the count of punctuation in each text cell
+   """
+    
+    OUTPUT = len([tok for sent in INPUT for tok in sent if tok in punkt_list])
+            
+    return pd.Series(dict(count_punkt = OUTPUT))
+
+
+
+
+
+
+####### Function to count word (exlcuding punctuation) ######################
+
+import collections
+def flattenIrregularListOfLists(l):
+    for el in l:
+        if isinstance(el, collections.Iterable) and not isinstance(el, (str,bytes)):
+            yield from flattenIrregularListOfLists(el)
+    
+        else:
+            yield el
+    
+    
+    
+def count_words_df(INPUT, exclude_punkt = True) :
+    """
+    Return count of words in each text
+    
+    Parameters
+    ----------
+    - INPUT : dataframe column whose cells contain lists of word-tokenised sentences
+    - exclude_punkt : whether to exlcude punctuation symbols from the count, default is True
+    - OUTPUT : pandas Series of integer, each being the count of words in each text cell
+    """
+    
+    # flatten list of lists in each cell, so that we have one list of tuples of each text/cell
+    token_list = list(flattenIrregularListOfLists(INPUT))
+    
+    # count number of words (incl. punkt)
+    n_words = len(token_list)
+    
+    if not exclude_punkt :       
+        
+        OUTPUT = n_words
+  
+    else : 
+        
+        punkt = list(punctuation)
+
+        punkt.extend(("''", '""', "``"))
+        
+        OUTPUT = len([w for w in token_list if not w in punkt])
+            
+    return pd.Series(dict(word_count = OUTPUT))
+
+
+
+
+
+#Append _NEG suffix to words that appear in the scope between a negation and a punctuation mark.
+
+def mark_neg_df(INPUT, double_neg_flip=False) :
+    """
+    Return count of words in each text
+    
+    Parameters
+    ----------
+    - INPUT : dataframe column whose cells contain lists of word-tokenised sentences
+    - OUTPUT : 
+    """
+    
+    OUTPUT = [mark_negation(sent) for sent in INPUT]
+       
+    return pd.Series(dict(tok_word_mark_neg = OUTPUT))
 
 
