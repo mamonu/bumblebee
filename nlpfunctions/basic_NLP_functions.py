@@ -690,9 +690,6 @@ def mark_neg_df(INPUT, double_neg_flip=False) :
     - OUTPUT : 
     """
     
-    # flatten list of lists in each cell, so that we have one list of tuples of each text/cell
-    token_list = list(flattenIrregularListOfLists(INPUT))
-    
     OUTPUT = [mark_negation(sent) for sent in INPUT]
        
     return pd.Series(dict(tok_word_mark_neg = OUTPUT))
