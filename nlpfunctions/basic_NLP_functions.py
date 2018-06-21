@@ -621,7 +621,7 @@ def count_punkt_df(INPUT, punkt_list=[]) :
     - OUTPUT : pandas Series of integer, each being the count of punctuation in each text cell
    """
     
-    OUTPUT = [len([tok for sent in INPUT for tok in sent if tok in punkt_list])]
+    OUTPUT = len([tok for sent in INPUT for tok in sent if tok in punkt_list])
             
     return pd.Series(dict(count_punkt = OUTPUT))
 
