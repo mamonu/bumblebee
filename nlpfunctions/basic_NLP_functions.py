@@ -610,20 +610,22 @@ def count_pos_df(INPUT, pos_to_cnt="", normalise = True) :
 
 ####### Function to count occurrences of specified "meaningful" punctuation symbols #####
 
-def count_punkt_df(INPUT, punkt_list="") :
+def count_punkt_df(INPUT, punkt_list=[]) :
     """
-    Return count of occurrences of "meaningful" punctuation symbols in each text 
+    Return count of "meaningful" punctuation symbols in each text 
     
     Parameters
     ----------
-    - INPUT : dataframe column whose cells contain a string of text
-    - punkt_list : string of punctuation symbols to count (e.g., ":,!?")
+    - INPUT : dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)
+    - punkt_list : list of punctuation symbols to count (e.g., ["!", "?", "..."])
     - OUTPUT : pandas Series of integer, each being the count of punctuation in each text cell
-    """
-                 
-    OUTPUT = [len([cha for cha in str(INPUT) if cha in punkt_list])]
+   """
+    
+    OUTPUT = [len([tok for sent in INPUT for tok in sent if tok in punkt_list])]
             
     return pd.Series(dict(count_punkt = OUTPUT))
+
+
 
 
 
