@@ -682,3 +682,17 @@ def mark_neg(list_of_lists_of_tokens, double_neg_flip=False) :
     return [mark_negation(sent) for sent in list_of_lists_of_tokens]
 
 
+
+
+def is_part_string(text, target_string):
+    """
+    Returns True if targe_string is contained in text.
+    Example: is_part_string('Hi @ONS', target_string='@') ==> True
+    
+    Input Parameters:
+    -----------------
+    text : a string of text
+    target_string : a string of characters
+    """
+
+    return (target_string in text) if target_string else False
