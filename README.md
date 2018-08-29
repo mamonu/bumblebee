@@ -1,59 +1,115 @@
 # nlpfunctions
 
 
-useful nlp functions for text mining
+useful nlp functions for text mining in a package format
 
 
-structure:
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+```
+Give examples
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+
+
+## Built With
+
+* [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
+* [scikit-learn](https://github.com/scikit-learn/scikit-learn) - machine learning framework
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+
+
+## Authors
+
+* **Theodore Manassis**  - [mamonu](https://github.com/mamonu)
+* **Alessia Tosi** - [exfalsoquodlibet](https://github.com/exfalsoquodlibet)
+
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+
+
+
+
+
+---
+
+
+## structure:
 
 
 ├── nlpfunctions
 
-│   ├── basic_NLP_functions.py
+│   ├── basic_NLP_functions
 
-│   ├── __init__.py
+│   ├── similarities
 
-│   ├── similarities.py
+│   ├── spellcheck
 
-│   ├── spellcheck.py
+│   ├── textranksummary
 
-│   ├── textranksummary.py
+│   ├── TopicMod_functions
 
-│   ├── TopicMod_functions.py
-
-│   ├── utils.py
-
-│   └── words-by-freq125K.txt
-
-├── README.md
-
-└── setup.py
-
-
-### nlp.basic_NLP_functions
+│   ├── utils
 
 
 
+### basic_NLP_functions
 
-### nlp.similarities
+### similarities
 
-
-
-### nlp.spellcheck
+### spellcheck
 
 spellchecking functionality
 
-
-### nlp.textranksummary
+### textranksummary
 
 summarization based on textrank algorithm
 
-### nlp.TopicMod_functions
+### TopicMod_functions
 
 topic modelling functionality using LDA & NNMF
 
-
-### nlp.utils
-
+### utils
 
 utility functions
