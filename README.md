@@ -7,11 +7,11 @@ useful nlp functions for text mining in a package format
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+TODO:These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+TODO:What things you need to install the software and how to install them
 
 ```
 Give examples
@@ -19,7 +19,7 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+TODO:A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
 
@@ -37,7 +37,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+TODO:Explain how to run the automated tests for this system
 
 
 
@@ -49,7 +49,7 @@ Explain how to run the automated tests for this system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/mamonu/textconsultations/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 
@@ -63,7 +63,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/mamonu/textconsultations/blob/master/LICENCE.md) file for details
 
 ## Acknowledgments
 
