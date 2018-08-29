@@ -94,22 +94,25 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 
 
-### basic_NLP_functions
 
-### similarities
+#### basic_NLP_functions
 
-### spellcheck
+
+#### similarities
+
+
+#### spellcheck
 
 spellchecking functionality
 
-### textranksummary
+#### textranksummary
 
 summarization based on textrank algorithm
 
-### TopicMod_functions
+#### TopicMod_functions
 
 topic modelling functionality using LDA & NNMF
 
-### utils
+#### utils
 
 utility functions
