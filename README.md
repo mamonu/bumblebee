@@ -1,9 +1,10 @@
 # nlpfunctions
 
 
+
+<img src="https://github.com/mamonu/textconsultations/blob/master/nlpicon.png" align="right"
+     title="nlp logo" width="120" height="178">
 useful nlp functions for text mining in a package format
-
-
 
 ## Getting Started
 
