@@ -3,7 +3,7 @@
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/nlpicon.png" align="right"
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/nlpicon.png" align="right"
      title="nlp logo" width="178" height="178">
      
 <br>
@@ -56,10 +56,21 @@ TODO:Explain how to run the automated tests for this system
 ## Built With
 
 * [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
-* [scikit-learn](https://github.com/scikit-learn/scikit-learn) - machine learning framework
+
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right"
+     title="pytest logo" width="50" height="50">
+
+
+
+* [scikit-learn](http://scikit-learn.org/) - machine learning framework 
+
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right"
+     title="sklearn logo">
+
+
 * [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
 <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right"
-     title="pytest logo" width="100" height="100">
+     title="pytest logo" width="50" height="50">
 
 
 ## Contributing
