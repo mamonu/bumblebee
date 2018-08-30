@@ -8,7 +8,6 @@ Created on Fri Aug 10 08:50:47 2018
 
 
 
-import pandas as pd
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
     
     ''' 
@@ -165,7 +164,6 @@ def merge_dfs(*dfs):
 
 
 
-import numpy as np
 
 def standardise_twm_nmf(nmf_model):
     '''Standardise NMF topic-word matrix so that word probabilities for each doc sum up to 1'''
@@ -216,20 +214,7 @@ def nmf_topic_top_words(topic_term_matrix, vocabulary, n_top_words = 6):
 #topictopwords_dict2df((nmf_topic_top_words(wordtopic, vocabulary = vocab)), orig_dataset = text_df, tech = 'nmf')
 
 
-from operator import itemgetter
-def lda_ranked_topics2df(lda_mod, corpus):
-    '''
-    For each document, return ranked topics and their probabilities, and convert it to 
-    a pandas dataframe:
-        rows are documents, column "ranked_topics_lda" contains the documents' tuple of ranked topics, 
-        column "ranked_topics_ps_lda" contains the tuple of associated topics' probabilities
-    
-    Input parameter:
-    ----------------
-    - lda_mod : gemsin lda model
-    - corpus : bag-of-words corpus of documents resulting from [dictionary.doc2bow(text) for text in corpus]
-    '''
-   
+
 
 def nmf_ranked_topics2df(nmf_doc_topic_matrix, num_topics):
     '''
