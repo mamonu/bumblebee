@@ -1,6 +1,6 @@
 # nlpfunctions
 
- [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]
 [![science](https://forthebadge.com/images/badges/built-with-science.svg)]
 [![python](https://forthebadge.com/images/badges/made-with-python.svg)]
 <img src="https://github.com/mamonu/textconsultations/blob/master/nlpicon.png" align="right"
