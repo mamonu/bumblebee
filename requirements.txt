@@ -1,0 +1,8 @@
+nltk
+pandas 
+numpy  
+os 
+string
+math
+enchant
+re

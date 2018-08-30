@@ -2,6 +2,9 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
+![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
 
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/nlpicon.png" align="right"
      title="nlp logo" width="178" height="178">
@@ -23,10 +26,17 @@ TODO:These instructions will get you a copy of the project up and running on you
 
 ### Prerequisites
 
-TODO:What things you need to install the software and how to install them
+What package prerequsites you need to install the software ? See
+
+[requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) - requirements.txt
+
+
+How to install those prerequisite packages if I need to?
+
+go to main directory and run 
 
 ```
-Give examples
+pip install -r requirements.txt 
 ```
 
 ### Installing
@@ -49,8 +59,14 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-TODO:Explain how to run the automated tests for this system
+In order to run all the automated tests for this system after you have cloned it into your system just do:
 
+```
+cd tests
+
+pytest
+
+```
 
 
 ## Built With
