@@ -2,7 +2,9 @@ from itertools import takewhile, tee
 import networkx, nltk,string,itertools
 
 
-### ported to py3
+
+### code 'borrowed' from http://bdewilde.github.io/blog/2014/09/23/intro-to-automatic-keyphrase-extraction/
+### and ported to py3
 
 def extract_candidate_words(text, good_tags=set(['JJ','JJR','JJS','NN','NNP','NNS','NNPS'])):
    

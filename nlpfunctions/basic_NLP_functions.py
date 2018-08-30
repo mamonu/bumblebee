@@ -31,11 +31,6 @@ from textblob import TextBlob
 
 from nltk.sentiment.util import mark_negation
 
-import os
-#cwd = os.chdir('/Users/alessia/Documents/DataScience/NLP_Project/Code/functions')
-#import basic_NLP_functions.utils
-#dir(utils)
-
 
 
 

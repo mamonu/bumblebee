@@ -10,7 +10,7 @@ from enchant.checker import SpellChecker
 import re
 
 
-# Build a cost dictionary, assuming Zipf's law and cost = -math.log(probability).
+# wordcost dictionary, assuming Zipf's law and cost = -math.log(probability).
 #useful for the spellcheck submodule
 #loaded here to avoid relative path problems
 wordsfile = open("words-by-freq125K.txt").read().split()

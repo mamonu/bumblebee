@@ -1,8 +1,8 @@
 # nlpfunctions
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
+![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
-![science](https://forthebadge.com/images/badges/built-with-science.svg)
-![python](https://forthebadge.com/images/badges/made-with-python.svg)
+
 <img src="https://github.com/mamonu/textconsultations/blob/master/nlpicon.png" align="right"
      title="nlp logo" width="178" height="178">
      
@@ -57,6 +57,9 @@ TODO:Explain how to run the automated tests for this system
 
 * [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
 * [scikit-learn](https://github.com/scikit-learn/scikit-learn) - machine learning framework
+* [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
+<img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right"
+     title="pytest logo" width="100" height="100">
 
 
 ## Contributing
