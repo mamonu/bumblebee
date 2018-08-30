@@ -54,23 +54,16 @@ TODO:Explain how to run the automated tests for this system
 
 
 ## Built With
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50">
 
-* [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
-
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right"
-     title="pytest logo" width="50" height="50">
 
 
 
+* [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
 * [scikit-learn](http://scikit-learn.org/) - machine learning framework 
-
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right"
-     title="sklearn logo">
-
-
 * [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
-<img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right"
-     title="pytest logo" width="50" height="50">
+
+
 
 
 ## Contributing
