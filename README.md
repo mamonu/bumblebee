@@ -1,13 +1,14 @@
 # nlpfunctions
 
-
-[![forthebadge](https://forthebadge.com/images/badges/built-with-science.svg)]
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)]
-
-<br>
-
+ [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![science](https://forthebadge.com/images/badges/built-with-science.svg)]
+[![python](https://forthebadge.com/images/badges/made-with-python.svg)]
 <img src="https://github.com/mamonu/textconsultations/blob/master/nlpicon.png" align="right"
      title="nlp logo" width="178" height="178">
+     
+<br>
+
+
 useful nlp functions for text mining in a package format
 
 
