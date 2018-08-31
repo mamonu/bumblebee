@@ -6,7 +6,7 @@
 ![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
 ![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/nlpicon.png" align="right"
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/glitchynlp.gif" align="right"
      title="nlp logo" width="178" height="178">
      
 <br>
@@ -26,9 +26,7 @@ TODO:These instructions will get you a copy of the project up and running on you
 
 ### Prerequisites
 
-What package prerequsites you need to install the software ? See
-
-[requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) - requirements.txt
+What package prerequsites you need to install the software ? See [requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) 
 
 
 How to install those prerequisite packages if I need to?
@@ -37,7 +35,13 @@ go to main directory and run
 
 ```
 pip install -r requirements.txt 
+python -m nltk.downloader all
+
 ```
+
+after downloading these packages/ and their assorted material (in the case of NLTK) everything should run smoothly 
+
+
 
 ### Installing
 
@@ -70,6 +74,7 @@ pytest
 
 
 ## Built With
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50">
 
 
@@ -78,8 +83,8 @@ pytest
 * [NLTK](https://github.com/nltk/nltk) - Natural Language ToolKit
 * [scikit-learn](http://scikit-learn.org/) - machine learning framework 
 * [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
-
-
+* [black](https://github.com/ambv/black) - code formatter
+* [sphinx-doc](http://www.sphinx-doc.org/en/master/) - documentation framework
 
 
 ## Contributing
@@ -102,8 +107,14 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## Acknowledgments
 
+        In opensource everyone is standing on the shoulders of giants... or possibly a really tall stack of ordinary-height people.
 
 
+The authors would like to thank in no particular order:
+the Big Data team (check their repos here:     )
+the NLTK people
+the scikit-learn people
+Benjamin Bengfort, Tony Ojeda, Rebecca Bilbro.The authors of one of the most useful NLP books out there "Applied Text Analysis with Python"
 
 
 
