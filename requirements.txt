@@ -4,5 +4,9 @@ numpy
 os 
 string
 math
-enchant
+pyenchant
 re
+networkx
+functools
+itertools
+collections
