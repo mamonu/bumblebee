@@ -22,14 +22,14 @@ useful nlp functions for text mining in a package format
 
 ## Getting Started
 
-TODO:These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
 
 ### Prerequisites
 
 What package prerequsites you need to install the software ? See [requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) 
 
 
-How to install those prerequisite packages if I need to?
+How to install those prerequisite packages if you need to?
 
 go to main directory and run 
 
@@ -39,27 +39,13 @@ python -m nltk.downloader all
 
 ```
 
-after downloading these packages/ and their assorted material (in the case of NLTK) everything should run smoothly 
+after downloading these packages and their assorted material (in the case of NLTK) everything should run smoothly 
 
 
 
 ### Installing
 
-TODO:A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -107,14 +93,18 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## Acknowledgments
 
-        In opensource everyone is standing on the shoulders of giants... or possibly a really tall stack of ordinary-height people.
+    In opensource everyone is standing on the shoulders of giants... or possibly a really tall stack of ordinary-height people.
 
 
 The authors would like to thank in no particular order:
-the Big Data team (check their repos here:     )
-the NLTK people
-the scikit-learn people
-Benjamin Bengfort, Tony Ojeda, Rebecca Bilbro.The authors of one of the most useful NLP books out there "Applied Text Analysis with Python"
+
+- the Big Data team (check their repos [here](https://github.com/ONSBigData)    )
+
+- the NLTK people
+
+- the scikit-learn people
+
+- [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro). The authors of one of the most useful NLP books out there: [Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
 
 
 
