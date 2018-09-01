@@ -112,7 +112,8 @@ The authors would like to thank in no particular order:
 - the scikit-learn people
 
 - [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro). The authors of one of the most useful NLP books out there: 
-[Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
+
+ [Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
 
 
 
