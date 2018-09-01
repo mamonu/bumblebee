@@ -6,12 +6,7 @@ from math import log
 
 
 
-# Build a cost dictionary, assuming Zipf's law and cost = -math.log(probability).
-#wordsfile = open("words-by-freq125K.txt").read().split()
-#wordcost = dict((k, log((i+1)*log(len(wordsfile)))) for i,k in enumerate(wordsfile))
-#maxword = max(len(x) for x in wordsfile)
-
-
+## Ref:   https://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words
 
 def infer_spaces(s):
     """Uses dynamic programming to infer the location of spaces in a string
@@ -45,13 +40,10 @@ def infer_spaces(s):
 
 d = SpellChecker("en_UK","en_US")
 
-
-
 def find_and_print_errors(text):
     errors=(list(set([word for word in word_tokenize(text) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
     num_errors=len(errors)
-    #print("num_errors:",num_errors)
-    #print(errors)
+ 
     
     return(num_errors,errors)
 
