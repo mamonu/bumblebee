@@ -5,6 +5,7 @@
 ![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
 ![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
 ![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/glitchynlp.gif" align="right"
      title="nlp logo" width="178" height="178">

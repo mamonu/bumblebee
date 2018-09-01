@@ -6,6 +6,14 @@ import math
 import numpy as np
 import sys
 
+
+
+
+## ref: Li, Y., McLean, D., Bandar, Z. A., O'shea, J. D., & Crockett, K. (2006),
+## Sentence similarity based on semantic nets and corpus statistics. 
+## IEEE transactions on knowledge and data engineering, 18(8), 1138-1150.
+
+
 # Parameters to the algorithm. Currently set to values that was reported
 # in the paper to produce "best" results.
 ALPHA = 0.2
