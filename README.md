@@ -58,13 +58,6 @@ pytest -v
 
 ```
 
-you should see something like
-
-[![asciicast](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt.png  =100x100)](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt)
-
-
-
-
 
 ## Built With
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
@@ -86,7 +79,7 @@ Please read [CONTRIBUTING.md](https://github.com/mamonu/textconsultations/blob/m
 
 
 
-## Authors
+## Authors / Maintainers
 
 * **Theodore Manassis**  - [mamonu](https://github.com/mamonu)
 * **Alessia Tosi** - [exfalsoquodlibet](https://github.com/exfalsoquodlibet)
@@ -100,7 +93,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](https://gi
 
 ## Acknowledgments
 
-    In opensource everyone is standing on the shoulders of giants... or possibly a really tall stack of ordinary-height people.
+    In opensource everyone is standing on the shoulders of giants... 
+    or possibly a really tall stack of ordinary-height people
 
 
 The authors would like to thank in no particular order:
@@ -111,9 +105,8 @@ The authors would like to thank in no particular order:
 
 - the scikit-learn people
 
-- [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro). The authors of one of the most useful NLP books out there: 
-
- [Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
+- [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro) . The authors of one of the most useful NLP books out there: 
+        [Applied Text Analysis with Python](http://shop.oreilly.com/product/0636920052555.do)
 
 
 
