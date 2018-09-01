@@ -17,7 +17,6 @@ def test_find_num_errors():
 
 def test_find_errors():
     errors=(list(set([word for word in word_tokenize(testtext) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
-    num_errors=len(errors)
     assert errors==['gud']
 
 
@@ -30,3 +29,4 @@ def test_correct_text():
     print(final)
 
     assert final == 'this is a god beer'
+    

@@ -17,7 +17,13 @@ Please note we have a code of conduct, please follow it in all your interactions
    do not have permission to do that, you may request the second reviewer to merge it for you.
 
 
- **Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github) 
+ **Working on your first Pull Request?** 
+ - You can learn how from this *free* course [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github) 
+
+
+
+- Dont have much time (TLDR) ? just want the basics? see this article [How to fork and contribute to a GitHub repo](https://dev.to/ceri_anneblog/how-to-fork-and-contribute-to-a-github-repo-5bfp)
+
 
 
 
