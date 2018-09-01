@@ -60,7 +60,7 @@ pytest -v
 
 you should see something like
 
-[![asciicast](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt.png)](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt)
+[![asciicast](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt.png  =100x100)](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt)
 
 
 
