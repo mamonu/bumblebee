@@ -54,9 +54,16 @@ In order to run all the automated tests for this system after you have cloned it
 ```
 cd tests
 
-pytest
+pytest -v
 
 ```
+
+you should see something like
+
+[![asciicast](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt.png)](https://asciinema.org/a/TOejHhZOzyC25Iw0sWdkSc2Dt)
+
+
+
 
 
 ## Built With
@@ -104,7 +111,8 @@ The authors would like to thank in no particular order:
 
 - the scikit-learn people
 
-- [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro). The authors of one of the most useful NLP books out there: [Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
+- [Benjamin Bengfort](https://github.com/bbengfort), [Tony Ojeda](https://github.com/ojedatony1616), [Rebecca Bilbro](https://github.com/rebeccabilbro). The authors of one of the most useful NLP books out there: 
+[Applied Text Analysis with Python"](http://shop.oreilly.com/product/0636920052555.do)
 
 
 
