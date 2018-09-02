@@ -4,7 +4,12 @@ import re
 from nltk import word_tokenize
 from math import log
 
-
+# wordcost dictionary, assuming Zipf's law and cost = -math.log(probability).
+#useful for the spellcheck submodule
+##loaded here to avoid relative path problems
+wordsfile = open("words-by-freq125K.txt").read().split()
+wordcost = dict((k, log((i+1)*log(len(wordsfile)))) for i,k in enumerate(wordsfile))
+maxword = max(len(x) for x in wordsfile)
 
 ## Ref:   https://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words
 

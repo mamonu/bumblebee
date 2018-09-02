@@ -4,6 +4,8 @@ from pandas import DataFrame
 import xarray
 from numpy import random as npr
 
+
+
 @pytest.fixture
 def df():
     return DataFrame({'A': [1, 2, 3]})
@@ -27,4 +29,3 @@ def test_np_randomness():
     assert rand_ints_one.all() == rand_ints_two.all()
 
 
-    
