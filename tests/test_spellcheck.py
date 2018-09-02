@@ -3,6 +3,7 @@ import enchant
 import re
 from enchant.checker import SpellChecker
 from nltk import word_tokenize
+from nlpfunctions.spellcheck import infer_spaces
 
 d = SpellChecker("en_UK","en_US")
 testtext='this is a gud beer'
@@ -30,3 +31,8 @@ def test_spellcheck_correct_errors():
 
     assert final == 'this is a god beer'
     
+
+def test_inferspaces():
+    textstucktogether ="thereismassesoftextinformation"
+    textwithspaces=['there', 'is', 'masses', 'of', 'text', 'information']
+    assert infer_spaces(textstucktogether)==textwithspaces
