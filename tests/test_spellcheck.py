@@ -35,4 +35,4 @@ def test_spellcheck_correct_errors():
 def test_inferspaces():
     textstucktogether ="thereismassesoftextinformation"
     textwithspaces=['there', 'is', 'masses', 'of', 'text', 'information']
-    assert infer_spaces(textstucktogether)==textwithspaces
+    assert infer_spaces(textstucktogether)== " ".join(str(x) for x in textwithspaces)
