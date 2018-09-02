@@ -9,18 +9,18 @@ testtext='this is a gud beer'
 
 
 
-def test_find_num_errors():
+def test_spellcheck_correct_num_errors():
     errors=(list(set([word for word in word_tokenize(testtext) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
     num_errors=len(errors)
     assert (num_errors==1)
 
 
-def test_find_errors():
+def test_spellcheck_find_errors():
     errors=(list(set([word for word in word_tokenize(testtext) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
     assert errors==['gud']
 
 
-def test_correct_text():
+def test_spellcheck_correct_errors():
     d.set_text(testtext)
     for err in d:
         if len(err.suggest())>0: 
