@@ -1,33 +1,157 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>nlpfunctions package &#8212; nlpfunctions 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>nlpfunctions package &mdash; nlpfunctions 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+  <div class="wy-grid-for-nav">
 
-  </head><body>
-  
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+          
+            <a href="../index.html" class="icon icon-home"> nlpfunctions
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">nlpfunctions package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.basicnlp">nlpfunctions.basicnlp module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.similarities">nlpfunctions.similarities module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.spellcheck">nlpfunctions.spellcheck module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.summarization">nlpfunctions.summarization module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.topicmod">nlpfunctions.topicmod module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.utils">nlpfunctions.utils module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">nlpfunctions</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>nlpfunctions package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/nlpfunctions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="nlpfunctions-package">
 <h1>nlpfunctions package<a class="headerlink" href="#nlpfunctions-package" title="Permalink to this headline">¶</a></h1>
@@ -50,17 +174,27 @@
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.break_compound_words">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">break_compound_words</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>compound_symbol='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.break_compound_words" title="Permalink to this definition">¶</a></dt>
-<dd><p>Break words of the compound form word1&lt;symbol&gt;word2 into the constituting words, 
+<dd><p>Break words of the compound form word1&lt;symbol&gt;word2 into the constituting words,
 then remove resulting empty strings.</p>
-<p>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</p>
-<p>compound-simbol : compound symbol word1&lt;symbol&gt;word2 to be broken, default is ‘-‘</p>
-<p>OUTPUT : the original list of word-token lists with the specified compound words broken down in their components</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>list_of_lists_of_tokens</strong> (<em>dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</em>)</li>
+<li><strong>compound-simbol</strong> (<em>compound symbol word1&lt;symbol&gt;word2 to be broken, default is ‘-‘</em>)</li>
+<li><strong>OUTPUT</strong> (<em>the original list of word-token lists with the specified compound words broken down in their components</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.classify_subjectivity">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">classify_subjectivity</code><span class="sig-paren">(</span><em>list_of_scores</em>, <em>threshold=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.classify_subjectivity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a binary score (1 = subjective, 0 = objective) for each sentence in the input text 
+<dd><p>Return a binary score (1 = subjective, 0 = objective) for each sentence in the input text
 based on the sentence’s subjectivity score. Scores &gt; threshold are classified as subjecive.</p>
 <ul class="simple">
 <li>list_of_scores : a dataframe column containing a list of subjectivity scores in each row or a variable of such a lis of scores</li>
@@ -73,59 +207,97 @@ based on the sentence’s subjectivity score. Scores &gt; threshold are classifi
 <dt id="nlpfunctions.basicnlp.count_pos">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_pos</code><span class="sig-paren">(</span><em>list_of_lists_of_pos_tuples</em>, <em>pos_to_cnt=''</em>, <em>normalise=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_pos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return count or porportion of specified part-of-speech in each text</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt>list_of_lists_of_pos_tuples <span class="classifier-delimiter">:</span> <span class="classifier">dataframe column whose cells contain lists of NLTK-produced POS, </span></dt>
-<dd>where each list is one sentence in a paragraph text</dd>
-</dl>
-</li>
-<li>pos : part-of-speech to count, specified by their initial: ‘J’ for adjs, ‘R’ for adverbs, ‘N’ for nouns, ‘V’ for verbs</li>
-<li>normalise : whether to return normalised counts (i.e., proportion), default is True</li>
-<li>OUTPUT : list of integers, each being the count/proportion of pos in each paragraph text</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_lists_of_pos_tuples</strong> (<em>dataframe column whose cells contain lists of NLTK-produced POS,</em>) – where each list is one sentence in a paragraph text</li>
+<li><strong>- pos</strong> (<em>part-of-speech to count, specified by their initial: ‘J’ for adjs, ‘R’ for adverbs, ‘N’ for nouns, ‘V’ for verbs</em>)</li>
+<li><strong>- normalise</strong> (<em>whether to return normalised counts (i.e., proportion), default is True</em>)</li>
+<li><strong>- OUTPUT</strong> (<em>list of integers, each being the count/proportion of pos in each paragraph text</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.count_punkt">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_punkt</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>punkt_list=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_punkt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return count of “meaningful” punctuation symbols in each text</p>
-<ul class="simple">
-<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)</li>
-<li>punkt_list : list of punctuation symbols to count (e.g., [“!”, “?”, “…”])</li>
-<li>OUTPUT : pandas Series of integer, each being the count of punctuation in each text cell</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_lists_of_tokens</strong> (<em>dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)</em>)</li>
+<li><strong>- punkt_list</strong> (<em>list of punctuation symbols to count (e.g., [“!”, “?”, “…”])</em>)</li>
+<li><strong>- OUTPUT</strong> (<em>pandas Series of integer, each being the count of punctuation in each text cell</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.count_words">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_words</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>exclude_punkt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_words" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return count of words in each text</p>
-<ul class="simple">
-<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of word-tokenised sentences</li>
-<li>exclude_punkt : whether to exlcude punctuation symbols from the count, default is True</li>
-<li>OUTPUT : pandas Series of integer, each being the count of words in each text cell</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_lists_of_tokens</strong> (<em>dataframe column whose cells contain lists of word-tokenised sentences</em>)</li>
+<li><strong>- exclude_punkt</strong> (<em>whether to exlcude punctuation symbols from the count, default is True</em>)</li>
+<li><strong>- OUTPUT</strong> (<em>pandas Series of integer, each being the count of words in each text cell</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.fix_neg_auxiliary">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">fix_neg_auxiliary</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.fix_neg_auxiliary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replace contracted negative forms of auxiliary verbs with negation.</p>
-<p>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</p>
-<p>OUPUT : the original list of word-token lists with the negative forms of auxiliary verbs replaced</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>list_of_lists_of_tokens</strong> (<em>dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</em>)</li>
+<li><strong>OUPUT</strong> (<em>the original list of word-token lists with the negative forms of auxiliary verbs replaced</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.get_sentiment_score_TB">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_sentiment_score_TB</code><span class="sig-paren">(</span><em>INPUT</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_sentiment_score_TB" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate sentiment analysis score 
+<dd><p>Calculate sentiment analysis score
 for each sentence in each cell (text/answer) in the specified dataframe column.</p>
 <p>Return a list of scores, one score for each sentence in the column cell.
 If text is empty, return NaN.</p>
-<ul class="simple">
-<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences for which to compute sentiment score (at sentence level).</li>
-<li>OUTPUT : a list of sentiment polarity score from -1 (negative) to 1 (positive), one for each sentence making up the text</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_string</strong> (<em>a dataframe column or variable containing the text stored as a list of string sentences for which to compute sentiment score (at sentence level).</em>)</li>
+<li><strong>- OUTPUT</strong> (<em>a list of sentiment polarity score from -1 (negative) to 1 (positive), one for each sentence making up the text</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -135,25 +307,43 @@ If text is empty, return NaN.</p>
 for each sentence in a paragraph text. The input must be a list of string sentences.</p>
 <p>Return a list of scores (as float), one score for each sentence in the paragraph text.
 If text is empty, return NaN.</p>
-<p>list_of_strings : name of the dataframe column or variable containing the text stored as a list of string sentences for which to 
-compute sentence-level sentiment score.</p>
-<p>score_type : ‘compound’ (default), ‘pos’ or ‘neg’</p>
-<p>OUTPUT : a list of sentiment scores (as floats)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>list_of_strings</strong> (<em>name of the dataframe column or variable containing the text stored as a list of string sentences for which to</em>)</li>
+<li><strong>compute sentence-level sentiment score.</strong></li>
+<li><strong>score_type</strong> (<em>‘compound’ (default), ‘pos’ or ‘neg’</em>)</li>
+<li><strong>OUTPUT</strong> (<em>a list of sentiment scores (as floats)</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.get_sentiment_stricter_threshold">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_sentiment_stricter_threshold</code><span class="sig-paren">(</span><em>list_of_scores</em>, <em>polarity_threshold=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_sentiment_stricter_threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of lists containing only sentiment polarity scores that meet the 
+<dd><p>Return a list of lists containing only sentiment polarity scores that meet the
 polarity threshold:</p>
 <p>scores &gt; 1 * threshold*1 (for positive scores)
 scores &lt; -1 * threshold (for negative scores)
 -1 * threshold &lt;= score &lt;= 1 * threshold are returned as NaN</p>
-<ul class="simple">
-<li>list_of_scores : a dataframe column consisting of a list of sentiment polarity scores in the range [-1, 1] in each row</li>
-<li>polarity_threshold : the cut off value to consider a score as positive or negative</li>
-<li>OUTPUT : a dataframe column consisting of a list of sentiment polarity scores tha meet the stricter threshold</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_scores</strong> (<em>a dataframe column consisting of a list of sentiment polarity scores in the range [-1, 1] in each row</em>)</li>
+<li><strong>- polarity_threshold</strong> (<em>the cut off value to consider a score as positive or negative</em>)</li>
+<li><strong>- OUTPUT</strong> (<em>a dataframe column consisting of a list of sentiment polarity scores tha meet the stricter threshold</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -202,23 +392,38 @@ if negative, score(sentence) &lt; -1*polarity_threshold</dd>
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">lemmatise</code><span class="sig-paren">(</span><em>list_of_lists_of_pos_tuples</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.lemmatise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return lemmas from word-POS tag tuples, using Wordnet POS tags.
 When no wordnet POS tag is avalable, it returns the original word.</p>
-<p>POStag_col : dataframe column containig lists of (word, POS) tuples</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>POStag_col</strong> (<em>dataframe column containig lists of (word, POS) tuples</em>)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.mark_neg">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">mark_neg</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>double_neg_flip=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.mark_neg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return count of words in each text</p>
-<ul class="simple">
-<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of word-tokenised sentences</li>
-<li>OUTPUT :</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_lists_of_tokens</strong> (<em>dataframe column whose cells contain lists of word-tokenised sentences</em>)</li>
+<li><strong>- OUTPUT</strong></li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.remove_objective_sents">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_objective_sents</code><span class="sig-paren">(</span><em>list_of_strings</em>, <em>threshold=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_objective_sents" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a list of lists containing only sentences with a subjective score, where 
+<dd><p>Return a list of lists containing only sentences with a subjective score, where
 subjectivity is defined as &gt; threshold.</p>
 <ul class="simple">
 <li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences for which to compute subjectivity score.</li>
@@ -235,24 +440,40 @@ subjectivity is defined as &gt; threshold.</p>
 <dt id="nlpfunctions.basicnlp.remove_punctuation">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_punctuation</code><span class="sig-paren">(</span><em>list_of_string</em>, <em>item_to_keep=''</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_punctuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove punctuation from a list of strings.</p>
-<ul class="simple">
-<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences</li>
-<li>item_to_keep : a string of punctuation signs you want to keep in text (e.g., ‘!?.,:;’)</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_string</strong> (<em>a dataframe column or variable containing the text stored as a list of string sentences</em>)</li>
+<li><strong>- item_to_keep</strong> (<em>a string of punctuation signs you want to keep in text (e.g., ‘!?.,:;’)</em>)</li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.remove_stopwords">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_stopwords</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens, stopwords_list=['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', &quot;you're&quot;, &quot;you've&quot;, &quot;you'll&quot;, &quot;you'd&quot;, 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', &quot;she's&quot;, 'her', 'hers', 'herself', 'it', &quot;it's&quot;, 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', &quot;that'll&quot;, 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', &quot;don't&quot;, 'should', &quot;should've&quot;, 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', &quot;aren't&quot;, 'couldn', &quot;couldn't&quot;, 'didn', &quot;didn't&quot;, 'doesn', &quot;doesn't&quot;, 'hadn', &quot;hadn't&quot;, 'hasn', &quot;hasn't&quot;, 'haven', &quot;haven't&quot;, 'isn', &quot;isn't&quot;, 'ma', 'mightn', &quot;mightn't&quot;, 'mustn', &quot;mustn't&quot;, 'needn', &quot;needn't&quot;, 'shan', &quot;shan't&quot;, 'shouldn', &quot;shouldn't&quot;, 'wasn', &quot;wasn't&quot;, 'weren', &quot;weren't&quot;, 'won', &quot;won't&quot;, 'wouldn', &quot;wouldn't&quot;], keep_neg=True, words_to_keep=[], extra_stopwords=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_stopwords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove specified stop-words.</p>
-<ul class="simple">
-<li>list_of_lists_of_tokens : : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</li>
-<li>stopwords_list : (default) English stopwords from. nltk.corpus</li>
-<li>keep_neg : whether to remove negation from list of stopwords, (default) True</li>
-<li>words_to_keep : list of words not to remove from the text (default is empty)</li>
-<li>extra_stopwords : list of ad-hoc stopwords to remove from text (default is empty)</li>
-<li>OUTPUT :</li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>- list_of_lists_of_tokens</strong> (<em>: dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</em>)</li>
+<li><strong>- stopwords_list</strong> (<em>(default) English stopwords from. nltk.corpus</em>)</li>
+<li><strong>- keep_neg</strong> (<em>whether to remove negation from list of stopwords, (default) True</em>)</li>
+<li><strong>- words_to_keep</strong> (<em>list of words not to remove from the text (default is empty)</em>)</li>
+<li><strong>- extra_stopwords</strong> (<em>list of ad-hoc stopwords to remove from text (default is empty)</em>)</li>
+<li><strong>- OUTPUT</strong></li>
 </ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -260,9 +481,19 @@ subjectivity is defined as &gt; threshold.</p>
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">rescale_to_01</code><span class="sig-paren">(</span><em>value</em>, <em>min_v</em>, <em>max_v</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.rescale_to_01" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the corresponding value in the range 0-1.
 If the original data only contains -1’s and 1’s, then these are return as 0’s and 1’s respectively.</p>
-<p>value : name of the dataframe column containing the values to be scaled (one score per row)
-min_v : minimum value in the data
-max_v : maximum value in the data</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>name of the dataframe column containing the values to be scaled (one score per row)</em>)</li>
+<li><strong>min_v</strong> (<em>minimum value in the data</em>)</li>
+<li><strong>max_v</strong> (<em>maximum value in the data</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -270,8 +501,18 @@ max_v : maximum value in the data</p>
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">sent_tokenise</code><span class="sig-paren">(</span><em>string_par</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.sent_tokenise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to sentence-tokenise a text paragraph of any sentence length.
 Return a list of string sentences.</p>
-<p>string_par : name of the dataframe column or string that contains the paragraph text to be sentence-tokenised.
-OUTPUT : a lis of sring sentences</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>string_par</strong> (<em>name of the dataframe column or string that contains the paragraph text to be sentence-tokenised.</em>)</li>
+<li><strong>OUTPUT</strong> (<em>a lis of sring sentences</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -282,11 +523,21 @@ OUTPUT : a lis of sring sentences</p>
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.word_tokenise">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">word_tokenise</code><span class="sig-paren">(</span><em>list_of_strings</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.word_tokenise" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to word-tokenise sentences within a text.  
+<dd><p>Function to word-tokenise sentences within a text.
 Required input is a list of string sentences, e.g. [‘I love dogs.’, ‘Me too!’]
 Returns a list of lists of token words, e.g. [[ ‘I’, ‘love’, ‘dogs’, ‘.’],  [‘Me’, ‘too’, ‘!’]]</p>
-<p>list_of_strings : name of the dataframe column containing a list of string sentences in each cell or a list of string sentences.
-OUTPUT : a list of lists of token word. Each sentence’s boundaries are preserved.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>list_of_strings</strong> (<em>name of the dataframe column containing a list of string sentences in each cell or a list of string sentences.</em>)</li>
+<li><strong>OUTPUT</strong> (<em>a list of lists of token word. Each sentence’s boundaries are preserved.</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -408,7 +659,7 @@ is above the threshold ETA.</p>
 <span id="nlpfunctions-summarization-module"></span><h2>nlpfunctions.summarization module<a class="headerlink" href="#module-nlpfunctions.summarization" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="nlpfunctions.summarization.extract_candidate_words">
-<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'JJR'</em>, <em>'NN'</em>, <em>'NNP'</em>, <em>'JJ'</em>, <em>'JJS'</em>, <em>'NNPS'</em>, <em>'NNS'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'JJ'</em>, <em>'NNS'</em>, <em>'JJR'</em>, <em>'NNP'</em>, <em>'NN'</em>, <em>'NNPS'</em>, <em>'JJS'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -424,7 +675,7 @@ is above the threshold ETA.</p>
 <dl class="function">
 <dt id="nlpfunctions.topicmod.lda_dtm2df">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_dtm2df</code><span class="sig-paren">(</span><em>lda_doc_topic_matrix</em>, <em>num_topics</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_dtm2df" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe: 
+<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe:
 rows are documents, columns are topics storing the probabilities for each doc-topic.</p>
 <ul class="simple">
 <li>lda_doc_topic_matrix : the doc-topic prob matrix resulting from of models.LdaModel[bow_corpus]</li>
@@ -435,10 +686,10 @@ rows are documents, columns are topics storing the probabilities for each doc-to
 <dl class="function">
 <dt id="nlpfunctions.topicmod.lda_ranked_topics2df">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_ranked_topics2df</code><span class="sig-paren">(</span><em>lda_mod</em>, <em>corpus</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_ranked_topics2df" title="Permalink to this definition">¶</a></dt>
-<dd><p>For each document, return ranked topics and their probabilities, and convert it to 
+<dd><p>For each document, return ranked topics and their probabilities, and convert it to
 a pandas dataframe:</p>
 <blockquote>
-<div>rows are documents, column “ranked_topics_lda” contains the documents’ tuple of ranked topics, 
+<div>rows are documents, column “ranked_topics_lda” contains the documents’ tuple of ranked topics,
 column “ranked_topics_ps_lda” contains the tuple of associated topics’ probabilities</div></blockquote>
 <ul class="simple">
 <li>lda_mod : gemsin lda model</li>
@@ -459,14 +710,14 @@ n_top_words : number of top words per topic to be exracted</p>
 <dl class="function">
 <dt id="nlpfunctions.topicmod.merge_dfs">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">merge_dfs</code><span class="sig-paren">(</span><em>*dfs</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.merge_dfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge datasets on index. 
+<dd><p>Merge datasets on index.
 Note: same index must refer to the same sample across all datasets.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.topicmod.nmf_dtm2df">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">nmf_dtm2df</code><span class="sig-paren">(</span><em>nmf_doc_topic_matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.nmf_dtm2df" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe: 
+<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe:
 rows are documents, columns are topics storing the probabilities for each doc-topic.</p>
 <ul class="simple">
 <li>nmf_doc_topic_matrix : NMF doc-topic matrix, or its standardised version</li>
@@ -477,10 +728,10 @@ rows are documents, columns are topics storing the probabilities for each doc-to
 <dl class="function">
 <dt id="nlpfunctions.topicmod.nmf_ranked_topics2df">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">nmf_ranked_topics2df</code><span class="sig-paren">(</span><em>nmf_doc_topic_matrix</em>, <em>num_topics</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.nmf_ranked_topics2df" title="Permalink to this definition">¶</a></dt>
-<dd><p>For each document, return ranked topics and their probabilities, and convert it to 
+<dd><p>For each document, return ranked topics and their probabilities, and convert it to
 a pandas dataframe:</p>
 <blockquote>
-<div>rows are documents, column “ranked_topics_nmf” contains the documents’ tuple of ranked topics, 
+<div>rows are documents, column “ranked_topics_nmf” contains the documents’ tuple of ranked topics,
 column “ranked_topics_ps_nmf” contains the tuple of associated topics’ probabilities</div></blockquote>
 <ul class="simple">
 <li>nmf_doc_topic_matrix : NMF doc-topic matrix, or its standardised version</li>
@@ -519,7 +770,7 @@ column “ranked_topics_ps_nmf” contains the tuple of associated topics’ pro
 <dd><p>Convert the dictionary containing topics’ top words into a pandas dataframe with K*2 columns:
 - k columns containing the top n word for each kth topic
 - k columns containing the associating top-word probabilities</p>
-<p>If a dataframe for the orig_dataset parameter is provided, then a final dataframe is returned 
+<p>If a dataframe for the orig_dataset parameter is provided, then a final dataframe is returned
 with the same row dimention as the orig_dataset so that they can be merged.</p>
 <ul class="simple">
 <li>topic_top_words_dict : a dictionary with topic idx as keys, and list of top words and list of their probabilities as two values</li>
@@ -537,9 +788,9 @@ with the same row dimention as the orig_dataset so that they can be merged.</p>
 <dt id="nlpfunctions.utils.CatToDictTransformer">
 <em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">CatToDictTransformer</code><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step. 
+<p>Class for building sklearn Pipeline step.
 This class turns columns from a pandas data frame (type Series) that
-contain caegorical variables into a list of dictionaries 
+contain caegorical variables into a list of dictionaries
 that can be inputted into DictVectorizer().</p>
 <dl class="method">
 <dt id="nlpfunctions.utils.CatToDictTransformer.fit">
@@ -557,7 +808,7 @@ that can be inputted into DictVectorizer().</p>
 <dt id="nlpfunctions.utils.ColumnSelector">
 <em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">ColumnSelector</code><span class="sig-paren">(</span><em>columns</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step. 
+<p>Class for building sklearn Pipeline step.
 This class selects a column from a pandas data frame.</p>
 <dl class="method">
 <dt id="nlpfunctions.utils.ColumnSelector.fit">
@@ -586,16 +837,24 @@ This class selects a column from a pandas data frame.</p>
 <dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to X and y with optional parameters fit_params
 and returns a transformed version of X.</p>
-<dl class="docutils">
-<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples, n_features]</span></dt>
-<dd>Training set.</dd>
-<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples]</span></dt>
-<dd>Target values.</dd>
-</dl>
-<dl class="docutils">
-<dt>X_new <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples, n_features_new]</span></dt>
-<dd>Transformed array.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>numpy array of shape [n_samples, n_features]</em>) – Training set.</li>
+<li><strong>y</strong> (<em>numpy array of shape [n_samples]</em>) – Target values.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_new</strong> – Transformed array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array of shape [n_samples, n_features_new]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -609,9 +868,9 @@ and returns a transformed version of X.</p>
 <dt id="nlpfunctions.utils.Series2ListOfStrings">
 <em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">Series2ListOfStrings</code><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step. 
+<p>Class for building sklearn Pipeline step.
 This class turns columns from a pandas data frame (type Series) that
-contain lists of string sentences into a list of strings 
+contain lists of string sentences into a list of strings
 that can be inputted into CountVectorizer().</p>
 <dl class="method">
 <dt id="nlpfunctions.utils.Series2ListOfStrings.fit">
@@ -648,8 +907,18 @@ First to last function to apply from left to right. I.e., f, g for g(f(x))</p>
 <code class="descclassname">nlpfunctions.utils.</code><code class="descname">flattenIrregularListOfLists</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.flattenIrregularListOfLists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[3]]],4,[5,6]]
 Returns a flattened list generator</p>
-<p>INPUT : a ( nested) list of lists 
-OUTPUT : a flattened list generator</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>INPUT</strong> (<em>a ( nested) list of lists</em>)</li>
+<li><strong>OUTPUT</strong> (<em>a flattened list generator</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
@@ -657,7 +926,7 @@ OUTPUT : a flattened list generator</p>
 <em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2array_TextFunctionFeaturizer</code><span class="sig-paren">(</span><em>*featurizers</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
 <p><a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
-Takes a list of functions, calls each function with our text (X as list of strings), and 
+Takes a list of functions, calls each function with our text (X as list of strings), and
 returns the results of all functions as a feature vector as np.array</p>
 <dl class="method">
 <dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer.fit">
@@ -678,7 +947,7 @@ returns the results of all functions as a feature vector as np.array</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
 <p>Modified from:
 <a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
-Takes a list of functions, calls each function with our list of lists (X), 
+Takes a list of functions, calls each function with our list of lists (X),
 and returns the results of all functions as a feature vector as an np.array.</p>
 <dl class="method">
 <dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer.fit">
@@ -721,9 +990,14 @@ It first checks whether the outcome is already a pandas.Series or not</p>
 <dt id="nlpfunctions.utils.word_tokens2string_sentences">
 <code class="descclassname">nlpfunctions.utils.</code><code class="descname">word_tokens2string_sentences</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.word_tokens2string_sentences" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list containing a single string of text for each word-tokenised sentence.</p>
-<ul class="simple">
-<li>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</li>
-</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>- list_of_lists_of_tokens</strong> (<em>dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</em>)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -733,59 +1007,59 @@ It first checks whether the outcome is already a pandas.Series or not</p>
 </div>
 
 
+           </div>
+           
           </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Theodore Manassis &amp; Alessia Tosi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">nlpfunctions</a></h1>
+
+    </section>
+
+  </div>
+  
 
 
+  
 
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0.1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
 
+  
 
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
 
-
-<h3>Navigation</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2018, Theodore Manassis & Alessia Tosi.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.8</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="../_sources/source/nlpfunctions.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
