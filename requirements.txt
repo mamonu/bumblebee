@@ -4,5 +4,3 @@ numpy
 pyenchant
 networkx
 functools
-itertools
-collections
