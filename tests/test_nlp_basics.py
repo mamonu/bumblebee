@@ -1,5 +1,5 @@
 
-from nlpfunctions.basic_NLP_functions import sent_tokenise,get_sentiment_score_VDR,get_sentiment_score_TB
+from nlpfunctions.basicnlp import sent_tokenise,get_sentiment_score_VDR,get_sentiment_score_TB
 from nlpfunctions.utils import *
 
 

@@ -123,7 +123,7 @@ The authors would like to thank in no particular order:
 
 ├── nlpfunctions
 
-│   ├── basic_NLP_functions
+│   ├── basicnlp
 
 │   ├── similarities
 
