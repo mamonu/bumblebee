@@ -1,11 +1,7 @@
 nltk
 pandas 
 numpy  
-os 
-string
-math
 pyenchant
-re
 networkx
 functools
 itertools
