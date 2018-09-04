@@ -6,10 +6,8 @@ import numpy as np
 import sys
 
 
-
-
 ## ref: Li, Y., McLean, D., Bandar, Z. A., O'shea, J. D., & Crockett, K. (2006),
-## Sentence similarity based on semantic nets and corpus statistics. 
+## Sentence similarity based on semantic nets and corpus statistics.
 ## IEEE transactions on knowledge and data engineering, 18(8), 1138-1150.
 
 
@@ -26,6 +24,7 @@ N = 0
 
 
 ######################### word similarity ##########################
+
 
 def get_best_synset_pair(word_1, word_2):
     """
@@ -94,8 +93,7 @@ def hierarchy_dist(synset_1, synset_2):
         # find the max depth of least common subsumer
         hypernyms_1 = {x[0]: x[1] for x in synset_1.hypernym_distances()}
         hypernyms_2 = {x[0]: x[1] for x in synset_2.hypernym_distances()}
-        lcs_candidates = set(hypernyms_1.keys()).intersection(
-            set(hypernyms_2.keys()))
+        lcs_candidates = set(hypernyms_1.keys()).intersection(set(hypernyms_2.keys()))
         if len(lcs_candidates) > 0:
             lcs_dists = []
             for lcs_candidate in lcs_candidates:
@@ -109,17 +107,20 @@ def hierarchy_dist(synset_1, synset_2):
             h_dist = max(lcs_dists)
         else:
             h_dist = 0
-    return ((math.exp(BETA * h_dist) - math.exp(-BETA * h_dist)) /
-            (math.exp(BETA * h_dist) + math.exp(-BETA * h_dist)))
+    return (math.exp(BETA * h_dist) - math.exp(-BETA * h_dist)) / (
+        math.exp(BETA * h_dist) + math.exp(-BETA * h_dist)
+    )
 
 
 def word_similarity(word_1, word_2):
     synset_pair = get_best_synset_pair(word_1, word_2)
-    return (length_dist(synset_pair[0], synset_pair[1]) *
-            hierarchy_dist(synset_pair[0], synset_pair[1]))
+    return length_dist(synset_pair[0], synset_pair[1]) * hierarchy_dist(
+        synset_pair[0], synset_pair[1]
+    )
 
 
 ######################### sentence similarity ##########################
+
 
 def most_similar_word(word, word_set):
     """
@@ -183,7 +184,9 @@ def semantic_vector(words, joint_words, info_content_norm):
             sim_word, max_sim = most_similar_word(joint_word, sent_set)
             semvec[i] = PHI if max_sim > PHI else 0.0
             if info_content_norm:
-                semvec[i] = semvec[i] * info_content(joint_word) * info_content(sim_word)
+                semvec[i] = (
+                    semvec[i] * info_content(joint_word) * info_content(sim_word)
+                )
         i = i + 1
     return semvec
 
@@ -202,6 +205,7 @@ def semantic_similarity(sentence_1, sentence_2, info_content_norm):
 
 
 ######################### word order similarity ##########################
+
 
 def word_order_vector(words, joint_words, windex):
     """
@@ -249,10 +253,13 @@ def word_order_similarity(sentence_1, sentence_2):
 
 ######################### overall similarity ##########################
 
+
 def similarity(sentence_1, sentence_2, info_content_norm):
     """
     Calculate the semantic similarity between two sentences. The last
     parameter is True or False depending on whether information content
     normalization is desired or not.
     """
-    return DELTA * semantic_similarity(sentence_1, sentence_2, info_content_norm) + (1.0 - DELTA) * word_order_similarity(sentence_1, sentence_2)
+    return DELTA * semantic_similarity(sentence_1, sentence_2, info_content_norm) + (
+        1.0 - DELTA
+    ) * word_order_similarity(sentence_1, sentence_2)
