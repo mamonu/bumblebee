@@ -1,0 +1,791 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>nlpfunctions package &#8212; nlpfunctions 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nlpfunctions-package">
+<h1>nlpfunctions package<a class="headerlink" href="#nlpfunctions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-nlpfunctions.basicnlp">
+<span id="nlpfunctions-basicnlp-module"></span><h2>nlpfunctions.basicnlp module<a class="headerlink" href="#module-nlpfunctions.basicnlp" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Apr  6 17:36:22 2018</p>
+<p>&#64;author: alessia</p>
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.POS_tagging">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">POS_tagging</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.POS_tagging" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list with POS-tags/words tuples for the specified text, using Penn Treebank</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.break_compound_words">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">break_compound_words</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>compound_symbol='-'</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.break_compound_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break words of the compound form word1&lt;symbol&gt;word2 into the constituting words, 
+then remove resulting empty strings.</p>
+<p>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</p>
+<p>compound-simbol : compound symbol word1&lt;symbol&gt;word2 to be broken, default is ‘-‘</p>
+<p>OUTPUT : the original list of word-token lists with the specified compound words broken down in their components</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.classify_subjectivity">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">classify_subjectivity</code><span class="sig-paren">(</span><em>list_of_scores</em>, <em>threshold=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.classify_subjectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a binary score (1 = subjective, 0 = objective) for each sentence in the input text 
+based on the sentence’s subjectivity score. Scores &gt; threshold are classified as subjecive.</p>
+<ul class="simple">
+<li>list_of_scores : a dataframe column containing a list of subjectivity scores in each row or a variable of such a lis of scores</li>
+<li>threshold : the cut off value above which a sentence is classified as subjective between [0.0, 1.0] - default is 0.5</li>
+<li>OUTPUT : a dataframe column consisting of a list of 1’s/0’s on each row</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.count_pos">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_pos</code><span class="sig-paren">(</span><em>list_of_lists_of_pos_tuples</em>, <em>pos_to_cnt=''</em>, <em>normalise=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return count or porportion of specified part-of-speech in each text</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>list_of_lists_of_pos_tuples <span class="classifier-delimiter">:</span> <span class="classifier">dataframe column whose cells contain lists of NLTK-produced POS, </span></dt>
+<dd>where each list is one sentence in a paragraph text</dd>
+</dl>
+</li>
+<li>pos : part-of-speech to count, specified by their initial: ‘J’ for adjs, ‘R’ for adverbs, ‘N’ for nouns, ‘V’ for verbs</li>
+<li>normalise : whether to return normalised counts (i.e., proportion), default is True</li>
+<li>OUTPUT : list of integers, each being the count/proportion of pos in each paragraph text</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.count_punkt">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_punkt</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>punkt_list=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_punkt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return count of “meaningful” punctuation symbols in each text</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)</li>
+<li>punkt_list : list of punctuation symbols to count (e.g., [“!”, “?”, “…”])</li>
+<li>OUTPUT : pandas Series of integer, each being the count of punctuation in each text cell</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.count_words">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">count_words</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>exclude_punkt=True</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.count_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return count of words in each text</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of word-tokenised sentences</li>
+<li>exclude_punkt : whether to exlcude punctuation symbols from the count, default is True</li>
+<li>OUTPUT : pandas Series of integer, each being the count of words in each text cell</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.fix_neg_auxiliary">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">fix_neg_auxiliary</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.fix_neg_auxiliary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace contracted negative forms of auxiliary verbs with negation.</p>
+<p>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</p>
+<p>OUPUT : the original list of word-token lists with the negative forms of auxiliary verbs replaced</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.get_sentiment_score_TB">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_sentiment_score_TB</code><span class="sig-paren">(</span><em>INPUT</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_sentiment_score_TB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sentiment analysis score 
+for each sentence in each cell (text/answer) in the specified dataframe column.</p>
+<p>Return a list of scores, one score for each sentence in the column cell.
+If text is empty, return NaN.</p>
+<ul class="simple">
+<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences for which to compute sentiment score (at sentence level).</li>
+<li>OUTPUT : a list of sentiment polarity score from -1 (negative) to 1 (positive), one for each sentence making up the text</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.get_sentiment_score_VDR">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_sentiment_score_VDR</code><span class="sig-paren">(</span><em>list_of_strings</em>, <em>score_type='compound'</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_sentiment_score_VDR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate nltk Vader sentiment analysis score (score_type: ‘compound’ default, ‘pos’, ‘neg’)
+for each sentence in a paragraph text. The input must be a list of string sentences.</p>
+<p>Return a list of scores (as float), one score for each sentence in the paragraph text.
+If text is empty, return NaN.</p>
+<p>list_of_strings : name of the dataframe column or variable containing the text stored as a list of string sentences for which to 
+compute sentence-level sentiment score.</p>
+<p>score_type : ‘compound’ (default), ‘pos’ or ‘neg’</p>
+<p>OUTPUT : a list of sentiment scores (as floats)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.get_sentiment_stricter_threshold">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_sentiment_stricter_threshold</code><span class="sig-paren">(</span><em>list_of_scores</em>, <em>polarity_threshold=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_sentiment_stricter_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of lists containing only sentiment polarity scores that meet the 
+polarity threshold:</p>
+<p>scores &gt; 1 * threshold*1 (for positive scores)
+scores &lt; -1 * threshold (for negative scores)
+-1 * threshold &lt;= score &lt;= 1 * threshold are returned as NaN</p>
+<ul class="simple">
+<li>list_of_scores : a dataframe column consisting of a list of sentiment polarity scores in the range [-1, 1] in each row</li>
+<li>polarity_threshold : the cut off value to consider a score as positive or negative</li>
+<li>OUTPUT : a dataframe column consisting of a list of sentiment polarity scores tha meet the stricter threshold</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.get_subjectivity">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_subjectivity</code><span class="sig-paren">(</span><em>list_of_string</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_subjectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a subjectivity score for each sentence in the input text.</p>
+<ul class="simple">
+<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences for which to compute subjectivity score.</li>
+<li>OUTPUT : a list of subjectivity scores for each row (one score per each sentence in the cell)</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.get_wordnet_pos">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">get_wordnet_pos</code><span class="sig-paren">(</span><em>treebank_tag</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.get_wordnet_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return Wordnet POS tags from Penn Treebank tags</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.is_part_string">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">is_part_string</code><span class="sig-paren">(</span><em>text</em>, <em>target_string</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.is_part_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if targe_string is contained in text.
+Example: is_part_string(‘Hi &#64;ONS’, target_string=’&#64;’) ==&gt; True</p>
+<p>text : a string of text
+target_string : a string of characters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.keep_only_strict_polarity_sents">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">keep_only_strict_polarity_sents</code><span class="sig-paren">(</span><em>list_of_strings</em>, <em>polarity_threshold=0.3</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.keep_only_strict_polarity_sents" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Return a list of lists containing only sentences with a polarity score that meets the thresholds:</dt>
+<dd>if positive, score(sentence) &gt; 1*polarity_threshold
+if negative, score(sentence) &lt; -1*polarity_threshold</dd>
+</dl>
+<p>Sentences’ compound polarity score is calculated using nltk Vader.</p>
+<ul class="simple">
+<li>list_of_strings : a dataframe column consisting of a list of strings in each row, where each string is a sentence in the text.</li>
+<li>polarity_threshold : the stricter threshold that decides whether a sentence has a positive or negative polarity, default is 0.3</li>
+<li>OUTPUT : a list of string sentences for each row</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.lemmatise">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">lemmatise</code><span class="sig-paren">(</span><em>list_of_lists_of_pos_tuples</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.lemmatise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return lemmas from word-POS tag tuples, using Wordnet POS tags.
+When no wordnet POS tag is avalable, it returns the original word.</p>
+<p>POStag_col : dataframe column containig lists of (word, POS) tuples</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.mark_neg">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">mark_neg</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em>, <em>double_neg_flip=False</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.mark_neg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return count of words in each text</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : dataframe column whose cells contain lists of word-tokenised sentences</li>
+<li>OUTPUT :</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.remove_objective_sents">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_objective_sents</code><span class="sig-paren">(</span><em>list_of_strings</em>, <em>threshold=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_objective_sents" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of lists containing only sentences with a subjective score, where 
+subjectivity is defined as &gt; threshold.</p>
+<ul class="simple">
+<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences for which to compute subjectivity score.</li>
+<li><dl class="first docutils">
+<dt>threshold <span class="classifier-delimiter">:</span> <span class="classifier">the cut off value above which a sentence is classified as subjective between [0.0, 1.0]</span></dt>
+<dd>default is 0.5</dd>
+</dl>
+</li>
+<li>OUTPUT : a dataframe column consisting of a list of string setences in each row</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.remove_punctuation">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_punctuation</code><span class="sig-paren">(</span><em>list_of_string</em>, <em>item_to_keep=''</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_punctuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove punctuation from a list of strings.</p>
+<ul class="simple">
+<li>list_of_string : a dataframe column or variable containing the text stored as a list of string sentences</li>
+<li>item_to_keep : a string of punctuation signs you want to keep in text (e.g., ‘!?.,:;’)</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.remove_stopwords">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">remove_stopwords</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens, stopwords_list=['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', &quot;you're&quot;, &quot;you've&quot;, &quot;you'll&quot;, &quot;you'd&quot;, 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', &quot;she's&quot;, 'her', 'hers', 'herself', 'it', &quot;it's&quot;, 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', &quot;that'll&quot;, 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', &quot;don't&quot;, 'should', &quot;should've&quot;, 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', &quot;aren't&quot;, 'couldn', &quot;couldn't&quot;, 'didn', &quot;didn't&quot;, 'doesn', &quot;doesn't&quot;, 'hadn', &quot;hadn't&quot;, 'hasn', &quot;hasn't&quot;, 'haven', &quot;haven't&quot;, 'isn', &quot;isn't&quot;, 'ma', 'mightn', &quot;mightn't&quot;, 'mustn', &quot;mustn't&quot;, 'needn', &quot;needn't&quot;, 'shan', &quot;shan't&quot;, 'shouldn', &quot;shouldn't&quot;, 'wasn', &quot;wasn't&quot;, 'weren', &quot;weren't&quot;, 'won', &quot;won't&quot;, 'wouldn', &quot;wouldn't&quot;], keep_neg=True, words_to_keep=[], extra_stopwords=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.remove_stopwords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove specified stop-words.</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</li>
+<li>stopwords_list : (default) English stopwords from. nltk.corpus</li>
+<li>keep_neg : whether to remove negation from list of stopwords, (default) True</li>
+<li>words_to_keep : list of words not to remove from the text (default is empty)</li>
+<li>extra_stopwords : list of ad-hoc stopwords to remove from text (default is empty)</li>
+<li>OUTPUT :</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.rescale_to_01">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">rescale_to_01</code><span class="sig-paren">(</span><em>value</em>, <em>min_v</em>, <em>max_v</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.rescale_to_01" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the corresponding value in the range 0-1.
+If the original data only contains -1’s and 1’s, then these are return as 0’s and 1’s respectively.</p>
+<p>value : name of the dataframe column containing the values to be scaled (one score per row)
+min_v : minimum value in the data
+max_v : maximum value in the data</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.sent_tokenise">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">sent_tokenise</code><span class="sig-paren">(</span><em>string_par</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.sent_tokenise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to sentence-tokenise a text paragraph of any sentence length.
+Return a list of string sentences.</p>
+<p>string_par : name of the dataframe column or string that contains the paragraph text to be sentence-tokenised.
+OUTPUT : a lis of sring sentences</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.to_lower">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">to_lower</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.to_lower" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.basicnlp.word_tokenise">
+<code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">word_tokenise</code><span class="sig-paren">(</span><em>list_of_strings</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.word_tokenise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to word-tokenise sentences within a text.  
+Required input is a list of string sentences, e.g. [‘I love dogs.’, ‘Me too!’]
+Returns a list of lists of token words, e.g. [[ ‘I’, ‘love’, ‘dogs’, ‘.’],  [‘Me’, ‘too’, ‘!’]]</p>
+<p>list_of_strings : name of the dataframe column containing a list of string sentences in each cell or a list of string sentences.
+OUTPUT : a list of lists of token word. Each sentence’s boundaries are preserved.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions.similarities">
+<span id="nlpfunctions-similarities-module"></span><h2>nlpfunctions.similarities module<a class="headerlink" href="#module-nlpfunctions.similarities" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nlpfunctions.similarities.get_best_synset_pair">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">get_best_synset_pair</code><span class="sig-paren">(</span><em>word_1</em>, <em>word_2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.get_best_synset_pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Choose the pair with highest path similarity among all pairs.
+Mimics pattern-seeking behavior of humans.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.hierarchy_dist">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">hierarchy_dist</code><span class="sig-paren">(</span><em>synset_1</em>, <em>synset_2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.hierarchy_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a measure of depth in the ontology to model the fact that
+nodes closer to the root are broader and have less semantic similarity
+than nodes further away from the root.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.info_content">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">info_content</code><span class="sig-paren">(</span><em>lookup_word</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.info_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the Brown corpus available in NLTK to calculate a Laplace
+smoothed frequency distribution of words, then uses this information
+to compute the information content of the lookup_word.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.length_dist">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">length_dist</code><span class="sig-paren">(</span><em>synset_1</em>, <em>synset_2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.length_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a measure of the length of the shortest path in the semantic
+ontology (Wordnet in our case as well as the paper’s) between two
+synsets.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.most_similar_word">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">most_similar_word</code><span class="sig-paren">(</span><em>word</em>, <em>word_set</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.most_similar_word" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the word in the joint word set that is most similar to the word
+passed in. We use the algorithm above to compute word similarity between
+the word and each word in the joint word set, and return the most similar
+word and the actual similarity value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.semantic_similarity">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">semantic_similarity</code><span class="sig-paren">(</span><em>sentence_1</em>, <em>sentence_2</em>, <em>info_content_norm</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.semantic_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the semantic similarity between two sentences as the cosine
+similarity between the semantic vectors computed for each sentence.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.semantic_vector">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">semantic_vector</code><span class="sig-paren">(</span><em>words</em>, <em>joint_words</em>, <em>info_content_norm</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.semantic_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the semantic vector of a sentence. The sentence is passed in as
+a collection of words. The size of the semantic vector is the same as the
+size of the joint word set. The elements are 1 if a word in the sentence
+already exists in the joint word set, or the similarity of the word to the
+most similar word in the joint word set if it doesn’t. Both values are
+further normalized by the word’s (and similar word’s) information content
+if info_content_norm is True.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.similarity">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">similarity</code><span class="sig-paren">(</span><em>sentence_1</em>, <em>sentence_2</em>, <em>info_content_norm</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the semantic similarity between two sentences. The last
+parameter is True or False depending on whether information content
+normalization is desired or not.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.word_order_similarity">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">word_order_similarity</code><span class="sig-paren">(</span><em>sentence_1</em>, <em>sentence_2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.word_order_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the word-order similarity between two sentences as the normalized
+difference of word order between the two sentences.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.word_order_vector">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">word_order_vector</code><span class="sig-paren">(</span><em>words</em>, <em>joint_words</em>, <em>windex</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.word_order_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the word order vector for a sentence. The sentence is passed
+in as a collection of words. The size of the word order vector is the
+same as the size of the joint word set. The elements of the word order
+vector are the position mapping (from the windex dictionary) of the
+word in the joint set if the word exists in the sentence. If the word
+does not exist in the sentence, then the value of the element is the
+position of the most similar word in the sentence as long as the similarity
+is above the threshold ETA.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.similarities.word_similarity">
+<code class="descclassname">nlpfunctions.similarities.</code><code class="descname">word_similarity</code><span class="sig-paren">(</span><em>word_1</em>, <em>word_2</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.similarities.word_similarity" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions.spellcheck">
+<span id="nlpfunctions-spellcheck-module"></span><h2>nlpfunctions.spellcheck module<a class="headerlink" href="#module-nlpfunctions.spellcheck" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.correct_text">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">correct_text</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.correct_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.find_and_print_errors">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">find_and_print_errors</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.find_and_print_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.infer_spaces">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">infer_spaces</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.infer_spaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probabilistically split concatenated words using NLP based on English Wikipedia uni-gram frequencies.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions.summarization">
+<span id="nlpfunctions-summarization-module"></span><h2>nlpfunctions.summarization module<a class="headerlink" href="#module-nlpfunctions.summarization" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nlpfunctions.summarization.extract_candidate_words">
+<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'JJR'</em>, <em>'NN'</em>, <em>'NNP'</em>, <em>'JJ'</em>, <em>'JJS'</em>, <em>'NNPS'</em>, <em>'NNS'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.summarization.score_keyphrases_by_textrank">
+<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">score_keyphrases_by_textrank</code><span class="sig-paren">(</span><em>text</em>, <em>n_keywords=0.05</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.score_keyphrases_by_textrank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions.topicmod">
+<span id="nlpfunctions-topicmod-module"></span><h2>nlpfunctions.topicmod module<a class="headerlink" href="#module-nlpfunctions.topicmod" title="Permalink to this headline">¶</a></h2>
+<p>Created on Fri Aug 10 08:50:47 2018</p>
+<p>&#64;author: alessia</p>
+<dl class="function">
+<dt id="nlpfunctions.topicmod.lda_dtm2df">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_dtm2df</code><span class="sig-paren">(</span><em>lda_doc_topic_matrix</em>, <em>num_topics</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_dtm2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe: 
+rows are documents, columns are topics storing the probabilities for each doc-topic.</p>
+<ul class="simple">
+<li>lda_doc_topic_matrix : the doc-topic prob matrix resulting from of models.LdaModel[bow_corpus]</li>
+<li>num_topics : number of topics used in the lda model</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.lda_ranked_topics2df">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_ranked_topics2df</code><span class="sig-paren">(</span><em>lda_mod</em>, <em>corpus</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_ranked_topics2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each document, return ranked topics and their probabilities, and convert it to 
+a pandas dataframe:</p>
+<blockquote>
+<div>rows are documents, column “ranked_topics_lda” contains the documents’ tuple of ranked topics, 
+column “ranked_topics_ps_lda” contains the tuple of associated topics’ probabilities</div></blockquote>
+<ul class="simple">
+<li>lda_mod : gemsin lda model</li>
+<li>corpus : bag-of-words corpus of documents resulting from [dictionary.doc2bow(text) for text in corpus]</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.lda_topic_top_words">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_topic_top_words</code><span class="sig-paren">(</span><em>lda_mod</em>, <em>n_top_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_topic_top_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the top n words for each K topic, and convert results in a dictionary:
+- keys are the K topics
+- 2 values: first value is the list of top words, second value is the list of corresponding word probabilities</p>
+<p>lda mod : gensim lda model
+n_top_words : number of top words per topic to be exracted</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.merge_dfs">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">merge_dfs</code><span class="sig-paren">(</span><em>*dfs</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.merge_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge datasets on index. 
+Note: same index must refer to the same sample across all datasets.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.nmf_dtm2df">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">nmf_dtm2df</code><span class="sig-paren">(</span><em>nmf_doc_topic_matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.nmf_dtm2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the doc-topic probabilities matrix into a pandas dataframe: 
+rows are documents, columns are topics storing the probabilities for each doc-topic.</p>
+<ul class="simple">
+<li>nmf_doc_topic_matrix : NMF doc-topic matrix, or its standardised version</li>
+<li>num_topics : number of topics used in the lda model</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.nmf_ranked_topics2df">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">nmf_ranked_topics2df</code><span class="sig-paren">(</span><em>nmf_doc_topic_matrix</em>, <em>num_topics</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.nmf_ranked_topics2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each document, return ranked topics and their probabilities, and convert it to 
+a pandas dataframe:</p>
+<blockquote>
+<div>rows are documents, column “ranked_topics_nmf” contains the documents’ tuple of ranked topics, 
+column “ranked_topics_ps_nmf” contains the tuple of associated topics’ probabilities</div></blockquote>
+<ul class="simple">
+<li>nmf_doc_topic_matrix : NMF doc-topic matrix, or its standardised version</li>
+<li>num_topics : number of topics</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.nmf_topic_top_words">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">nmf_topic_top_words</code><span class="sig-paren">(</span><em>topic_term_matrix</em>, <em>vocabulary</em>, <em>n_top_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.nmf_topic_top_words" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the top n words for each K topic, and convert results in a dictionary:
+- keys are the K topics
+- 2 values: first value is the list of top words, second value is the list of corresponding word probabilities</p>
+<ul class="simple">
+<li>topic_term_matrix: topic-term matrix extracting from <a href="#id1"><span class="problematic" id="id2">NMF.components_</span></a> or its sandardised version</li>
+<li>vocabulary : tuple of dictionary terms resulting from np.array(vectorizer.get_feature_names())</li>
+<li>n_top_words : number of top words per topic to be exracted</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.standardise_dtm_nmf">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">standardise_dtm_nmf</code><span class="sig-paren">(</span><em>nmf_doc_topic_matrix</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.standardise_dtm_nmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standardise NMF doc_topic matrix so that the topic probabilities for each doc sum to one</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.standardise_twm_nmf">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">standardise_twm_nmf</code><span class="sig-paren">(</span><em>nmf_model</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.standardise_twm_nmf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standardise NMF topic-word matrix so that word probabilities for each doc sum up to 1</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.topicmod.topictopwords_dict2df">
+<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">topictopwords_dict2df</code><span class="sig-paren">(</span><em>topic_top_words_dict</em>, <em>orig_dataset=None</em>, <em>tech=''</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.topictopwords_dict2df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the dictionary containing topics’ top words into a pandas dataframe with K*2 columns:
+- k columns containing the top n word for each kth topic
+- k columns containing the associating top-word probabilities</p>
+<p>If a dataframe for the orig_dataset parameter is provided, then a final dataframe is returned 
+with the same row dimention as the orig_dataset so that they can be merged.</p>
+<ul class="simple">
+<li>topic_top_words_dict : a dictionary with topic idx as keys, and list of top words and list of their probabilities as two values</li>
+<li>orig_dataset : original dataset containing texts used for topic modelling, one text per row</li>
+<li>tech (optional): a string specifying the topic modelling technique used to be added to column names (e.g., ‘lda’ or ‘nmf’)</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions.utils">
+<span id="nlpfunctions-utils-module"></span><h2>nlpfunctions.utils module<a class="headerlink" href="#module-nlpfunctions.utils" title="Permalink to this headline">¶</a></h2>
+<p>Created on Mon Jul  9 13:36:32 2018</p>
+<p>&#64;author: alessia</p>
+<dl class="class">
+<dt id="nlpfunctions.utils.CatToDictTransformer">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">CatToDictTransformer</code><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<p>Class for building sklearn Pipeline step. 
+This class turns columns from a pandas data frame (type Series) that
+contain caegorical variables into a list of dictionaries 
+that can be inputted into DictVectorizer().</p>
+<dl class="method">
+<dt id="nlpfunctions.utils.CatToDictTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.CatToDictTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nlpfunctions.utils.ColumnSelector">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">ColumnSelector</code><span class="sig-paren">(</span><em>columns</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<p>Class for building sklearn Pipeline step. 
+This class selects a column from a pandas data frame.</p>
+<dl class="method">
+<dt id="nlpfunctions.utils.ColumnSelector.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>df</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.ColumnSelector.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nlpfunctions.utils.DenseTransformer">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">DenseTransformer</code><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<dl class="method">
+<dt id="nlpfunctions.utils.DenseTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.DenseTransformer.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.</p>
+<p>Fits transformer to X and y with optional parameters fit_params
+and returns a transformed version of X.</p>
+<dl class="docutils">
+<dt>X <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples, n_features]</span></dt>
+<dd>Training set.</dd>
+<dt>y <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples]</span></dt>
+<dd>Target values.</dd>
+</dl>
+<dl class="docutils">
+<dt>X_new <span class="classifier-delimiter">:</span> <span class="classifier">numpy array of shape [n_samples, n_features_new]</span></dt>
+<dd>Transformed array.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.DenseTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nlpfunctions.utils.Series2ListOfStrings">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">Series2ListOfStrings</code><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<p>Class for building sklearn Pipeline step. 
+This class turns columns from a pandas data frame (type Series) that
+contain lists of string sentences into a list of strings 
+that can be inputted into CountVectorizer().</p>
+<dl class="method">
+<dt id="nlpfunctions.utils.Series2ListOfStrings.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.Series2ListOfStrings.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings.transform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.combine_2fs">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">combine_2fs</code><span class="sig-paren">(</span><em>f</em>, <em>g</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.combine_2fs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to chain two functions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.combine_functions">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">combine_functions</code><span class="sig-paren">(</span><em>*f_args</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.combine_functions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to combine an n-th number of function together.
+First to last function to apply from left to right. I.e., f, g for g(f(x))</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.combine_functions_output_series">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">combine_functions_output_series</code><span class="sig-paren">(</span><em>*f_args</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.combine_functions_output_series" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.flattenIrregularListOfLists">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">flattenIrregularListOfLists</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.flattenIrregularListOfLists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[3]]],4,[5,6]]
+Returns a flattened list generator</p>
+<p>INPUT : a ( nested) list of lists 
+OUTPUT : a flattened list generator</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2array_TextFunctionFeaturizer</code><span class="sig-paren">(</span><em>*featurizers</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<p><a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
+Takes a list of functions, calls each function with our text (X as list of strings), and 
+returns the results of all functions as a feature vector as np.array</p>
+<dl class="method">
+<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of original data, return an array of list of feature vectors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer">
+<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2list_TextFunctionFeaturizer</code><span class="sig-paren">(</span><em>*featurizers</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
+<p>Modified from:
+<a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
+Takes a list of functions, calls each function with our list of lists (X), 
+and returns the results of all functions as a feature vector as an np.array.</p>
+<dl class="method">
+<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer.fit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of lists of original data, return a list of feature vectors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.list2string">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2string</code><span class="sig-paren">(</span><em>list_of_strings</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a string from a list of strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.output_series">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">output_series</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.output_series" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.series_output">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">series_output</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.series_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator for turning the outcome of a function into a pandas.Series</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.string_to_series_out">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">string_to_series_out</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.string_to_series_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator for turning the outcome of a function into a pandas.Series
+It first checks whether the outcome is already a pandas.Series or not</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.word_tokens2string_sentences">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">word_tokens2string_sentences</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.word_tokens2string_sentences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list containing a single string of text for each word-tokenised sentence.</p>
+<ul class="simple">
+<li>list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="module-nlpfunctions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-nlpfunctions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">nlpfunctions</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Theodore Manassis & Alessia Tosi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/source/nlpfunctions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

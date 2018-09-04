@@ -129,7 +129,7 @@ The authors would like to thank in no particular order:
 
 │   ├── spellcheck
 
-│   ├── textranksummary
+│   ├── summarization
 
 │   ├── topicmod
 
