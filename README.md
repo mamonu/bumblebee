@@ -131,6 +131,6 @@ The authors would like to thank in no particular order:
 
 │   ├── textranksummary
 
-│   ├── TopicMod_functions
+│   ├── topicmod
 
 │   ├── utils

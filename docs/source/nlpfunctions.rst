@@ -7,7 +7,7 @@ Submodules
 nlpfunctions.TopicMod\_functions module
 ---------------------------------------
 
-.. automodule:: nlpfunctions.TopicMod_functions
+.. automodule:: nlpfunctions.topicmod
     :members:
     :undoc-members:
     :show-inheritance:
