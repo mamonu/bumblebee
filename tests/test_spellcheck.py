@@ -9,6 +9,8 @@ d = SpellChecker("en_UK","en_US")
 testtext='this is a gud beer'
 
 
+def test_SpellChecker():
+    assert d is not None
 
 def test_spellcheck_correct_num_errors():
     num_errors, errors = find_and_print_errors(testtext)

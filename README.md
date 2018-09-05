@@ -50,12 +50,19 @@ after downloading these packages and their assorted material (in the case of NLT
 
 ## Running the tests
 
-In order to run all the automated tests for this system after you have cloned it into your system just do:
+((you will need pytest intalled. if you dont have it the just  :  `pip install pytest pytest-cov`    )
+
+In order to run all the automated tests for this system  after you have cloned it into your system just do:
 
 ```
 cd tests
 
-pytest -v
+pytest -v   ## run all tests
+
+cd ..
+
+pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing coverage 
+
 
 ```
 
@@ -124,8 +131,6 @@ The authors would like to thank in no particular order:
 ├── nlpfunctions
 
 │   ├── basicnlp
-
-│   ├── similarities
 
 │   ├── spellcheck
 

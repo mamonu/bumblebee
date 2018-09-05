@@ -66,7 +66,7 @@ def combine_2fs(f, g):
 
 def combine_functions(*f_args):
     """
-    Function to combine an n-th number of function together.
+    Function to combine an n  number of function together.
     First to last function to apply from left to right. I.e., f, g for g(f(x))
     """
     return functools.reduce(combine_2fs, f_args, lambda x: x)
