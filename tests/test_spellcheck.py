@@ -3,7 +3,7 @@ import enchant
 import re
 from enchant.checker import SpellChecker
 from nltk import word_tokenize
-from nlpfunctions.spellcheck import infer_spaces
+from nlpfunctions.spellcheck import infer_spaces,find_and_print_errors,correct_text
 
 d = SpellChecker("en_UK","en_US")
 testtext='this is a gud beer'
@@ -11,25 +11,20 @@ testtext='this is a gud beer'
 
 
 def test_spellcheck_correct_num_errors():
-    errors=(list(set([word for word in word_tokenize(testtext) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
-    num_errors=len(errors)
+    num_errors, errors = find_and_print_errors(testtext)
+    
     assert (num_errors==1)
 
 
 def test_spellcheck_find_errors():
-    errors=(list(set([word for word in word_tokenize(testtext) if d.check(word) is False and re.match('^[a-zA-Z ]*$',word)] )))
+    num_errors, errors = find_and_print_errors(testtext)
     assert errors==['gud']
 
 
 def test_spellcheck_correct_errors():
-    d.set_text(testtext)
-    for err in d:
-        if len(err.suggest())>0: 
-            err.replace((err.suggest()[4])) 
-    final = d.get_text()
-    print(final)
+    final=correct_text(testtext)
 
-    assert final == 'this is a god beer'
+    assert final == 'this is a @@gud@@ Gus beer'
     
 
 def test_inferspaces():
