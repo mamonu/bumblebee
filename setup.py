@@ -9,7 +9,7 @@ setuptools.setup(
     author="Theodore Manassis & Alessia Tosi",
     author_email="author@example.com",
     description="A small nlp functions package",
-    install_requires=["numpy", "pandas", "nltk","wordninja","gensim"],
+    install_requires=["numpy", "pandas", "nltk","wordninja"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mamonu/textconsultations",

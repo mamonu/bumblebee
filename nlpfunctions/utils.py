@@ -72,10 +72,13 @@ def combine_functions(*f_args):
     return functools.reduce(combine_2fs, f_args, lambda x: x)
 
 
-### This one works on strings and returns a pd.Series
+### 
 
 
 def output_series(x):
+    """
+    Takes strings and returns a pd.Series
+    """
     return pd.Series(dict(outcome=x))
 
 
@@ -99,6 +102,7 @@ def word_tokens2string_sentences(list_of_lists_of_tokens):
     ----------
     - list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text
     """
+    ## TODO: To Discuss... CHANGE NAME. Can't understand the functionality for this function from name or comment or code  . is this a FlattenList kind of thing?
 
     return [" ".join(sent) for sent in list_of_lists_of_tokens]
 
