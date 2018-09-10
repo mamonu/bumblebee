@@ -69,7 +69,8 @@ pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing cove
 
 ## Built With
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50">
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+
 
 
 
@@ -79,6 +80,7 @@ pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing cove
 * [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
 * [black](https://github.com/ambv/black) - code formatter
 * [sphinx-doc](http://www.sphinx-doc.org/en/master/) - documentation framework
+* [Travis CI](https://travis-ci.org/) - Continuous Integration framework
 
 
 ## Contributing
