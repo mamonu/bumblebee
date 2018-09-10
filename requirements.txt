@@ -1,7 +1,8 @@
 nltk
 pandas
 scikit-learn 
-numpy  
+numpy
+scipy  
 pyenchant
 networkx
 textblob
