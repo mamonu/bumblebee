@@ -82,7 +82,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.basicnlp">nlpfunctions.basicnlp module</a></li>
 <li><a class="reference internal" href="#nlpfunctions-similarities-module">nlpfunctions.similarities module</a></li>
-<li><a class="reference internal" href="#module-nlpfunctions.spellcheck">nlpfunctions.spellcheck module</a></li>
+<li><a class="reference internal" href="#nlpfunctions-spellcheck-module">nlpfunctions.spellcheck module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.summarization">nlpfunctions.summarization module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.topicmod">nlpfunctions.topicmod module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.utils">nlpfunctions.utils module</a></li>
@@ -544,30 +544,14 @@ Returns a list of lists of token words, e.g. [[ ‘I’, ‘love’, ‘dogs’,
 <div class="section" id="nlpfunctions-similarities-module">
 <h2>nlpfunctions.similarities module<a class="headerlink" href="#nlpfunctions-similarities-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-nlpfunctions.spellcheck">
-<span id="nlpfunctions-spellcheck-module"></span><h2>nlpfunctions.spellcheck module<a class="headerlink" href="#module-nlpfunctions.spellcheck" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="nlpfunctions.spellcheck.correct_text">
-<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">correct_text</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.correct_text" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="nlpfunctions.spellcheck.find_and_print_errors">
-<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">find_and_print_errors</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.find_and_print_errors" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="nlpfunctions.spellcheck.infer_spaces">
-<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">infer_spaces</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.infer_spaces" title="Permalink to this definition">¶</a></dt>
-<dd><p>Probabilistically split concatenated words using NLP based on English Wikipedia uni-gram frequencies.</p>
-</dd></dl>
-
+<div class="section" id="nlpfunctions-spellcheck-module">
+<h2>nlpfunctions.spellcheck module<a class="headerlink" href="#nlpfunctions-spellcheck-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-nlpfunctions.summarization">
 <span id="nlpfunctions-summarization-module"></span><h2>nlpfunctions.summarization module<a class="headerlink" href="#module-nlpfunctions.summarization" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="nlpfunctions.summarization.extract_candidate_words">
-<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'NNS'</em>, <em>'JJR'</em>, <em>'NNPS'</em>, <em>'JJS'</em>, <em>'JJ'</em>, <em>'NN'</em>, <em>'NNP'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'NNS'</em>, <em>'NNP'</em>, <em>'NNPS'</em>, <em>'JJS'</em>, <em>'NN'</em>, <em>'JJR'</em>, <em>'JJ'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -879,7 +863,8 @@ and returns the results of all functions as a feature vector as an np.array.</p>
 <dl class="function">
 <dt id="nlpfunctions.utils.output_series">
 <code class="descclassname">nlpfunctions.utils.</code><code class="descname">output_series</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.output_series" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Takes strings and returns a pd.Series</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="nlpfunctions.utils.series_output">

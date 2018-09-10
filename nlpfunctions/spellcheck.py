@@ -7,9 +7,9 @@ from wordninja import split as wnsplit
 
 
 def infer_spaces(s):
-    """ Probabilistically split concatenated words using NLP based on English Wikipedia uni-gram frequencies. """
-    ## Ref:   https://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words
-
+    """Probabilistically split concatenated words using NLP based on 
+    English Wikipedia uni-gram frequencies. 
+    Ref:https://stackoverflow.com/questions/8870261/"""
     return " ".join(str(x) for x in wnsplit(s))
 
 

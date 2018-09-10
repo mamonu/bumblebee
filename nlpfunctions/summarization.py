@@ -2,8 +2,8 @@ from itertools import takewhile, tee
 import networkx, nltk, string, itertools
 
 
-### code 'borrowed' from http://bdewilde.github.io/blog/2014/09/23/intro-to-automatic-keyphrase-extraction/
-### and ported to py3
+# code 'borrowed' from http://bdewilde.github.io/blog/2014/09/23/intro-to-automatic-keyphrase-extraction/
+# and ported to py3
 
 
 def extract_candidate_words(
@@ -78,6 +78,10 @@ def score_keyphrases_by_textrank(text, n_keywords=0.05):
             j = i + len(kp_words)
 
     return sorted(keyphrases.items(), key=lambda x: x[1], reverse=True)
+
+
+
+
 
 
 ###

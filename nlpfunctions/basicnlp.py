@@ -10,29 +10,21 @@ Created on Fri Apr  6 17:36:22 2018
 import pandas as pd
 import numpy as np
 import string
-
 from nltk.tokenize import sent_tokenize
-
 from nltk.tokenize import word_tokenize
-
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-
-analyser = SentimentIntensityAnalyzer()
-
 from nltk.stem import WordNetLemmatizer
-
-wordnet_lemmatiser = WordNetLemmatizer()
-
 from nltk.corpus import stopwords
-
 from nltk import pos_tag
-
 from nltk.corpus import wordnet
-
 from textblob import TextBlob
-
 from nltk.sentiment.util import mark_negation
 
+
+
+
+analyser = SentimentIntensityAnalyzer()
+wordnet_lemmatiser = WordNetLemmatizer()
 
 ##############################################
 ### Function to sentence-tokenise text    ####
