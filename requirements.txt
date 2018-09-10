@@ -1,5 +1,6 @@
 nltk
-pandas 
+pandas
+scikit-learn 
 numpy  
 pyenchant
 networkx
