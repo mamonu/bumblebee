@@ -28,7 +28,7 @@ def test_spellcheck_find_errors():
 def test_spellcheck_correct_errors():
     final = correct_text(testtext1)
 
-    assert final == " this is an @@excample@@ example"
+    assert final == "this is an @@excample@@ example"
 
 
 def test_inferspaces():
