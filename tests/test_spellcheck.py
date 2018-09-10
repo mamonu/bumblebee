@@ -7,6 +7,7 @@ from nlpfunctions.spellcheck import infer_spaces, find_and_print_errors, correct
 
 d = SpellChecker("en_UK", "en_US")
 testtext = "this is a gud beer"
+testtext1 = "this is an excample"
 testtext2 = "thisfunctioncansplitconcatenatedwords"
 
 def test_SpellCheckerExists():
@@ -25,9 +26,9 @@ def test_spellcheck_find_errors():
 
 
 def test_spellcheck_correct_errors():
-    final = correct_text(testtext)
+    final = correct_text(testtext1)
 
-    assert final == "this is a @@gud@@ Gus beer"
+    assert final == " this is an @@excample@@ example"
 
 
 def test_inferspaces():
