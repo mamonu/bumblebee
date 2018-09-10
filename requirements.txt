@@ -6,3 +6,5 @@ scipy
 pyenchant
 networkx
 textblob
+hypothesis
+pytest
