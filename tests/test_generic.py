@@ -1,7 +1,6 @@
 import pytest
 import numpy as np
 from pandas import DataFrame
-import xarray
 from numpy import random as npr
 
 
@@ -13,12 +12,6 @@ def df():
 def test_pd(df):
 
     assert df is not None
-
-
-def test_xarray(df):
-
-    assert df.to_xarray() is not None
-
 
 def test_np_randomness():
     np.random.seed(54)

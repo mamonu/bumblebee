@@ -36,7 +36,7 @@ go to main directory and run
 
 ```
 pip install -r requirements.txt 
-python -m nltk.downloader all
+python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular
 
 ```
 
