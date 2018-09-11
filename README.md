@@ -2,7 +2,7 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
-![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+![travis](https://travis-ci.com/mamonu/textconsultations.svg?branch=master)
 ![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
 ![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
@@ -23,6 +23,8 @@ useful nlp functions for text mining in a package format
 
 ## Getting Started
 
+
+TODO: add when ready
 
 
 ### Prerequisites
@@ -46,7 +48,7 @@ after downloading these packages and their assorted material (in the case of NLT
 
 ### Installing
 
-
+TODO: add when ready
 
 ## Running the tests
 
@@ -65,6 +67,19 @@ pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing cove
 
 
 ```
+
+
+## Continuous Integration
+
+Continuous Integration is a software development practice where members of a team 
+ntegrate their work frequently, usually each person integrates at least daily
+leading to multiple integrations per day. Each integration is verified 
+by an automated build (including test) to detect integration errors as quickly as possible. 
+Many teams find that this approach leads to significantly reduced integration problems 
+and allows a team to develop cohesive software more rapidly.
+
+We are using Travis CI for this. <img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+
 
 
 ## Built With
