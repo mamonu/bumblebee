@@ -7,7 +7,8 @@ from nlpfunctions.utils import (
     combine_2fs,
     word_tokens2string_sentences,
     list2string,
-    flattenIrregularListOfLists
+    flattenIrregularListOfLists,
+    merge_dfs
 )
 
 
@@ -64,3 +65,11 @@ def test_flattenIrregularListOfLists():
             ]
         )
     ) == ["i","do","not","care.","i","think","that","this","is","bad","but","maybe","not.",]
+
+
+
+def test_merge_dfs():
+    assert merge_dfs(
+            pd.DataFrame({'A' : [1,2,3,4]}), 
+            pd.DataFrame({'B' : [5,6,7,8]})
+            ) == pd.DataFrame({'A' : [1,2,3,4], 'B' : [5,6,7,8]})
