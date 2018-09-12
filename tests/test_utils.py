@@ -69,7 +69,7 @@ def test_flattenIrregularListOfLists():
 
 
 def test_merge_dfs():
-    assert merge_dfs(
+    assert ((merge_dfs(
             pd.DataFrame({'A' : [1,2,3,4]}), 
             pd.DataFrame({'B' : [5,6,7,8]})
-            ).all() == pd.DataFrame({'A' : [1,2,3,4], 'B' : [5,6,7,8]}).all()
+            ) == pd.DataFrame({'A' : [1,2,3,4], 'B' : [5,6,7,8]})).all()).all()
