@@ -9,6 +9,7 @@ setuptools.setup(
     author="Theodore Manassis & Alessia Tosi",
     author_email="author@example.com",
     description="A small nlp functions package",
+    install_requires=["numpy","scipy" ,"pandas", "nltk", "textblob", "wordninja","scikit-learn","hypothesis"],
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/mamonu/textconsultations",
@@ -19,3 +20,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ),
 )
+
+

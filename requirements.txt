@@ -1,8 +1,10 @@
 nltk
-pandas 
-numpy  
-os 
-string
-math
-enchant
-re
+pandas
+scikit-learn 
+numpy
+scipy  
+pyenchant
+networkx
+textblob
+hypothesis
+pytest

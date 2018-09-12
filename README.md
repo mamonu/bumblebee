@@ -2,9 +2,10 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
-![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)
+![travis](https://travis-ci.com/mamonu/textconsultations.svg?branch=master)
 ![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
 ![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/glitchynlp.gif" align="right"
      title="nlp logo" width="178" height="178">
@@ -23,6 +24,8 @@ useful nlp functions for text mining in a package format
 ## Getting Started
 
 
+TODO: add when ready
+
 
 ### Prerequisites
 
@@ -35,7 +38,7 @@ go to main directory and run
 
 ```
 pip install -r requirements.txt 
-python -m nltk.downloader all
+python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular
 
 ```
 
@@ -45,23 +48,44 @@ after downloading these packages and their assorted material (in the case of NLT
 
 ### Installing
 
-
+TODO: add when ready
 
 ## Running the tests
 
-In order to run all the automated tests for this system after you have cloned it into your system just do:
+((you will need pytest intalled. if you dont have it the just  :  `pip install pytest pytest-cov`    )
+
+In order to run all the automated tests for this system  after you have cloned it into your system just do:
 
 ```
 cd tests
 
-pytest -v
+pytest -v   ## run all tests
+
+cd ..
+
+pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing coverage 
+
 
 ```
 
 
+## Continuous Integration
+
+Continuous Integration is a software development practice where members of a team 
+ntegrate their work frequently, usually each person integrates at least daily
+leading to multiple integrations per day. Each integration is verified 
+by an automated build (including test) to detect integration errors as quickly as possible. 
+Many teams find that this approach leads to significantly reduced integration problems 
+and allows a team to develop cohesive software more rapidly.
+
+We are using Travis CI for this. <img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+
+
+
 ## Built With
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50">
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+
 
 
 
@@ -71,6 +95,7 @@ pytest -v
 * [pytest](https://docs.pytest.org/en/latest/) - unit testing framework
 * [black](https://github.com/ambv/black) - code formatter
 * [sphinx-doc](http://www.sphinx-doc.org/en/master/) - documentation framework
+* [Travis CI](https://travis-ci.org/) - Continuous Integration framework
 
 
 ## Contributing
@@ -122,14 +147,12 @@ The authors would like to thank in no particular order:
 
 ├── nlpfunctions
 
-│   ├── basic_NLP_functions
-
-│   ├── similarities
+│   ├── basicnlp
 
 │   ├── spellcheck
 
-│   ├── textranksummary
+│   ├── summarization
 
-│   ├── TopicMod_functions
+│   ├── topicmod
 
 │   ├── utils
