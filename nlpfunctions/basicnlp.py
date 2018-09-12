@@ -43,9 +43,9 @@ def sent_tokenise(string_par):
     """
     try:
         return sent_tokenize(string_par)
-    except TypeError as e:
+    except TypeError as e:  # pragma: no cover
         return e
-    except:
+    except:  # pragma: no cover
         return []
 
 
@@ -70,10 +70,10 @@ def word_tokenise(list_of_strings):
     try:
         return [word_tokenize(sent) for sent in list_of_strings]
 
-    except TypeError as e:
+    except TypeError as e: # pragma: no cover
         return e
 
-    except:
+    except: # pragma: no cover
         return []
 
 
@@ -82,10 +82,10 @@ def to_lower(list_of_lists_of_tokens):
     try:
         return [[token.lower() for token in sent] for sent in list_of_lists_of_tokens]
 
-    except TypeError as e:
+    except TypeError as e:  # pragma: no cover
         return e
 
-    except:
+    except:  # pragma: no cover
         return []
 
 

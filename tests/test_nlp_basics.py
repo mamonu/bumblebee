@@ -99,7 +99,6 @@ def test_wordtokenise_raises_exception():
 
 
 
-
 def test_NLTK_SnowballStemmer():
     stemmer = SnowballStemmer('english')
     assert stemmer.stem("y's") == 'y'
