@@ -167,22 +167,7 @@ def lda_ranked_topics2df(lda_mod, corpus):
 # lda_ranked_topics2df(lda_mod = lda_model, corpus = bow_corpus)
 
 
-from functools import reduce
 
-
-def merge_dfs(*dfs):
-    """
-    Merge datasets on index. 
-    Note: same index must refer to the same sample across all datasets. 
-    """
-    dfs = list(dfs)
-    return reduce(
-        lambda left, right: pd.merge(left, right, left_index=True, right_index=True),
-        dfs,
-    )
-
-
-# dummy = merge_dfs(text_df, tdf, doc_ordered_topics_df, words_topics_df)
 
 
 def standardise_twm_nmf(nmf_model):
