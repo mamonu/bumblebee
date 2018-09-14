@@ -34,15 +34,22 @@ What package prerequsites you need to install the software ? See [requirements.t
 
 How to install those prerequisite packages if you need to?
 
-go to main directory and run 
+
+the spellcheck submodule uses the enchant system library.If this library is not there then pyenchant will not work.
+
+on an Ubuntu / Debian system that means that you should run on your bash shell:   `sudo apt-get install enchant`
+on a RedHat / CentOS / CDH system that means you should run on your bash shell:   `sudo yum install enchant`
+
+
+after that the fastest way to make sure you have everything would be go to main directory and run 
 
 ```
 pip install -r requirements.txt 
 python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular
-
 ```
 
-after downloading these packages and their assorted material (in the case of NLTK) everything should run smoothly 
+after downloading these packages and their assorted material (in the case of NLTK) everything should run smoothly.
+If not please open an issue here on this repo.
 
 
 
@@ -72,13 +79,13 @@ pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing cove
 ## Continuous Integration
 
 Continuous Integration is a software development practice where members of a team 
-ntegrate their work frequently, usually each person integrates at least daily
+integrate their work frequently, usually each person integrates at least daily
 leading to multiple integrations per day. Each integration is verified 
 by an automated build (including test) to detect integration errors as quickly as possible. 
 Many teams find that this approach leads to significantly reduced integration problems 
 and allows a team to develop cohesive software more rapidly.
 
-We are using Travis CI for this. <img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+We are using Travis CI for this. <img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="left" title="travis logo" width="50" height="50">
 
 
 

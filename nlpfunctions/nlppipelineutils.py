@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 12 21:22:30 2018
 
-@author: alessia
-"""
 
 ###########################################################################################
 #### Custom Transformers to apply chain of function featurizers in a sklearn pipeline #####
@@ -24,11 +20,15 @@ import itertools
 
 
 
-class list2array_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
     """
+    
     Takes a list of functions, calls each function with our text (X as list of strings), and 
     returns the results of all functions as a feature vector as np.array
-    
+
+    INPUT: list
+    OUTPUT: array
+
     Ref: https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
     
     """
@@ -48,11 +48,14 @@ class list2array_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
         return np.array(fvs)
 
 
-class list2list_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
     """
     Takes a list of functions, calls each function with our list of lists (X), 
     and returns the results of all functions as a feature vector as an np.array.
     
+    INPUT: list
+    OUTPUT: list
+
     Modified from:
     https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
     """
@@ -139,7 +142,7 @@ class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 class DenseTransformer(BaseEstimator, TransformerMixin):
     '''
     Convert a sparse matrix (e,g,, the outcome of CountVectorizer() ) into a dense matrix, 
-    required by certain classifiers in scikit-learn's Pipeline that are not comaptible with sparse matrices.
+    required by certain classifiers in scikit-learn's Pipeline that are not compatible with sparse matrices.
     
     Ref: https://stackoverflow.com/a/28384887
     

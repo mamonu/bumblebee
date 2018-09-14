@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Aug 10 08:50:47 2018
 
-@author: alessia
-"""
 
 
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
