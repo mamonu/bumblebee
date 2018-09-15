@@ -40,7 +40,10 @@ This package should be compatible with Linux/OSX systems
 the spellcheck submodule uses the enchant system library.If this library is not there then pyenchant will not work.
 
 On an Ubuntu / Debian system that means that you should run on your bash shell:   `sudo apt-get install enchant`
+
 On a RedHat / CentOS / Cloudera CDH system that means you should run on your bash shell:   `sudo yum install enchant`
+
+On OSX you need to run `brew install enchant`
 
 
 After that the fastest way to make sure you have everything would be go to main directory and run 

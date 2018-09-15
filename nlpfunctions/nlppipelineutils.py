@@ -11,7 +11,6 @@
 # http://fastml.com/converting-categorical-data-into-numbers-with-pandas-and-scikit-learn/
 
 # Custom Transformers
-
 # NOTE: BaseEstimator is included to inherit get_params() which is needed for Grid Search
 
 
@@ -25,8 +24,10 @@ class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
     Takes a list of functions, calls each function with our text (X as list of strings), and 
     returns the results of all functions as a feature vector as np.array
 
-    INPUT: list
-    OUTPUT: array
+    
+
+    INPUT: Takes a list of functions, calls each function with our text (X as list of strings)
+    OUTPUT: np.array
 
     Ref: https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
     
@@ -52,8 +53,8 @@ class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
     Takes a list of functions, calls each function with our list of lists (X), 
     and returns the results of all functions as a feature vector as an np.array.
     
-    INPUT: list
-    OUTPUT: list
+    INPUT: list of functions, calls each function with our list of lists (X)
+    OUTPUT: np.array
 
     Modified from:
     https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
@@ -113,7 +114,6 @@ class CatToDictTransformer(BaseEstimator, TransformerMixin):
         Xcols_df = pd.DataFrame(X)
         Xcols_dict = Xcols_df.to_dict(orient="records")
         return Xcols_dict
-
 
 
 class Series2ListOfStrings(BaseEstimator, TransformerMixin):

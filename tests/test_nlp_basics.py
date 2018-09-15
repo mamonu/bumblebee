@@ -13,8 +13,6 @@ from nlpfunctions.basicnlp import (
     to_lower
 )
 from nlpfunctions.utils import *
-from hypothesis import given
-from hypothesis.strategies import text
 import numpy as np
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import TweetTokenizer
@@ -25,17 +23,18 @@ from nltk.stem import WordNetLemmatizer
 import pytest 
 
 
+def test_wordtokenise_has_output():
+    assert word_tokenise("In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables.") is not None
+
+
 def test_basics_sent_tok_hasoutput():
 
     assert sent_tokenise("this is the end. my only friend. the end") is not None
 
 
-
-
 def test_basics_sent_tok_exception():
         with pytest.raises(TypeError):
             sent_tokenise(True,2)
-
 
 
 def test_basics_sent_tok_correct():
@@ -85,11 +84,6 @@ def test_basics_sent_tok_and_TB_in_pipeline():
         )
         == 0.525
     )
-
-
-@given(text())
-def test_wordtokenise_has_output(s):
-    assert word_tokenise(s) is not None
 
 
 
