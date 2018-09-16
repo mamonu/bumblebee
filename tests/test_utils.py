@@ -8,7 +8,7 @@ from nlpfunctions.utils import (
     word_tokens2string_sentences,
     list2string,
     flattenIrregularListOfLists,
-    merge_dfs
+    merge_dfs,
 )
 
 
@@ -53,7 +53,10 @@ def test_word_tokens2string_sentences():
 
 
 def test_list2string():
-    assert list2string( ["i", "think", "that", "this", "is", "bad", "but", "maybe", "not."]) == "i think that this is bad but maybe not."
+    assert (
+        list2string(["i", "think", "that", "this", "is", "bad", "but", "maybe", "not."])
+        == "i think that this is bad but maybe not."
+    )
 
 
 def test_flattenIrregularListOfLists():
@@ -64,12 +67,29 @@ def test_flattenIrregularListOfLists():
                 ["i", "think", "that", "this", "is", "bad", "but", "maybe", "not."],
             ]
         )
-    ) == ["i","do","not","care.","i","think","that","this","is","bad","but","maybe","not.",]
-
+    ) == [
+        "i",
+        "do",
+        "not",
+        "care.",
+        "i",
+        "think",
+        "that",
+        "this",
+        "is",
+        "bad",
+        "but",
+        "maybe",
+        "not.",
+    ]
 
 
 def test_merge_dfs():
-    assert ((merge_dfs(
-            pd.DataFrame({'A' : [1,2,3,4]}), 
-            pd.DataFrame({'B' : [5,6,7,8]})
-            ) == pd.DataFrame({'A' : [1,2,3,4], 'B' : [5,6,7,8]})).all()).all()
+    assert (
+        (
+            merge_dfs(
+                pd.DataFrame({"A": [1, 2, 3, 4]}), pd.DataFrame({"B": [5, 6, 7, 8]})
+            )
+            == pd.DataFrame({"A": [1, 2, 3, 4], "B": [5, 6, 7, 8]})
+        ).all()
+    ).all()

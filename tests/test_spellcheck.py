@@ -10,6 +10,7 @@ testtext = "this is a gud beer"
 testtext1 = "this is an excample"
 testtext2 = "thisfunctioncansplitconcatenatedwords"
 
+
 def test_SpellCheckerExists():
     assert d is not None
 
@@ -37,8 +38,6 @@ def test_inferspaces():
     assert infer_spaces(textstucktogether) == " ".join(str(x) for x in textwithspaces)
 
 
-
 def test_spellcheck_use_inferspaces():
     final = correct_text(testtext2)
-    assert final == '**this function can split concatenated words**'
-
+    assert final == "**this function can split concatenated words**"

@@ -2,8 +2,7 @@
 import string
 
 
-
-def string_matching_knuth_morris_pratt(text='', pattern=''):
+def string_matching_knuth_morris_pratt(text="", pattern=""):
     """Returns positions where pattern is found in text
        Ref: https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm
        based on  Knuth, D. E., Morris, Jr, J. H., & Pratt, V. R. (1977),
@@ -39,7 +38,7 @@ def string_matching_knuth_morris_pratt(text='', pattern=''):
             q = q + 1
         if q == m:
             offsets.append(i - m + 1)
-            q = pi[q-1]
+            q = pi[q - 1]
 
     return offsets
 
@@ -51,7 +50,7 @@ def kmp_prefix_function(p):
     pi = [0] * m
     k = 0
     for q in range(1, m):
-        while k > 0 and p[k] != p[q]:  # pragma: no cover 
+        while k > 0 and p[k] != p[q]:  # pragma: no cover
             k = pi[k - 1]
         if p[k] == p[q]:
             k = k + 1
@@ -59,19 +58,19 @@ def kmp_prefix_function(p):
     return pi
 
 
-def firstoccurence(text='', pattern=''):  # pragma: no cover
+def firstoccurence(text="", pattern=""):  # pragma: no cover
     # this function is needed for feature engineering on ML text data sometimes
-    occurence = string_matching_knuth_morris_pratt(text,pattern)
+    occurence = string_matching_knuth_morris_pratt(text, pattern)
     if occurence == []:
         out = -5000
     else:
         out = occurence[0]
-    return out 
+    return out
 
 
-def lastoccurence(text='', pattern=''):  # pragma: no cover
+def lastoccurence(text="", pattern=""):  # pragma: no cover
     # this function is needed for feature engineering on ML text data sometimes
-    occurence = string_matching_knuth_morris_pratt(text,pattern)
+    occurence = string_matching_knuth_morris_pratt(text, pattern)
     if occurence == []:
         out = -5000
     else:

@@ -2,14 +2,11 @@
 # -*- coding: utf-8 -*-
 
 
-
 import pandas as pd
 import numpy as np
 import functools
 import collections
 from functools import reduce, wraps
-
-
 
 
 ##############################################################################
@@ -31,7 +28,6 @@ def series_output(func):
 
 
 # option 2: it does not assumes the original function's ouput is not a pd.Series
-
 
 
 def string_to_series_out(func):
@@ -71,7 +67,7 @@ def combine_functions(*f_args):
     return functools.reduce(combine_2fs, f_args, lambda x: x)
 
 
-### 
+###
 
 
 def output_series(x):
@@ -124,8 +120,6 @@ def list2string(list_of_strings):
 #####################################################
 
 
-
-
 def flattenIrregularListOfLists(l):
     """ 
     Function to flatten a list of lists that is nested /irregular  eg  [1,2,[],[[3]]],4,[5,6]]
@@ -145,8 +139,6 @@ def flattenIrregularListOfLists(l):
             yield el
 
 
-
-
 def merge_dfs(*dfs):
     """
     Merge datasets on index. 
@@ -157,10 +149,6 @@ def merge_dfs(*dfs):
         lambda left, right: pd.merge(left, right, left_index=True, right_index=True),
         dfs,
     )
-
-
-
-
 
 
 ### examples

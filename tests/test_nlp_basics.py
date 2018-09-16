@@ -10,7 +10,7 @@ from nlpfunctions.basicnlp import (
     remove_punctuation,
     remove_objective_sents,
     break_compound_words,
-    to_lower
+    to_lower,
 )
 from nlpfunctions.utils import *
 import numpy as np
@@ -20,11 +20,16 @@ from sklearn.dummy import DummyClassifier, DummyRegressor
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_raises
 from nltk.stem import WordNetLemmatizer
-import pytest 
+import pytest
 
 
 def test_wordtokenise_has_output():
-    assert word_tokenise("In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables.") is not None
+    assert (
+        word_tokenise(
+            "In statistical modeling, regression analysis is a set of statistical processes for estimating the relationships among variables."
+        )
+        is not None
+    )
 
 
 def test_basics_sent_tok_hasoutput():
@@ -33,8 +38,8 @@ def test_basics_sent_tok_hasoutput():
 
 
 def test_basics_sent_tok_exception():
-        with pytest.raises(TypeError):
-            sent_tokenise(True,2)
+    with pytest.raises(TypeError):
+        sent_tokenise(True, 2)
 
 
 def test_basics_sent_tok_correct():
@@ -86,57 +91,78 @@ def test_basics_sent_tok_and_TB_in_pipeline():
     )
 
 
-
 def test_wordtokenise_raises_exception():
-        with pytest.raises(TypeError):
-            word_tokenise(True,2)
-
+    with pytest.raises(TypeError):
+        word_tokenise(True, 2)
 
 
 def test_NLTK_SnowballStemmer():
-    stemmer = SnowballStemmer('english')
-    assert stemmer.stem("y's") == 'y'
+    stemmer = SnowballStemmer("english")
+    assert stemmer.stem("y's") == "y"
 
 
 def test_NLTK_tweet_tokenizer():
-        """
+    """
         Test TweetTokenizer using words with special and accented characters.
         """
-        tokenizer = TweetTokenizer(strip_handles=True, reduce_len=True)
-        s9 = "@myke: Let's test these words: resumé España München français"
-        tokens = tokenizer.tokenize(s9)
-        expected = [':', "Let's", 'test', 'these', 'words', ':', 'resumé',
-                    'España', 'München', 'français']
-        assert tokens == expected
+    tokenizer = TweetTokenizer(strip_handles=True, reduce_len=True)
+    s9 = "@myke: Let's test these words: resumé España München français"
+    tokens = tokenizer.tokenize(s9)
+    expected = [
+        ":",
+        "Let's",
+        "test",
+        "these",
+        "words",
+        ":",
+        "resumé",
+        "España",
+        "München",
+        "français",
+    ]
+    assert tokens == expected
 
 
 def test_remove_stopwords():
 
-        wish = "And did they get you to trade Your heros for ghosts? Hot ashes for trees? Hot air for a cool breeze?" 
-        wishtokens_sw_removed = remove_stopwords(word_tokenise(sent_tokenise(wish)))
-        assert wishtokens_sw_removed == [['And', 'get', 'trade', 'Your', 'heros', 'ghosts', '?'],['Hot', 'ashes', 'trees', '?'],['Hot', 'air', 'cool', 'breeze', '?']]
+    wish = "And did they get you to trade Your heros for ghosts? Hot ashes for trees? Hot air for a cool breeze?"
+    wishtokens_sw_removed = remove_stopwords(word_tokenise(sent_tokenise(wish)))
+    assert wishtokens_sw_removed == [
+        ["And", "get", "trade", "Your", "heros", "ghosts", "?"],
+        ["Hot", "ashes", "trees", "?"],
+        ["Hot", "air", "cool", "breeze", "?"],
+    ]
 
 
 def test_remove_punctuation():
-    assert remove_punctuation(["And did they get you to trade Your heros for ghosts?"])==['And did they get you to trade Your heros for ghosts']
+    assert remove_punctuation(
+        ["And did they get you to trade Your heros for ghosts?"]
+    ) == ["And did they get you to trade Your heros for ghosts"]
 
 
 def test_to_lower():
-    assert to_lower([["CRYPTANALYST"]]) == [['cryptanalyst']]
+    assert to_lower([["CRYPTANALYST"]]) == [["cryptanalyst"]]
 
 
 def test_break_compound_words():
-    assert break_compound_words([["industry-standard"]]) == [['industry', 'standard']]
+    assert break_compound_words([["industry-standard"]]) == [["industry", "standard"]]
 
 
 def test_no_break_non_compound_words():
-    assert break_compound_words([["industry standard"]]) == [['industry standard']]
+    assert break_compound_words([["industry standard"]]) == [["industry standard"]]
 
 
 def test_get_subjectivity():
-    assert [0.0, 0.8500000000000001, 0.75] == get_subjectivity(["And did they get you to trade Your heros for ghosts?", "Hot ashes for trees?", "Hot air for a cool breeze?"])
+    assert [0.0, 0.8500000000000001, 0.75] == get_subjectivity(
+        [
+            "And did they get you to trade Your heros for ghosts?",
+            "Hot ashes for trees?",
+            "Hot air for a cool breeze?",
+        ]
+    )
+
 
 def test_remove_objective_sents():
-    assert remove_objective_sents(["And did they get you to trade Your heros for ghosts?", "Hot ashes for trees?"]) == ['Hot ashes for trees?']
-
-
+    assert remove_objective_sents(
+        ["And did they get you to trade Your heros for ghosts?", "Hot ashes for trees?"]
+    ) == ["Hot ashes for trees?"]

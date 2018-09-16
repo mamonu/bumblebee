@@ -13,6 +13,7 @@ def test_pd(df):
 
     assert df is not None
 
+
 def test_np_randomness():
     np.random.seed(54)
     rand_ints_one = npr.randint(500, size=50)

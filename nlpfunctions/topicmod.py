@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
 
     """ 
@@ -161,9 +160,6 @@ def lda_ranked_topics2df(lda_mod, corpus):
 
 
 # lda_ranked_topics2df(lda_mod = lda_model, corpus = bow_corpus)
-
-
-
 
 
 def standardise_twm_nmf(nmf_model):

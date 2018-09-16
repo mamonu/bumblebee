@@ -9,7 +9,6 @@ script:
 - pytest -v 
 before_install:
   - sudo apt-get install -y enchant 
-  - pip install pytest-sugar
 addons:
   apt:
     update: true

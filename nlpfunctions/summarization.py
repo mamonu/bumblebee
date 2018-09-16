@@ -80,10 +80,6 @@ def score_keyphrases_by_textrank(text, n_keywords=0.05):
     return sorted(keyphrases.items(), key=lambda x: x[1], reverse=True)
 
 
-
-
-
-
 ###
 """
 ##call score_keyphrases_by_textrank like below:

@@ -139,14 +139,14 @@ class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 
 
 class DenseTransformer(BaseEstimator, TransformerMixin):
-    '''
+    """
     Convert a sparse matrix (e,g,, the outcome of CountVectorizer() ) into a dense matrix, 
     required by certain classifiers in scikit-learn's Pipeline that are not compatible with sparse matrices.
     
     Ref: https://stackoverflow.com/a/28384887
     
-    '''
-    
+    """
+
     def transform(self, X, y=None, **fit_params):
         return X.todense()
 
@@ -156,4 +156,3 @@ class DenseTransformer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None, **fit_params):
         return self
-

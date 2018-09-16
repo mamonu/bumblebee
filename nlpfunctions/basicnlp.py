@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-
 import pandas as pd
 import numpy as np
 import string
@@ -15,8 +14,6 @@ from nltk import pos_tag
 from nltk.corpus import wordnet
 from textblob import TextBlob
 from nltk.sentiment.util import mark_negation
-
-
 
 
 analyser = SentimentIntensityAnalyzer()
@@ -66,10 +63,10 @@ def word_tokenise(list_of_strings):
     try:
         return [word_tokenize(sent) for sent in list_of_strings]
 
-    except TypeError as e: # pragma: no cover
+    except TypeError as e:  # pragma: no cover
         return e
 
-    except: # pragma: no cover
+    except:  # pragma: no cover
         return []
 
 
