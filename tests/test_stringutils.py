@@ -1,8 +1,9 @@
 import pytest
 from nlpfunctions.stringutils import (
-    string_matching_knuth_morris_pratt, 
+    string_matching_knuth_morris_pratt,
     kmp_prefix_function,
-    firstoccurence)
+    firstoccurence,
+    lastoccurence)
 
 
 
@@ -34,3 +35,9 @@ def test_nofirstoccurence():
     haystack = 'ababbababa'
     needle = 'omg'
     assert firstoccurence(haystack, needle) == -5000
+
+
+def test_lastoccurence():
+    haystack = 'ababbababa'
+    needle = 'aba'
+    assert lastoccurence(haystack, needle) == 7
