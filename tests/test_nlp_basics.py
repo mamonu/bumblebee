@@ -140,10 +140,3 @@ def test_remove_objective_sents():
     assert remove_objective_sents(["And did they get you to trade Your heros for ghosts?", "Hot ashes for trees?"]) == ['Hot ashes for trees?']
 
 
-def test_scikitlearn_classifier_exceptions():
-    clf = DummyClassifier(strategy="The Ramones") ### :)
-    assert_raises(ValueError, clf.fit, [], [])
-    assert_raises(ValueError, clf.predict, [])
-    assert_raises(ValueError, clf.predict_proba, [])
-
-

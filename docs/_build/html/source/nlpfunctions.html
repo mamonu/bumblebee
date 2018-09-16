@@ -82,7 +82,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.basicnlp">nlpfunctions.basicnlp module</a></li>
 <li><a class="reference internal" href="#nlpfunctions-similarities-module">nlpfunctions.similarities module</a></li>
-<li><a class="reference internal" href="#nlpfunctions-spellcheck-module">nlpfunctions.spellcheck module</a></li>
+<li><a class="reference internal" href="#module-nlpfunctions.spellcheck">nlpfunctions.spellcheck module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.summarization">nlpfunctions.summarization module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.topicmod">nlpfunctions.topicmod module</a></li>
 <li><a class="reference internal" href="#module-nlpfunctions.utils">nlpfunctions.utils module</a></li>
@@ -160,8 +160,6 @@
 </div>
 <div class="section" id="module-nlpfunctions.basicnlp">
 <span id="nlpfunctions-basicnlp-module"></span><h2>nlpfunctions.basicnlp module<a class="headerlink" href="#module-nlpfunctions.basicnlp" title="Permalink to this headline">¶</a></h2>
-<p>Created on Fri Apr  6 17:36:22 2018</p>
-<p>&#64;author: alessia</p>
 <dl class="function">
 <dt id="nlpfunctions.basicnlp.POS_tagging">
 <code class="descclassname">nlpfunctions.basicnlp.</code><code class="descname">POS_tagging</code><span class="sig-paren">(</span><em>list_of_lists_of_tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.basicnlp.POS_tagging" title="Permalink to this definition">¶</a></dt>
@@ -544,14 +542,32 @@ Returns a list of lists of token words, e.g. [[ ‘I’, ‘love’, ‘dogs’,
 <div class="section" id="nlpfunctions-similarities-module">
 <h2>nlpfunctions.similarities module<a class="headerlink" href="#nlpfunctions-similarities-module" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="nlpfunctions-spellcheck-module">
-<h2>nlpfunctions.spellcheck module<a class="headerlink" href="#nlpfunctions-spellcheck-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-nlpfunctions.spellcheck">
+<span id="nlpfunctions-spellcheck-module"></span><h2>nlpfunctions.spellcheck module<a class="headerlink" href="#module-nlpfunctions.spellcheck" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.correct_text">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">correct_text</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.correct_text" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.find_and_print_errors">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">find_and_print_errors</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.find_and_print_errors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.spellcheck.infer_spaces">
+<code class="descclassname">nlpfunctions.spellcheck.</code><code class="descname">infer_spaces</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.spellcheck.infer_spaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probabilistically split concatenated words using NLP based on
+English Wikipedia uni-gram frequencies.
+Ref:https://stackoverflow.com/questions/8870261/</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-nlpfunctions.summarization">
 <span id="nlpfunctions-summarization-module"></span><h2>nlpfunctions.summarization module<a class="headerlink" href="#module-nlpfunctions.summarization" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="nlpfunctions.summarization.extract_candidate_words">
-<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'NNS'</em>, <em>'NNP'</em>, <em>'NNPS'</em>, <em>'JJS'</em>, <em>'NN'</em>, <em>'JJR'</em>, <em>'JJ'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">nlpfunctions.summarization.</code><code class="descname">extract_candidate_words</code><span class="sig-paren">(</span><em>text</em>, <em>good_tags={'NN'</em>, <em>'NNPS'</em>, <em>'JJR'</em>, <em>'NNP'</em>, <em>'JJ'</em>, <em>'NNS'</em>, <em>'JJS'}</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.summarization.extract_candidate_words" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -562,8 +578,6 @@ Returns a list of lists of token words, e.g. [[ ‘I’, ‘love’, ‘dogs’,
 </div>
 <div class="section" id="module-nlpfunctions.topicmod">
 <span id="nlpfunctions-topicmod-module"></span><h2>nlpfunctions.topicmod module<a class="headerlink" href="#module-nlpfunctions.topicmod" title="Permalink to this headline">¶</a></h2>
-<p>Created on Fri Aug 10 08:50:47 2018</p>
-<p>&#64;author: alessia</p>
 <dl class="function">
 <dt id="nlpfunctions.topicmod.lda_dtm2df">
 <code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">lda_dtm2df</code><span class="sig-paren">(</span><em>lda_doc_topic_matrix</em>, <em>num_topics</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.lda_dtm2df" title="Permalink to this definition">¶</a></dt>
@@ -597,13 +611,6 @@ column “ranked_topics_ps_lda” contains the tuple of associated topics’ pro
 - 2 values: first value is the list of top words, second value is the list of corresponding word probabilities</p>
 <p>lda mod : gensim lda model
 n_top_words : number of top words per topic to be exracted</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="nlpfunctions.topicmod.merge_dfs">
-<code class="descclassname">nlpfunctions.topicmod.</code><code class="descname">merge_dfs</code><span class="sig-paren">(</span><em>*dfs</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.topicmod.merge_dfs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge datasets on index.
-Note: same index must refer to the same sample across all datasets.</p>
 </dd></dl>
 
 <dl class="function">
@@ -674,108 +681,6 @@ with the same row dimention as the orig_dataset so that they can be merged.</p>
 </div>
 <div class="section" id="module-nlpfunctions.utils">
 <span id="nlpfunctions-utils-module"></span><h2>nlpfunctions.utils module<a class="headerlink" href="#module-nlpfunctions.utils" title="Permalink to this headline">¶</a></h2>
-<p>Created on Mon Jul  9 13:36:32 2018</p>
-<p>&#64;author: alessia</p>
-<dl class="class">
-<dt id="nlpfunctions.utils.CatToDictTransformer">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">CatToDictTransformer</code><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step.
-This class turns columns from a pandas data frame (type Series) that
-contain caegorical variables into a list of dictionaries
-that can be inputted into DictVectorizer().</p>
-<dl class="method">
-<dt id="nlpfunctions.utils.CatToDictTransformer.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.CatToDictTransformer.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.CatToDictTransformer.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="nlpfunctions.utils.ColumnSelector">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">ColumnSelector</code><span class="sig-paren">(</span><em>columns</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step.
-This class selects a column from a pandas data frame.</p>
-<dl class="method">
-<dt id="nlpfunctions.utils.ColumnSelector.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>df</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.ColumnSelector.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.ColumnSelector.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="nlpfunctions.utils.DenseTransformer">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">DenseTransformer</code><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<dl class="method">
-<dt id="nlpfunctions.utils.DenseTransformer.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.DenseTransformer.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit to data, then transform it.</p>
-<p>Fits transformer to X and y with optional parameters fit_params
-and returns a transformed version of X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>numpy array of shape [n_samples, n_features]</em>) – Training set.</li>
-<li><strong>y</strong> (<em>numpy array of shape [n_samples]</em>) – Target values.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_new</strong> – Transformed array.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">numpy array of shape [n_samples, n_features_new]</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.DenseTransformer.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.DenseTransformer.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="nlpfunctions.utils.Series2ListOfStrings">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">Series2ListOfStrings</code><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Class for building sklearn Pipeline step.
-This class turns columns from a pandas data frame (type Series) that
-contain lists of string sentences into a list of strings
-that can be inputted into CountVectorizer().</p>
-<dl class="method">
-<dt id="nlpfunctions.utils.Series2ListOfStrings.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.Series2ListOfStrings.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.Series2ListOfStrings.transform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="function">
 <dt id="nlpfunctions.utils.combine_2fs">
 <code class="descclassname">nlpfunctions.utils.</code><code class="descname">combine_2fs</code><span class="sig-paren">(</span><em>f</em>, <em>g</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.combine_2fs" title="Permalink to this definition">¶</a></dt>
@@ -813,51 +718,17 @@ Returns a flattened list generator</p>
 </table>
 </dd></dl>
 
-<dl class="class">
-<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2array_TextFunctionFeaturizer</code><span class="sig-paren">(</span><em>*featurizers</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p><a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
-Takes a list of functions, calls each function with our text (X as list of strings), and
-returns the results of all functions as a feature vector as np.array</p>
-<dl class="method">
-<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.list2array_TextFunctionFeaturizer.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2array_TextFunctionFeaturizer.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a list of original data, return an array of list of feature vectors.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer">
-<em class="property">class </em><code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2list_TextFunctionFeaturizer</code><span class="sig-paren">(</span><em>*featurizers</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.base.TransformerMixin</span></code></p>
-<p>Modified from:
-<a class="reference external" href="https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/">https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/</a>
-Takes a list of functions, calls each function with our list of lists (X),
-and returns the results of all functions as a feature vector as an np.array.</p>
-<dl class="method">
-<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer.fit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="nlpfunctions.utils.list2list_TextFunctionFeaturizer.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2list_TextFunctionFeaturizer.transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a list of lists of original data, return a list of feature vectors.</p>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="function">
 <dt id="nlpfunctions.utils.list2string">
 <code class="descclassname">nlpfunctions.utils.</code><code class="descname">list2string</code><span class="sig-paren">(</span><em>list_of_strings</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.list2string" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a string from a list of strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="nlpfunctions.utils.merge_dfs">
+<code class="descclassname">nlpfunctions.utils.</code><code class="descname">merge_dfs</code><span class="sig-paren">(</span><em>*dfs</em><span class="sig-paren">)</span><a class="headerlink" href="#nlpfunctions.utils.merge_dfs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge datasets on index.
+Note: same index must refer to the same sample across all datasets.</p>
 </dd></dl>
 
 <dl class="function">
