@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Aug 10 08:50:47 2018
-
-@author: alessia
-"""
 
 
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
@@ -165,9 +160,6 @@ def lda_ranked_topics2df(lda_mod, corpus):
 
 
 # lda_ranked_topics2df(lda_mod = lda_model, corpus = bow_corpus)
-
-
-
 
 
 def standardise_twm_nmf(nmf_model):

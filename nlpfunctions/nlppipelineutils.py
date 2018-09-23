@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Wed Sep 12 21:22:30 2018
 
-@author: alessia
-"""
 
 ###########################################################################################
 #### Custom Transformers to apply chain of function featurizers in a sklearn pipeline #####
@@ -15,7 +11,6 @@ Created on Wed Sep 12 21:22:30 2018
 # http://fastml.com/converting-categorical-data-into-numbers-with-pandas-and-scikit-learn/
 
 # Custom Transformers
-
 # NOTE: BaseEstimator is included to inherit get_params() which is needed for Grid Search
 
 
@@ -23,12 +18,17 @@ from sklearn.base import BaseEstimator, TransformerMixin
 import itertools
 
 
-
-class list2array_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
     """
+    
     Takes a list of functions, calls each function with our text (X as list of strings), and 
     returns the results of all functions as a feature vector as np.array
+
     
+
+    INPUT: Takes a list of functions, calls each function with our text (X as list of strings)
+    OUTPUT: np.array
+
     Ref: https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
     
     """
@@ -48,11 +48,14 @@ class list2array_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
         return np.array(fvs)
 
 
-class list2list_TextFunctionFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
     """
     Takes a list of functions, calls each function with our list of lists (X), 
     and returns the results of all functions as a feature vector as an np.array.
     
+    INPUT: list of functions, calls each function with our list of lists (X)
+    OUTPUT: np.array
+
     Modified from:
     https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
     """
@@ -113,7 +116,6 @@ class CatToDictTransformer(BaseEstimator, TransformerMixin):
         return Xcols_dict
 
 
-
 class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 
     """
@@ -137,14 +139,14 @@ class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 
 
 class DenseTransformer(BaseEstimator, TransformerMixin):
-    '''
+    """
     Convert a sparse matrix (e,g,, the outcome of CountVectorizer() ) into a dense matrix, 
-    required by certain classifiers in scikit-learn's Pipeline that are not comaptible with sparse matrices.
+    required by certain classifiers in scikit-learn's Pipeline that are not compatible with sparse matrices.
     
     Ref: https://stackoverflow.com/a/28384887
     
-    '''
-    
+    """
+
     def transform(self, X, y=None, **fit_params):
         return X.todense()
 
@@ -154,4 +156,3 @@ class DenseTransformer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None, **fit_params):
         return self
-
