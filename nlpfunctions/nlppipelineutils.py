@@ -17,6 +17,7 @@
 from sklearn.base import BaseEstimator, TransformerMixin
 import itertools
 import numpy as np
+import pandas as pd
 
 
 class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
