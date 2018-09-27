@@ -20,12 +20,15 @@ import numpy as np
 import pandas as pd
 
 
-class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineArrayFeaturizer(TransformerMixin):
     """
     
-    Takes a list of functions, calls each function with our text (X as list of strings), and 
-    returns the results of all functions as a feature vector as np.array
+    A function Transformer that takes a list of functions, calls each function with 
+    our text (X as list of strings), and returns the results of all functions as a feature vector as np.array
 
+    Note: BaseEstimator is not a parent class of this Transformer which means that get_params and 
+    set_params  are no inherited. The input functions (*featurizers) cannot contain parameters to 
+    be injected during cross validation.
     
 
     INPUT: Takes a list of functions, calls each function with our text (X as list of strings)
@@ -50,10 +53,14 @@ class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
         return np.array(fvs)
 
 
-class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
+class TextPipelineListFeaturizer(TransformerMixin):
     """
     Takes a list of functions, calls each function with our list of lists (X), 
     and returns the results of all functions as a feature vector as an np.array.
+    
+    Note: BaseEstimator is not a parent class of this Transformer which means that get_params and 
+    set_params  are no inherited. The input functions (*featurizers) cannot contain parameters to 
+    be injected during cross validation.
     
     INPUT: list of functions, calls each function with our list of lists (X)
     OUTPUT: np.array
