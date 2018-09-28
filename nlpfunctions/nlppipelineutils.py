@@ -58,7 +58,7 @@ class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
         for datum in X:
             fv = [f(datum) for f in featurizers if f is not None]
             fvs.append(fv)
-        return np.array(fvs)
+        return np.array(fvs).astype(float)
 
 
 class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
@@ -98,7 +98,7 @@ class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
         for datum in X:
             [fv] = [f(datum) for f in featurizers if f is not None]
             fvs.append(fv)
-        return np.array(fvs)
+        return np.array(fvs).astype(float)
 
 
 class ColumnSelector(BaseEstimator, TransformerMixin):
