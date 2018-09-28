@@ -20,66 +20,83 @@ import numpy as np
 import pandas as pd
 
 
-class TextPipelineArrayFeaturizer(TransformerMixin):
+class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
     """
-    
-    A function Transformer that takes a list of functions, calls each function with 
+    A function Transformer that takes a list of (maximum 10) functions, calls each function with 
     our text (X as list of strings), and returns the results of all functions as a feature vector as np.array
 
-    Note: BaseEstimator is not a parent class of this Transformer which means that get_params and 
-    set_params  are no inherited. The input functions (*featurizers) cannot contain parameters to 
-    be injected during cross validation.
-    
-
-    INPUT: Takes a list of functions, calls each function with our text (X as list of strings)
+    INPUT: Takes a list of maximum 10 functions, calls each function with our text (X as list of strings)
     OUTPUT: np.array
-
-    Ref: https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
+    
+    Modified from https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
+    to make it compataible with BaseEstimator and GridSearch.
     
     """
 
-    def __init__(self, *featurizers):
-        self.featurizers = featurizers
-
+    def __init__(self, featurizer1 = None, featurizer2 = None, featurizer3 = None, 
+                 featurizer4 = None, featurizer5 = None, featurizer6 = None, featurizer7 = None, 
+                 featurizer8 = None, featurizer9 = None, featurizer10 = None):
+        self.featurizer1 = featurizer1 
+        self.featurizer2 = featurizer2
+        self.featurizer3 = featurizer3 
+        self.featurizer4 = featurizer4
+        self.featurizer5 = featurizer5
+        self.featurizer6 = featurizer6 
+        self.featurizer7 = featurizer7
+        self.featurizer8 = featurizer8
+        self.featurizer9 = featurizer9
+        self.featurizer10 = featurizer10
+    
     def fit(self, X, y=None):
         return self
 
     def transform(self, X):
         """Given a list of original data, return an array of list of feature vectors."""
+        featurizers = [self.featurizer1, self.featurizer2, self.featurizer3, self.featurizer4, self.featurizer5,
+                      self.featurizer6, self.featurizer7, self.featurizer8, self.featurizer9, self.featurizer10]
         fvs = []
         for datum in X:
-            fv = [f(datum) for f in self.featurizers]
+            fv = [f(datum) for f in featurizers if f is not None]
             fvs.append(fv)
         return np.array(fvs)
 
 
-class TextPipelineListFeaturizer(TransformerMixin):
+class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
     """
-    Takes a list of functions, calls each function with our list of lists (X), 
-    and returns the results of all functions as a feature vector as an np.array.
-    
-    Note: BaseEstimator is not a parent class of this Transformer which means that get_params and 
-    set_params  are no inherited. The input functions (*featurizers) cannot contain parameters to 
-    be injected during cross validation.
-    
-    INPUT: list of functions, calls each function with our list of lists (X)
+    A function Transformer that takes a list of (maximum 10) functions, calls each function with 
+    our list of lists (X) of texts, and returns the results of all functions as a feature vector as np.array
+
+    INPUT: List of maximum 10 functions, calls each function with our text (X as list of lists of strings)
     OUTPUT: np.array
-
-    Modified from:
-    https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
+    
+    Modified from https://dreisbach.us/articles/building-scikit-learn-compatible-transformers/
+    and made compataible with BaseEstimator and GridSearch.
     """
 
-    def __init__(self, *featurizers):
-        self.featurizers = featurizers
+    def __init__(self, featurizer1 = None, featurizer2 = None, featurizer3 = None, 
+                 featurizer4 = None, featurizer5 = None, featurizer6 = None, featurizer7 = None, 
+                 featurizer8 = None, featurizer9 = None, featurizer10 = None):
+        self.featurizer1 = featurizer1 
+        self.featurizer2 = featurizer2
+        self.featurizer3 = featurizer3 
+        self.featurizer4 = featurizer4
+        self.featurizer5 = featurizer5
+        self.featurizer6 = featurizer6 
+        self.featurizer7 = featurizer7
+        self.featurizer8 = featurizer8
+        self.featurizer9 = featurizer9
+        self.featurizer10 = featurizer10
 
     def fit(self, X, y=None):
         return self
 
     def transform(self, X):
         """Given a list of lists of original data, return a list of feature vectors."""
+        featurizers = [self.featurizer1, self.featurizer2, self.featurizer3, self.featurizer4, self.featurizer5,
+                      self.featurizer6, self.featurizer7, self.featurizer8, self.featurizer9, self.featurizer10]
         fvs = []
         for datum in X:
-            [fv] = [f(datum) for f in self.featurizers]
+            [fv] = [f(datum) for f in featurizers if f is not None]
             fvs.append(fv)
         return np.array(fvs)
 
