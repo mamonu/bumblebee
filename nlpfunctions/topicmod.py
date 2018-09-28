@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import pandas as pd
+
 
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
 
