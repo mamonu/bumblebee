@@ -142,6 +142,25 @@ class CatToDictTransformer(BaseEstimator, TransformerMixin):
         return Xcols_dict
 
 
+class ClipTextTransformer(BaseEstimator, TransformerMixin):
+    """ Selecting only first n characters of a string in a pandas dataframe column... 
+        as a sklearn Transformer 
+        TODO: add logic if first n chars number is larger than string itself
+        
+        """
+    def __init__(self, n):
+        self.n = n
+
+    def fit(self, x, y=None):
+        x = x[0:self.n]
+        return self
+
+    def transform(self, x):
+        return x[0:self.n]
+
+
+
+
 class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 
     """

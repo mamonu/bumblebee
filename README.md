@@ -29,15 +29,20 @@ TODO: add when ready
 
 ### Prerequisites
 
-What package prerequsites you need to install the software ? See [requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) 
+
+This package is compatible with Linux/OSX systems
 
 
-How to install those prerequisite packages if you need to?
+#### What package prerequsites you need to install the software ? 
 
-This package should be compatible with Linux/OSX systems
+See [requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) 
 
 
-the spellcheck submodule uses the enchant system library.If this library is not there then pyenchant will not work.
+#### How to install those prerequisite packages if you need to?
+
+Most prerequisite packages will be installed automaticaly.
+
+However the spellcheck submodule uses the enchant system library.If this library is not there then pyenchant will not work.
 
 On an Ubuntu / Debian system that means that you should run on your bash shell:   `sudo apt-get install enchant`
 
@@ -174,6 +179,8 @@ The authors would like to thank in no particular order:
 │   ├── spellcheck
 
 │   ├── summarization
+
+│   ├── stringutils
 
 │   ├── topicmod
 

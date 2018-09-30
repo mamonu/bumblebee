@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="nlpfunctions",
-    version="0.0.1",
+    version="0.5.0",
     author="Theodore Manassis & Alessia Tosi",
     author_email="author@example.com",
     description="A small nlp functions package",
