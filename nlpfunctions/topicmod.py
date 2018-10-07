@@ -259,3 +259,226 @@ def nmf_dtm2df(nmf_doc_topic_matrix):
     doctopic_df.columns = [str(col) + "_topic" + "_nmf" for col in doctopic_df.columns]
 
     return doctopic_df
+
+
+
+
+# -------------------------------------------------------------------- #
+# The following transformers have been taken from                      #
+# "Advanced Text Analysis in Python" by Bengfort et al., O'Reilly Eds  #
+# https://www.safaribooksonline.com/library/view/applied-text-analysis #   
+# -------------------------------------------------------------------- #
+
+import os
+from sklearn.pipeline import Pipeline
+from sklearn.base import BaseEstimator, TransformerMixin
+
+from gensim.sklearn_api import ldamodel
+from gensim.models import TfidfModel
+from gensim.corpora import Dictionary
+from gensim.matutils import sparse2full
+
+from sklearn.base import BaseEstimator, TransformerMixin
+from nltk.stem import WordNetLemmatizer
+import nltk
+import unicodedata
+import nltk.corpus.wordnet as wn
+
+
+
+import os
+from gensim.corpora import Dictionary
+from gensim.matutils import sparse2full
+
+
+class TextNormalizer(BaseEstimator, TransformerMixin):
+    
+    """
+    From: https://www.safaribooksonline.com/library/view/applied-text-analysis 
+        
+    """
+
+    def __init__(self, language='english'):
+        self.stopwords  = set(nltk.corpus.stopwords.words(language))
+        self.lemmatizer = WordNetLemmatizer()
+
+    def is_punct(self, token):
+        return all(
+            unicodedata.category(char).startswith('P') for char in token
+        )
+
+    def is_stopword(self, token):
+        return token.lower() in self.stopwords
+    
+    def normalize(self, document):
+        return [
+            self.lemmatize(token, tag).lower()
+            for paragraph in document
+            for sentence in paragraph
+            for (token, tag) in sentence
+            if not self.is_punct(token) and not self.is_stopword(token)
+        ]
+        
+    def lemmatize(self, token, pos_tag):
+        tag = {
+            'N': wn.NOUN,
+            'V': wn.VERB,
+            'R': wn.ADV,
+            'J': wn.ADJ
+        }.get(pos_tag[0], wn.NOUN)
+
+        return self.lemmatizer.lemmatize(token, tag)
+    
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, documents):
+        for document in documents:
+            yield self.normalize(document)
+
+
+
+
+class GensimVectorizer(BaseEstimator, TransformerMixin):
+    """
+    From: https://www.safaribooksonline.com/library/view/applied-text-analysis 
+    
+    Our GensimVectorizer transformer will wrap a Gensim Dictionary object generated during fit() 
+    and whose doc2bow method is used during transform(). 
+    The Dictionary object (like the TfidfModel) can be saved and loaded from disk, so 
+    our transformer utilizes that methodology by taking a path on instantiation. 
+    If a file exists at that path, it is loaded immediately. 
+    
+    Additionally, a save() method allows us to write our Dictionary to disk, 
+    which we can do in fit().
+    
+    The fit() method constructs the Dictionary object by passing already tokenized and 
+    normalized documents to the Dictionary constructor. 
+    The Dictionary is then immediately saved to disk so that the transformer can be 
+    loaded without requiring a refit. 
+    
+    The transform() method uses the Dictionary.doc2bow method, which returns a sparse 
+    representation of the document as a list of (token_id, frequency) tuples. 
+    This representation can present challenges with Scikit-Learn, however, so we utilize 
+    a Gensim helper function, sparse2full, to convert the sparse representation into a NumPy array.
+    """
+
+
+    def __init__(self, path=None):
+        self.path = path
+        self.id2word = None
+        self.load()
+
+    def load(self):
+        if os.path.exists(self.path):
+            self.id2word = Dictionary.load(self.path)
+
+    def save(self):
+        self.id2word.save(self.path)
+
+    def fit(self, documents, labels=None):
+        self.id2word = Dictionary(documents)
+        self.save()
+        return self
+
+    def transform(self, documents):
+        for document in documents:
+            docvec = self.id2word.doc2bow(document)
+            yield sparse2full(docvec, len(self.id2word))
+
+
+
+
+
+class GensimTfidfVectorizer(BaseEstimator, TransformerMixin):
+
+    def __init__(self, dirpath=".", tofull=False):
+        """
+        Pass in a directory that holds the lexicon in corpus.dict and the
+        TF-IDF model in tfidf.model.
+
+        Set tofull = True if the next thing is a Scikit-Learn estimator
+        otherwise keep False if the next thing is a Gensim model.
+        
+        GensimTfidfVectorizer will vectorize our documents ahead of LDA, 
+        as well as saving, holding, and loading a custom-fitted lexicon and 
+        vectorizer for later use.
+        
+        From: https://www.safaribooksonline.com/library/view/applied-text-analysis 
+        
+        """
+        self._lexicon_path = os.path.join(dirpath, "corpus.dict")
+        self._tfidf_path = os.path.join(dirpath, "tfidf.model")
+
+        self.lexicon = None
+        self.tfidf = None
+        self.tofull = tofull
+
+        self.load()
+
+    def load(self):
+        if os.path.exists(self._lexicon_path):
+            self.lexicon = Dictionary.load(self._lexicon_path)
+
+        if os.path.exists(self._tfidf_path):
+            self.tfidf = TfidfModel().load(self._tfidf_path)
+
+    def save(self):
+        self.lexicon.save(self._lexicon_path)
+        self.tfidf.save(self._tfidf_path)
+        
+        
+    def fit(self, documents, labels=None):
+        self.lexicon = Dictionary(documents)
+        self.tfidf = TfidfModel([
+            self.lexicon.doc2bow(doc)
+            for doc in documents],
+            id2word=self.lexicon)
+        self.save()
+        return self
+    
+    
+    # creates a generator that loops through each of our normalized documents 
+    # and vectorizes them using the fitted model and their bag-of-words representation
+    def transform(self, documents):
+        def generator():
+            for document in documents:
+                vec = self.tfidf[self.lexicon.doc2bow(document)]
+                if self.tofull:
+                    yield sparse2full(vec)
+                else:
+                    yield vec
+        return list(generator())
+
+
+    
+
+
+class GensimTopicModels(object):
+    
+    """
+    From: https://www.safaribooksonline.com/library/view/applied-text-analysis 
+        
+    """
+
+    def __init__(self, n_topics=50):
+        """
+        n_topics is the desired number of topics
+        """
+        self.n_topics = n_topics
+        self.model = Pipeline([
+            ('norm', TextNormalizer()),
+            ('vect', GensimTfidfVectorizer()),
+            ('model', ldamodel.LdaTransformer(num_topics = self.n_topics))
+        ])
+
+    def fit(self, documents):
+        self.model.fit(documents)
+
+        return self.model
+
+
+
+
+
+
