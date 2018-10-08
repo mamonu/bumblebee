@@ -8,7 +8,7 @@
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
 <img src="https://github.com/mamonu/textconsultations/blob/master/pics/bb.png" align="right"
-     title="nlp logo" width="178" height="178">
+     title="nlp logo" width="197" height="170">
      
 <br>
 
@@ -31,19 +31,12 @@ TODO: add when ready
 
 
 ├── bumblebee
-
 │   ├── basicnlp
-
 │   ├── nlppipelineutils
-
 │   ├── spellcheck
-
 │   ├── summarization
-
 │   ├── stringutils
-
 │   ├── topicmod
-
 │   ├── utils
 
 
