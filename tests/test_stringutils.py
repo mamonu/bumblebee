@@ -1,5 +1,5 @@
 import pytest
-from nlpfunctions.stringutils import (
+from bumblebee.stringutils import (
     string_matching_knuth_morris_pratt,
     kmp_prefix_function,
     firstoccurence,
