@@ -1,4 +1,4 @@
-# nlpfunctions
+# bumblebee
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
@@ -13,7 +13,7 @@
 <br>
 
 
-useful nlp functions for text mining in a package format
+useful nlp functions / pipelines / transformers for text mining in a package format
 
 
 <br>
@@ -170,7 +170,7 @@ The authors would like to thank in no particular order:
 
 
 
-├── nlpfunctions
+├── bumblebee
 
 │   ├── basicnlp
 
@@ -185,3 +185,20 @@ The authors would like to thank in no particular order:
 │   ├── topicmod
 
 │   ├── utils
+
+
+
+
+
+
+
+## references
+
+- Blei, David M.; Ng, Andrew Y.; Jordan, Michael I (January 2003). Lafferty, John, ed. "Latent Dirichlet Allocation". Journal of Machine Learning Research. 3 (4–5): pp. 993–1022.
+
+- Blei, David (April 2012). "Probabilistic Topic Models". Communications of the ACM. 55 (4): 77–84. 
+
+- Lee, Daniel D., and H. Sebastian Seung. "Learning the parts of objects by non-negative matrix factorization." Nature 401.6755 (1999): 788.
+
+
+
