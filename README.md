@@ -7,7 +7,7 @@
 ![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/glitchynlp.gif" align="right"
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/bb.png" align="right"
      title="nlp logo" width="178" height="178">
      
 <br>
@@ -25,6 +25,26 @@ useful nlp functions / pipelines / transformers for text mining in a package for
 
 
 TODO: add when ready
+
+### structure:
+
+
+
+├── bumblebee
+
+│   ├── basicnlp
+
+│   ├── nlppipelineutils
+
+│   ├── spellcheck
+
+│   ├── summarization
+
+│   ├── stringutils
+
+│   ├── topicmod
+
+│   ├── utils
 
 
 ### Prerequisites
@@ -163,35 +183,6 @@ The authors would like to thank in no particular order:
 ---
 
 
-
-
-### structure:
-
-
-
-
-├── bumblebee
-
-│   ├── basicnlp
-
-│   ├── nlppipelineutils
-
-│   ├── spellcheck
-
-│   ├── summarization
-
-│   ├── stringutils
-
-│   ├── topicmod
-
-│   ├── utils
-
-
-
-
-
-
-
 ## references
 
 - Blei, David M.; Ng, Andrew Y.; Jordan, Michael I (January 2003). Lafferty, John, ed. "Latent Dirichlet Allocation". Journal of Machine Learning Research. 3 (4–5): pp. 993–1022.
@@ -199,6 +190,10 @@ The authors would like to thank in no particular order:
 - Blei, David (April 2012). "Probabilistic Topic Models". Communications of the ACM. 55 (4): 77–84. 
 
 - Lee, Daniel D., and H. Sebastian Seung. "Learning the parts of objects by non-negative matrix factorization." Nature 401.6755 (1999): 788.
+
+-  Bird, S., Klein, E., & Loper, E. (2009). Natural language processing with Python: analyzing text with the natural language toolkit. " O'Reilly Media, Inc.".
+
+
 
 
 
