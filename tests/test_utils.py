@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
-from nlpfunctions.basicnlp import sent_tokenise
-from nlpfunctions.utils import (
+from bumblebee.basicnlp import sent_tokenise
+from bumblebee.utils import (
     combine_functions,
     output_series,
     combine_2fs,
