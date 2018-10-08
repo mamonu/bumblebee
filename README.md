@@ -2,12 +2,11 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
-![travis](https://travis-ci.com/mamonu/textconsultations.svg?branch=master)
-![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)
-![nlp](https://github.com/mamonu/textconsultations/blob/master/pics/subject-NLP-lightgrey.svg)
+![travis](https://travis-ci.com/mamonu/bumblebee.svg?branch=master)
+![nlp](https://github.com/mamonu/bumblebee/blob/master/pics/subject-NLP-lightgrey.svg)
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/bb.png" align="right"
+<img src="https://github.com/mamonu/bumblebee/blob/master/pics/bb.png" align="right"
      title="nlp logo" width="197" height="170">
      
 <br>
@@ -28,7 +27,7 @@ TODO: add when ready
 
 ### structure:
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/bumblebeediagram.png" align="center"
+<img src="https://github.com/mamonu/bumblebee/blob/master/pics/bumblebeediagram.png" align="center"
      title="structure" >
 
 
@@ -40,7 +39,7 @@ This package is compatible with Linux/OSX systems
 
 #### What package prerequsites you need to install the software ? 
 
-See [requirements.txt](https://github.com/mamonu/textconsultations/blob/master/requirements.txt) 
+See [requirements.txt](https://github.com/mamonu/bumblebee/blob/master/requirements.txt) 
 
 
 #### How to install those prerequisite packages if you need to?
@@ -102,7 +101,7 @@ and allows a team to develop cohesive software more rapidly.
 
 <br>
 
-We are using Travis CI <img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" title="travis logo" width="50" height="50">       for this process. 
+We are using Travis CI <img src="https://github.com/mamonu/bumblebee/blob/master/pics/travis.png" title="travis logo" width="50" height="50">       for this process. 
 
 
 
@@ -113,8 +112,8 @@ We are using Travis CI <img src="https://github.com/mamonu/textconsultations/blo
 
 ## Built With
 
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
-<img src="https://github.com/mamonu/textconsultations/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/textconsultations/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50"><img src="https://github.com/mamonu/textconsultations/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
+<img src="https://github.com/mamonu/bumblebee/blob/master/pics/blacklogo2.png" align="right" title="black logo" width="56" height="27"><img src="https://github.com/mamonu/bumblebee/blob/master/pics/sphinximage.png" align="right" title="sphinx logo" width="40" height="34">
+<img src="https://github.com/mamonu/bumblebee/blob/master/pics/NLTK.png" align="right" title="nltk logo" width="50" height="50"> <img src="https://github.com/mamonu/bumblebee/blob/master/pics/scikit-learn-logo-small.png" align="right" title="sklearn logo"> <img src="https://docs.pytest.org/en/latest/_static/pytest1.png" align="right" title="pytest logo" width="50" height="50"><img src="https://github.com/mamonu/bumblebee/blob/master/pics/travis.png" align="right" title="travis logo" width="50" height="50">
 
 
 
@@ -130,7 +129,7 @@ We are using Travis CI <img src="https://github.com/mamonu/textconsultations/blo
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/mamonu/textconsultations/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/mamonu/bumblebee/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 
@@ -144,7 +143,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/mamonu/textconsultations/blob/master/LICENCE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/mamonu/bumblebee/blob/master/LICENCE.md) file for details
 
 ## Acknowledgments
 
