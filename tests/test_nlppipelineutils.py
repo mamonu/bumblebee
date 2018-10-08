@@ -3,7 +3,7 @@ from sklearn.dummy import DummyClassifier, DummyRegressor
 from sklearn.utils.testing import assert_array_equal
 from sklearn.utils.testing import assert_raises
 
-# from nlpfunctions.nlppipelineutils import
+
 
 
 def test_scikitlearn_classifier_exceptions():
