@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nlpfunctions",
+    name="bumblebee",
     version="0.5.0",
     author="Theodore Manassis & Alessia Tosi",
     author_email="author@example.com",
