@@ -28,16 +28,8 @@ TODO: add when ready
 
 ### structure:
 
-
-
-├── bumblebee
-│   ├── basicnlp
-│   ├── nlppipelineutils
-│   ├── spellcheck
-│   ├── summarization
-│   ├── stringutils
-│   ├── topicmod
-│   ├── utils
+<img src="https://github.com/mamonu/textconsultations/blob/master/pics/bumblebeediagram.png" align="center"
+     title="structure" >
 
 
 ### Prerequisites
