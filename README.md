@@ -182,6 +182,10 @@ The authors would like to thank in no particular order:
 
 - Li, W. (1992). Random texts exhibit Zipf's-law-like word frequency distribution. IEEE Transactions on information theory, 38(6), 1842-1845.
 
+- Knuth, D. E., Morris, Jr, J. H., & Pratt, V. R. (1977), 'Fast pattern matching in strings'. SIAM journal on computing, 6(2), 323-350.
+
+- Gilbert, C. H. E. (2014). Vader: A parsimonious rule-based model for sentiment analysis of social media text. In Eighth International Conference on Weblogs and Social Media (ICWSM-14). Available at (08/10/18) http://comp.social.gatech.edu/papers/icwsm14.vader.hutto.pdf
+
 
 
 
