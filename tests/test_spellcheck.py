@@ -3,7 +3,7 @@ import enchant
 import re
 from enchant.checker import SpellChecker
 from nltk import word_tokenize
-from nlpfunctions.spellcheck import infer_spaces, find_and_print_errors, correct_text
+from bumblebee.spellcheck import infer_spaces, find_and_print_errors, correct_text
 
 d = SpellChecker("en_UK", "en_US")
 testtext = "this is a gud beer"
