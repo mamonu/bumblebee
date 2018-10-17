@@ -1,4 +1,4 @@
 #!/bin/bash
 
-pytest -v --cov=nlpfunctions tests/      ## run tests and calculate testing coverage 
+pytest -v --cov=bumblebee tests/      ## run tests and calculate testing coverage 
 echo "-------------------------------------------------------------------------------"
