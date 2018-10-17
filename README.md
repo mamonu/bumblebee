@@ -69,7 +69,14 @@ If not please open an issue here on this repo.
 
 ### Installing
 
-TODO: add when ready    (at some point its going to be `pip install nplfunctions` )
+TODO: add when ready.. This is still in dev testing / alpha stage. Plan is after code review to 
+upload to PYPI. (So at some point its going to be `pip install nlpbumblebee` or something similar... )
+
+For the time being git clone the repo and enter:
+
+`python setup.py install`
+
+
 
 ## Running the tests
 
@@ -103,6 +110,12 @@ and allows a team to develop cohesive software more rapidly.
 
 We are using Travis CI <img src="https://github.com/mamonu/bumblebee/blob/master/pics/travis.png" title="travis logo" width="50" height="50">       for this process. 
 
+
+
+## Documentation
+
+Curently there is automaticaly created documentation supported by sphinx-docs. This documentation is also availiable 
+Additionaly there is a \examples folder where simple tasks using functions from this package are described.
 
 
 <br>
