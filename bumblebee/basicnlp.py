@@ -386,6 +386,42 @@ def remove_punctuation(list_of_string, item_to_keep=""):
     return [sent.translate(transtable) for sent in list_of_string]
 
 
+
+
+def remove_punctuation_tok(list_of_lists_of_tokens, item_to_keep = '') :
+    """
+    Remove punctuation from a text stored as a list of lists of tokens (e.g., [['i']])
+    
+    Parameters
+    ----------
+    - list_of_lists_of_tokens : dataframe column whose cells contain lists of words/tokens (one list for each sentence making up the cell text)
+    - item_to_keep : a string of punctuation signs you want to keep in text (e.g., '!?.,:;')
+
+   """
+   
+   # Update string of punctuation signs
+    if len(item_to_keep) > 0 :
+        
+        punctuation_list = ''.join(c for c in string.punctuation if c not in item_to_keep)
+        
+    else :
+        
+        punctuation_list = string.punctuation
+        
+    # remove punctuaion
+    nopunkt = [[token.strip(punctuation_list) for token in list_of_tokens] for list_of_tokens in list_of_lists_of_tokens]
+       
+    # remove extra white spaces left by removed punctuation symbols
+    OUTPUT = [list(filter(None, list_of_tokens)) for list_of_tokens in nopunkt]
+   
+    return OUTPUT
+
+
+
+
+
+
+
 #################### Function to calculate subjectivity score using TextBlob ###########################################
 
 

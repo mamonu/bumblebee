@@ -15,6 +15,7 @@
 
 
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.feature_extraction.text import CountVectorizer
 import itertools
 import numpy as np
 import pandas as pd
@@ -201,3 +202,39 @@ class DenseTransformer(BaseEstimator, TransformerMixin):
 
     def fit(self, X, y=None, **fit_params):
         return self
+
+
+class CustomCountVectorizer(CountVectorizer):
+    
+    """
+    Customisable sklearn's CountVectorizer by overriding the build_preprocessor() and build_tokenizer()
+    factory methods.
+    
+    Attributes:
+        
+        custom_preprocessor: a callable (e.g., function or chain of functions) that takes an entire document as input 
+            (as a single string), and returns a transformed version of the document, still as an entire string
+            Make sure: input = string; ouput = string
+                        
+        custom_tokeniser: a callable that takes the output from the preprocessor and splits it into tokens, 
+            then returns a list of these
+            Make sure: input = string; output = list of tokens
+    
+    ref: https://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes
+    """
+    
+    def __init__(self, custom_preprocessor=None, custom_tokeniser = None, **kwargs):
+        super().__init__(**kwargs)     #inherits CountVectorizer methods
+        self.custom_preprocessor = custom_preprocessor if custom_preprocessor is not None else lambda x: x
+        self.custom_tokeniser = custom_tokeniser if custom_tokeniser is not None else lambda x: x
+    
+      
+    # expand the build_preprocessor method with your own customised tokenizer    
+    def build_preprocessor(self):
+        preprocessor = super(CustomCountVectorizer, self).build_preprocessor()
+        return lambda doc : preprocessor(self.custom_preprocessor(doc))
+
+    # expand the build_tokenizer method with your own customised tokenizer
+    def build_tokenizer(self):
+        tokenize = super(CustomCountVectorizer, self).build_tokenizer()
+        return lambda doc: list(self.custom_tokeniser(tokenize(doc)))
