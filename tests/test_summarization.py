@@ -1,7 +1,7 @@
 
 import pytest
-from bumblebee.summarization import score_keyphrases_by_textrank
-from bumblebee.summarization import extract_candidate_words
+from nlpbumblebee.summarization import score_keyphrases_by_textrank
+from nlpbumblebee.summarization import extract_candidate_words
 
 
 testtext = "this will install a local (non from pypi) version of the package. (now you are able to just say import nlpfunctions anywhere and it will work. no paths."

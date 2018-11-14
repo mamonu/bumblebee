@@ -1,4 +1,4 @@
-from bumblebee import *
+from nlpbumblebee import *
 import nltk
 import pandas as pd
 import numpy as np

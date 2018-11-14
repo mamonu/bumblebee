@@ -1,5 +1,5 @@
 
-from bumblebee.basicnlp import (
+from nlpbumblebee.basicnlp import (
     sent_tokenise,
     word_tokenise,
     get_sentiment_score_VDR,
@@ -12,7 +12,7 @@ from bumblebee.basicnlp import (
     break_compound_words,
     to_lower,
 )
-from bumblebee.utils import *
+from nlpbumblebee.utils import *
 import numpy as np
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import TweetTokenizer

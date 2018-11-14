@@ -1,4 +1,4 @@
-# bumblebee
+# nlpbumblebee
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg)
 ![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
