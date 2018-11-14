@@ -3,6 +3,9 @@
 
 import pandas as pd
 import numpy as np
+from sklearn.base import BaseEstimator, TransformerMixin
+
+
 
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
 
