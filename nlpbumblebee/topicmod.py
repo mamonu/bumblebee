@@ -3,6 +3,9 @@
 
 import pandas as pd
 import numpy as np
+from sklearn.base import BaseEstimator, TransformerMixin
+
+
 
 def lda_dtm2df(lda_doc_topic_matrix, num_topics):
 
@@ -44,7 +47,6 @@ def lda_dtm2df(lda_doc_topic_matrix, num_topics):
     return df
 
 
-# lda_dtm2df(lda_model[bow_corpus], 5)
 
 
 def lda_topic_top_words(lda_mod, n_top_words=6):
@@ -73,6 +75,8 @@ def lda_topic_top_words(lda_mod, n_top_words=6):
         mydict[t] = ws, w_probs
 
     return mydict
+
+
 
 
 def topictopwords_dict2df(topic_top_words_dict, orig_dataset=None, tech=""):
@@ -128,8 +132,7 @@ def topictopwords_dict2df(topic_top_words_dict, orig_dataset=None, tech=""):
     return words_topics_df
 
 
-# lda_topic_top_words(lda_mod = lda_model, n_top_words = 6)
-# topictopwords_dict2df(lda_topic_top_words(lda_mod = lda_model, n_top_words = 6), orig_dataset = text_df, tech = 'lda')
+
 
 
 from operator import itemgetter
@@ -161,7 +164,7 @@ def lda_ranked_topics2df(lda_mod, corpus):
     return doc_ordered_topics_df
 
 
-# lda_ranked_topics2df(lda_mod = lda_model, corpus = bow_corpus)
+
 
 
 def standardise_twm_nmf(nmf_model):
@@ -170,8 +173,7 @@ def standardise_twm_nmf(nmf_model):
     return nmf_model.components_ / np.sum(nmf_model.components_, axis=1, keepdims=True)
 
 
-# standardise_twm_nmf(clf)
-# [np.sum(probs) for probs in standardise_twm_nmf(clf)]
+
 
 
 def standardise_dtm_nmf(nmf_doc_topic_matrix):
@@ -210,8 +212,7 @@ def nmf_topic_top_words(topic_term_matrix, vocabulary, n_top_words=6):
     return word_topic_dict
 
 
-# nmf_topic_top_words(wordtopic, vocabulary = vocab)
-# topictopwords_dict2df((nmf_topic_top_words(wordtopic, vocabulary = vocab)), orig_dataset = text_df, tech = 'nmf')
+
 
 
 def nmf_ranked_topics2df(nmf_doc_topic_matrix, num_topics):
@@ -239,7 +240,7 @@ def nmf_ranked_topics2df(nmf_doc_topic_matrix, num_topics):
     return ranked_docopic_df
 
 
-# nmf_ranked_topics2df(doctopic, num_topics = 3)
+
 
 
 def nmf_dtm2df(nmf_doc_topic_matrix):
@@ -302,6 +303,7 @@ class Tuples2ColumnsTransformer(BaseEstimator, TransformerMixin):
         return cols_df.values
     
     
+
     
 class LdaRankedTopicsTransformer(BaseEstimator, TransformerMixin):
     """

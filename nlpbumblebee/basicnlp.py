@@ -19,6 +19,7 @@ from nltk.sentiment.util import mark_negation
 analyser = SentimentIntensityAnalyzer()
 wordnet_lemmatiser = WordNetLemmatizer()
 
+
 ##############################################
 ### Function to sentence-tokenise text    ####
 ##############################################
@@ -32,7 +33,7 @@ def sent_tokenise(string_par):
     Parameters
     ----------
     string_par : name of the dataframe column or string that contains the paragraph text to be sentence-tokenised.
-    OUTPUT : a lis of sring sentences
+    OUTPUT : a list of string sentences
     """
     try:
         return sent_tokenize(string_par)
@@ -57,7 +58,7 @@ def word_tokenise(list_of_strings):
     Parameters
     ----------
     list_of_strings : name of the dataframe column containing a list of string sentences in each cell or a list of string sentences.
-    OUTPUT : a list of lists of token word. Each sentence's boundaries are preserved.
+    OUTPUT : a list of lists of token word (i.e., tokenisation preserving sentences' boundaries)
     """
 
     try:
@@ -70,7 +71,20 @@ def word_tokenise(list_of_strings):
         return []
 
 
+
 def to_lower(list_of_lists_of_tokens):
+    """
+    Function to lower text.
+    
+    Parameters
+    ----------
+    list_of_lists_of_tokens : dataframe column or a variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text
+        E.g., [[ 'I', 'think', .'],  ['Therefore', ',', 'I', 'am', '.']]
+    OUTPUT : a list of lists of token word (i.e., tokenisation preserving sentences' boundaries)
+        E.g., [[ 'i', 'think', .'],  ['therefore', ',', 'i', 'am', '.']]
+    
+    
+    """
 
     try:
         return [[token.lower() for token in sent] for sent in list_of_lists_of_tokens]
@@ -98,11 +112,11 @@ def get_sentiment_score_VDR(list_of_strings, score_type="compound"):
     Parameters
     ----------
     list_of_strings : name of the dataframe column or variable containing the text stored as a list of string sentences for which to 
-    compute sentence-level sentiment score.
+    compute sentence-level sentiment score. E.g., ["I think.", "Therefore, I am."]    
     
     score_type : 'compound' (default), 'pos' or 'neg'
     
-    OUTPUT : a list of sentiment scores (as floats)
+    OUTPUT : a list of sentiment scores (as floats). E.g., [0.0, 0.1]
     
     """
 
@@ -125,17 +139,18 @@ def get_sentiment_score_VDR(list_of_strings, score_type="compound"):
 
 def break_compound_words(list_of_lists_of_tokens, compound_symbol="-"):
     """
-    Break words of the compound form word1<symbol>word2 into the constituting words, 
+    Funcion to break words of the compound form word1<symbol>word2 into the constituting words, 
     then remove resulting empty strings. 
     
     Parameters
     ----------
     list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text
+        E.g., [[ 'I', 'think', 'north-south'],  ['Me', 'too']]
     
     compound-simbol : compound symbol word1<symbol>word2 to be broken, default is '-'
     
     OUTPUT : the original list of word-token lists with the specified compound words broken down in their components
-    
+        E.g., [['I', 'think', 'north', 'south'], ['Me', 'too']]
     """
 
     OUTPUT = []
@@ -161,6 +176,7 @@ def break_compound_words(list_of_lists_of_tokens, compound_symbol="-"):
     return OUTPUT
 
 
+
 ############################################################################################
 ###    Function to replace contracted negative forms of auxiliary verbs with negation   ####
 ############################################################################################
@@ -169,12 +185,15 @@ def break_compound_words(list_of_lists_of_tokens, compound_symbol="-"):
 def fix_neg_auxiliary(list_of_lists_of_tokens):
     """
     Replace contracted negative forms of auxiliary verbs with negation.
+    Useful to use in pipelines when removing stopwords to mark negation in sentences.
     
     Parameters
     ----------
     list_of_lists_of_tokens : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text
+        E.g., [[ "I", "couldn't", "think", "anything", "smart"],  ['Me', 'neither']]
     
     OUPUT : the original list of word-token lists with the negative forms of auxiliary verbs replaced
+        E.g., [['I', 'not', 'think', 'anything', 'smart'], ['Me', 'neither']]
     """
 
     OUTPUT = []
@@ -251,12 +270,13 @@ def remove_stopwords(
     Parameters
     ----------
     - list_of_lists_of_tokens : : dataframe column or variable containing a list of word-token lists, with each sublist being a sentence in a paragraph text
+        E.g., [[ "I", "couldn't", "think", "anything", "smart"],  ["Me", "neither"]]
     - stopwords_list : (default) English stopwords from. nltk.corpus
     - keep_neg : whether to remove negation from list of stopwords, (default) True
     - words_to_keep : list of words not to remove from the text (default is empty)
     - extra_stopwords : list of ad-hoc stopwords to remove from text (default is empty)
     
-    - OUTPUT : 
+    - OUTPUT : list_of_lists_of_tokens
     
     """
 
@@ -278,6 +298,8 @@ def remove_stopwords(
     ]
 
     return OUTPUT
+
+
 
 
 ############################# Function to part-of-speech tagging sentences #############################
@@ -450,7 +472,7 @@ def classify_subjectivity(list_of_scores, threshold=0.5):
 
     """
     Return a binary score (1 = subjective, 0 = objective) for each sentence in the input text 
-    based on the sentence's subjectivity score. Scores > threshold are classified as subjecive.
+    based on the sentence's subjectivity score. Scores > threshold are classified as subjective.
     
     Parameter
     ---------
@@ -544,6 +566,7 @@ def get_sentiment_score_TB(INPUT):
     return OUTPUT
 
 
+
 ######## Function to retain only sentiment polarity scores that meet stricter threshold ######
 
 
@@ -576,6 +599,7 @@ def get_sentiment_stricter_threshold(list_of_scores, polarity_threshold=0.2):
     )
 
     return OUTPUT
+
 
 
 ####### Function to only keep senentences in a text whose sentiment polarity score meets stricter threshold #############
@@ -615,6 +639,9 @@ def keep_only_strict_polarity_sents(list_of_strings, polarity_threshold=0.3):
             ]
 
     return newListOfSents
+
+
+
 
 
 ######## Function to count occurrences of specified POS as count or proportion (default) #######
@@ -664,6 +691,7 @@ def count_pos(list_of_lists_of_pos_tuples, pos_to_cnt="", normalise=True):
 
     except:
         return np.nan
+
 
 
 ####### Function to count occurrences of specified "meaningful" punctuation symbols #####
@@ -727,7 +755,8 @@ def count_words(list_of_lists_of_tokens, exclude_punkt=True):
 
 def mark_neg(list_of_lists_of_tokens, double_neg_flip=False):
     """
-    Return count of words in each text
+    Mark negations, i.e., append _NEG suffix to words that appear in the scope between a negation
+    and a punctuation mark.
     
     Parameters
     ----------
@@ -736,6 +765,7 @@ def mark_neg(list_of_lists_of_tokens, double_neg_flip=False):
     """
 
     return [mark_negation(sent) for sent in list_of_lists_of_tokens]
+
 
 
 def is_part_string(text, target_string):
