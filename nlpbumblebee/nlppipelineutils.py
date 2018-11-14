@@ -23,6 +23,8 @@ import pandas as pd
 
 class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
     """
+    Class for building sklearn Pipeline step. 
+    
     A function Transformer that takes a list of (maximum 10) functions, calls each function with 
     our text (X as list of strings), and returns the results of all functions as a feature vector as np.array
 
@@ -62,10 +64,13 @@ class TextPipelineArrayFeaturizer(BaseEstimator, TransformerMixin):
         return np.array(fvs).astype(float)
 
 
+
 class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
     """
+    Class for building sklearn Pipeline step. 
+    
     A function Transformer that takes a list of (maximum 10) functions, calls each function with 
-    our list of lists (X) of texts, and returns the results of all functions as a feature vector as np.array
+    our list of lists of texts (X), and returns the results of all functions as a feature vector as np.array
 
     INPUT: List of maximum 10 functions, calls each function with our text (X as list of lists of strings)
     OUTPUT: np.array
@@ -102,10 +107,15 @@ class TextPipelineListFeaturizer(BaseEstimator, TransformerMixin):
         return np.array(fvs).astype(float)
 
 
+
 class ColumnSelector(BaseEstimator, TransformerMixin):
     """
     Class for building sklearn Pipeline step. 
     This class selects a column from a pandas data frame.
+    
+    Attributes:
+    -----------    
+        df : a pandas.DataFrame
     """
 
     # initialise
@@ -121,14 +131,19 @@ class ColumnSelector(BaseEstimator, TransformerMixin):
         return df_cols
 
 
+
 class CatToDictTransformer(BaseEstimator, TransformerMixin):
     """
     Class for building sklearn Pipeline step. 
     This class turns columns from a pandas data frame (type Series) that
     contain caegorical variables into a list of dictionaries 
     that can be inputted into DictVectorizer().
+    
+    Attributes:
+    -----------    
+        X : a pandas.DataFrame
+    
     """
-
     # initialise
     def __init__(self):
         self  # could also use 'pass'
@@ -141,6 +156,7 @@ class CatToDictTransformer(BaseEstimator, TransformerMixin):
         Xcols_df = pd.DataFrame(X)
         Xcols_dict = Xcols_df.to_dict(orient="records")
         return Xcols_dict
+
 
 
 class ClipTextTransformer(BaseEstimator, TransformerMixin):
@@ -166,9 +182,13 @@ class Series2ListOfStrings(BaseEstimator, TransformerMixin):
 
     """
     Class for building sklearn Pipeline step. 
-    This class turns columns from a pandas data frame (type Series) that
+    This class turns columns from a pandas.Dataframe (type Series) that
     contain lists of string sentences into a list of strings 
     that can be inputted into CountVectorizer().
+    
+    Attributes:
+    -----------    
+        X : a pandas.DataFrame
     """
 
     # initialise
@@ -184,10 +204,16 @@ class Series2ListOfStrings(BaseEstimator, TransformerMixin):
         return Xstrs
 
 
+
+
 class DenseTransformer(BaseEstimator, TransformerMixin):
     """
     Convert a sparse matrix (e,g,, the outcome of CountVectorizer() ) into a dense matrix, 
     required by certain classifiers in scikit-learn's Pipeline that are not compatible with sparse matrices.
+    
+    Attributes:
+    -----------    
+        X : sparse matrix
     
     Ref: https://stackoverflow.com/a/28384887
     
@@ -204,6 +230,8 @@ class DenseTransformer(BaseEstimator, TransformerMixin):
         return self
 
 
+
+
 class CustomCountVectorizer(CountVectorizer):
     
     """
@@ -211,13 +239,16 @@ class CustomCountVectorizer(CountVectorizer):
     factory methods.
     
     Attributes:
+    -----------    
         
         custom_preprocessor: a callable (e.g., function or chain of functions) that takes an entire document as input 
             (as a single string), and returns a transformed version of the document, still as an entire string
+            Default is None (build_preprocessor factory method is used).
             Make sure: input = string; ouput = string
                         
         custom_tokeniser: a callable that takes the output from the preprocessor and splits it into tokens, 
-            then returns a list of these
+            then returns a list of these.
+            Default is None (build_tokenizer factory method is used)
             Make sure: input = string; output = list of tokens
     
     ref: https://scikit-learn.org/stable/modules/feature_extraction.html#customizing-the-vectorizer-classes
@@ -229,7 +260,7 @@ class CustomCountVectorizer(CountVectorizer):
         self.custom_tokeniser = custom_tokeniser if custom_tokeniser is not None else lambda x: x
     
       
-    # expand the build_preprocessor method with your own customised tokenizer    
+    # expand the build_preprocessor method with your own customised preprocessor    
     def build_preprocessor(self):
         preprocessor = super(CustomCountVectorizer, self).build_preprocessor()
         return lambda doc : preprocessor(self.custom_preprocessor(doc))
