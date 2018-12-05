@@ -7,4 +7,5 @@ pyenchant==2.0.0
 networkx==2.1
 textblob==0.15.2
 hypothesis==3.82.1
+attrs==18.2.0
 pytest==3.8.0
