@@ -4,6 +4,7 @@ language: python
 python:
   - "3.6"
 script:
+- pip install nltk==3.3
 - python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular
 - pip install -e .
 - pytest -v 
