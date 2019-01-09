@@ -6,7 +6,7 @@ python:
 script:
 - pip install nltk==3.3
 - pip install attrs==18.2.0
-- python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular
+- python -m nltk.downloader vader_lexicon stopwords wordnet brown_tei gutenberg punkt popular brown
 - pip install -e .
 - pytest -v 
 before_install:
