@@ -1,6 +1,8 @@
 from textblob import TextBlob
 import nltk
 
+#for various syntax based filtering options
+
 def extract_noun_phrases(text):
 	stop_words = set(nltk.corpus.stopwords.words("english")) # to remove stopwords
 	blob = TextBlob(text) # create a textblob object 
