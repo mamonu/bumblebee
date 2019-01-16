@@ -152,7 +152,7 @@ Please read [CONTRIBUTING.md](https://github.com/mamonu/bumblebee/blob/master/CO
 * **Alessia Tosi** - [exfalsoquodlibet](https://github.com/exfalsoquodlibet)
 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/mamonu/bumblebee/graphs/contributors) who participated in this project.
 
 ## License
 
